@@ -3,7 +3,7 @@ Kurunt
 
 An analytics platform for real-time data.
 
-**Kurunt is currently in 'very alpha' initial release, so it will require manual tinkering and installation to get working. If you'd just like to play with it running, try our public AMI. I will be making it more usable in the coming weeks/months - stay tuned.**
+**Kurunt is currently in 'very alpha' initial release, so it will require manual tinkering and installation to get working. If you'd just like to play with it running, try our public AMI (just instruction at this stage, see below). I will be making it more usable in the coming weeks/months - stay tuned.**
 
 
 ## License ##
@@ -11,11 +11,6 @@ An analytics platform for real-time data.
 Kurunt is a open source project under [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
 
 Some dependencies Kurunt uses apply different open source [licenses](#licenses).
-
-
-## Installation on EC2 using AMI - Quick Start ##
-
-The quickest and easiest way to get started is to use our public AMI (Amazon Web Services).
 
 
 ## To Do List ##
