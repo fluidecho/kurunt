@@ -32,7 +32,7 @@ These instruction are for installing on Ubuntu 12.04 server, however similarly a
 
 Goal to get all this running on a micro instance with a bit of memory left to be able to do some actual data analysis. Dependencies required:
 
-- **Node.js** (another programming language)
+- **Node.js** (what kurunt is writen in)
 - **Sphinx** (search/query indexs)
 - **MySQL** (used to store administrative information like users, schemes, settings)
 - **ZeroMQ** (used as a message queues)
