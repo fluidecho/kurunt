@@ -23,8 +23,8 @@
 	"sphinx_charset_type": "utf-8",
 	"sphinx_index_path": "/var/sphinx/data",
 	"bits": 64,
-	"www_host": "127.0.0.1",
-	"www_path": "/opt/kurunt/www,
+	"www_host": "ec2-107-22-6-117.compute-1.amazonaws.com",
+	"www_path": "/opt/kurunt/www",
 	"www_port": 3000,
 	"www_standalone": false
 }
