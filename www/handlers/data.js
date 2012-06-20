@@ -169,7 +169,8 @@ function _request(req, g, etl, cb) {
 						}
 						
 						// restart sphinx.
-						launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb2) { 	
+						//launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb2) { 
+						launcher.run('searchd --config .' + config['path'] + '/src/sphinx_config.js', function (cb2) { 	
 							callback();												// local callback.
 						});	
 					});	
@@ -221,7 +222,8 @@ function _request(req, g, etl, cb) {
 				try {
 
 					launcher.run('searchd --stopwait', function (cb2) {
-						launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb2) { 	
+						//launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb2) { 	
+						launcher.run('searchd --config .' + config['path'] + '/src/sphinx_config.js', function (cb2) { 	
 							g.data[port_string] = {'id': info.insertId, 'input': input, 'schema': schema, 'port': port, 'status': 'open'};				
 							var index_name = schema + '_' + info.insertId + '_' + 1;	// version = 1
 							//g.logDebug('index_name: ' + index_name);

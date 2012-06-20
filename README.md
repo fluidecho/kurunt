@@ -155,6 +155,10 @@ Note version 3 is out yet to test.
 Node dependency.
 
 	npm install zmq -g
+	cd /usr/local/lib/node_modules/zmq
+	npm install
+	make
+	make test
 	
 	
 #### GeoIP ####
@@ -190,6 +194,32 @@ Your work needs to conform with Maxmind license; "This product includes GeoLite 
 installs to: /usr/local/lib/node_modules/geoip
 
 
+#### A bit more ####
+	
+Create the sphinx directories.
+	
+	mkdir /var/sphinx
+	mkdir /var/sphinx/log
+	mkdir /var/sphinx/data
+
+Open port 3000 on your server or security group if using AWS.
+
+To run Kurunt:
+
+	node /opt/kurunt/index.js
+
+
+If things go badly can manually remove sphinx index to start over:
+
+		searchd --stop
+		cd /var/sphinx/data/
+		rm -r *			# carefull!!!
+		cd /var/sphinx/log/
+		rm -r *			# carefull!!!
+		
+And can manually remove mysql index references in kurunt.data, indexes, users. Could delete entire database if wanted to start fresh.		
+
+		
 <a name="licenses"></a>
 ## Licenses ##
 

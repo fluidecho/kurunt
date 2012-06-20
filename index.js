@@ -32,7 +32,8 @@ g.startup(
 			});
 		},
 		function (callback) {
-			launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb) { 
+			//launcher.run('searchd --config ' + config['path'] + '/src./sphinx_config.js', function (cb) {
+			launcher.run('searchd --config .' + config['path'] + '/src/sphinx_config.js', function (cb) { 
 				callback();	
 			});
 		},

@@ -85,8 +85,8 @@ function sphinx_index(schema, index_name, cb) {
 	}
 	
 	// load config.json file to extract sphinx schema.
-	//var sphinx_schema = require(config_local['path'] + "/src/schemas/" + schema + "./config.json");
-	var sphinx_schema = require("./schemas/" + schema + "/config.json");
+	var sphinx_schema = require(config_local['path'] + "/src/schemas/" + schema + "./config.json");
+	//var sphinx_schema = require("./schemas/" + schema + "/config.json");
 	
 	for ( i in sphinx_schema['sphinx_schema'] ) {
 		console.log(sphinx_schema['sphinx_schema'][i]['attr_type'] + ' = ' + sphinx_schema['sphinx_schema'][i]['attr_name']);

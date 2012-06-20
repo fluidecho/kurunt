@@ -15,7 +15,7 @@ var config 				= require("../config.json");						// this is your config settings
 var util 				= require('util');
 var fs 					= require('fs');
 var zmq 				= require('/usr/local/lib/node_modules/zmq');
-var sqlite 				= require('/usr/local/lib/node_modules/sqlite3').verbose();
+//var sqlite 				= require('/usr/local/lib/node_modules/sqlite3').verbose();
 var nimble 				= require('./nimble.min.js');											
 var crypto 				= require('crypto');
 var launcher 			= require('./launch.js');							// for launching daemon like node.js programs.
@@ -85,9 +85,9 @@ function startup(cb) {
 
 	log('*Loading Kurunt');
 	
-	//process.on('uncaughtException', function(err) {
-	//	log('uncaughtException: ' + err);
-	//});	
+	process.on('uncaughtException', function(err) {
+		log('uncaughtException: ' + err);
+	});	
 	
 	// run database schemas first!
 	loadDatabaseSchema(function(cb2) {

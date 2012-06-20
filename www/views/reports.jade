@@ -50,7 +50,8 @@ div#reports
 			form(method="get", action="#{report_action}")
 
 				div.report
-					- var schema_icon_url = "http://" + config['host'] + "/www/reports/" + reports[name]['config']['name'] + "/" + reports[name]['config']['icon'];
+					- var schema_icon_url = "/" + reports[name]['config']['name'] + "/" + reports[name]['config']['icon'];
+					//- var schema_icon_url = "http://" + config['host'] + "/www/reports/" + reports[name]['config']['name'] + "/" + reports[name]['config']['icon'];
 					- try {
 					- var stats = fs.lstatSync(config['path'] + "/www/reports/" + reports[name]['config']['name'] + "/" + reports[name]['config']['icon']);
 					- if (stats.isFile()) {

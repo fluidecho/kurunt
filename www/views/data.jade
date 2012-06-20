@@ -124,7 +124,8 @@ div#data
 				input(type="hidden", name="schema", value="#{g.schemas[name]['config']['name']}")	
 				
 				div.schema
-					- var schema_icon_url = "http://" + config['host'] + "/src/schemas/" + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon'];
+					//- var schema_icon_url = "http://" + config['host'] + "/src/schemas/" + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon'];
+					- var schema_icon_url = "/schemas/" + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon'];
 					- try {
 					- var stats = fs.lstatSync(config['path'] + '/src/schemas/' + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon']);
 					- if (stats.isFile()) {
