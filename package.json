@@ -1,0 +1,27 @@
+{ 
+"name": "kurunt", 
+"description": "Analytics Management Framework.", 
+"version": "0.1.0", 
+"private": true,
+"homepage": "http://kurunt.org", 
+"author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)", 
+"contributors": [ 
+	{ "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" }
+], 
+"dependencies": {
+	"zmq": "2.0.3",
+	"sqlite3": "2.1.1",
+	"mysql": "0.9.5",
+	"db-mysql": "0",
+	"express": "0",
+	"jade": "0",
+	"markdown": "0",
+	"socket.io": "0",
+	"geoip ": "0"
+},
+"repository": { "type": "git", "url": "git://github.com/kurunt/kurunt.git" }, 
+"engines": { "node" : ">=0.6.x" }, 
+"licenses":
+    [ { "type" : "Apache 2.0" } ], 
+"main": "index"
+}
