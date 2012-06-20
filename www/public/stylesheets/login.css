@@ -1,0 +1,76 @@
+/* 
+	login template style.
+*/
+html { height: 100%; margin-bottom: 0.00em; background: #252829;  }
+* { padding:0; margin:0; }
+body {
+	text-align: center;
+	position: relative;
+	font-family: arial,helvetica,sans-serif,"Lucida Grande","Lucida Sans Unicode";
+	font-size: 10pt;
+	margin-top: 8em;
+}
+p {
+	font-size: 10pt;
+	line-height: 1.2em;
+	color: #fff;
+	margin: 8px 0 8px 0;
+}
+a:link, a:visited { color:#258b86; }
+a:hover { color:#000; }
+img { border:0; }
+
+.spaceout {padding-top: 11px;}
+.nada { display: none; }
+.wrap { padding: 0 2.5em 0 2.5em; margin: 0 auto; min-width: 280px; width: 300px; }
+
+
+#logo { text-align: center; padding: 1em; }
+
+.submit4 {
+	margin-top: 11px;
+	width: 100px;
+	background: #268ad5;
+	color: #fff;
+	padding: 8px 15px 8px 15px;
+	border: 0px solid #268ad5;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;		
+}
+.submit4:hover {
+	background: #4386b8;
+}
+
+
+.tip {
+	padding: 1em;
+	margin-bottom: 1em;
+	text-align: left;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;		
+	background: #eb5256;
+}
+
+
+#login {
+	padding: 1em;
+	text-align: left;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;		
+	background: #3f4445;
+}
+
+
+.input {
+	margin: 3px 0 3px 0;
+	width: 99%;
+	height: 28px;
+	font-size: 1.6em;
+	text-align: left;
+}

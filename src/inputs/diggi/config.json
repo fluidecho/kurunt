@@ -1,0 +1,15 @@
+{
+	"name": "diggi",
+	"message_encoding": "utf8",	
+	"run_standalone": false,
+	"quiet": false,
+	"message_host": "*",
+	"open_ports_db": true,	
+	"db_host": "127.0.0.1",	
+	"db_port": 3306,
+	"db_user": "root",
+	"db_pass": "pass",
+	"open_ports": [
+		{ "port": 9888 }
+	]
+}

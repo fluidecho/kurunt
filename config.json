@@ -1,6 +1,6 @@
 {
 	"host": "127.0.0.1",
-	"path": "/var/www/kurunt",
+	"path": "/opt/kurunt",
 	"quiet": false,
 	"quiet_debug": false,
 	"message_host": "localhost",
@@ -11,7 +11,7 @@
 	"db_host": "localhost",
 	"db_port": 3306,
 	"db_user": "root",
-	"db_pass": "pass",
+	"db_pass": "3Dfa87b",
 	"sphinx_host": "127.0.0.1",
 	"sphinx_port": 9306,
 	"sphinx_user": "admin",
@@ -24,7 +24,7 @@
 	"sphinx_index_path": "/var/sphinx/data",
 	"bits": 64,
 	"www_host": "127.0.0.1",
-	"www_path": "/var/www/kurunt/www,
+	"www_path": "/opt/kurunt/www,
 	"www_port": 3000,
 	"www_standalone": false
 }

@@ -1,0 +1,156 @@
+
+script(src='/javascripts/data.js')
+link(rel='stylesheet', href='/stylesheets/data.css')
+
+div#data
+
+	//- g.dump(values);
+	- var option_query_max_matches = config['sphinx_query_max_matches'];
+	div.container
+
+		- if (  values['new_data'] == 'new' ) {
+			h2 New #{title}
+		- } else {
+			h2= title
+		- }
+	
+		- if (  values['notice'] != undefined ) { 
+			div.notice
+				p 
+					strong NOTE:
+					|  #{values['notice']}
+			br
+		- }
+		
+		- var showData = false;
+		- for (var c in values['data']) {
+			- showData = true;
+		- }
+		- if (  values['new_data'] == 'new' ) {
+			- showData = false;
+		- }
+		
+		// data table.
+		- if ( showData === true ) {
+		div#data_table
+		
+			table
+				thead
+					tr
+						th.row_num_th -
+						th Input
+						th Schema
+						th Table
+						th Address
+						th Port
+						th.td_status Status
+						th.row_del_th -
+
+					tbody
+	
+						- for (var d in values['data']) {
+						
+						tr
+
+							- var alternate = '';
+							- if (values['data'][d]['row']['id']%2 != 1) {
+							//-	alternate = 'alternate';
+							- }				
+							
+							- if ( values['data'][d]['row']['status'] == 'closed' ) {
+							- 	alternate = 'alternate_closed';
+							- } else {
+							-	alternate = 'alternate_open';
+							- }
+						
+							- var protocol = values['data'][d]['input']['config']['protocol'];
+							- if ( protocol == undefined ) {
+								- protocol = 'http';
+							- }
+						
+							td(class='row_num',  width='8') #{values['data'][d]['row']['id']}
+							td(class='#{alternate}') #{values['data'][d]['row']['input']}
+							td(class='#{alternate}') #{values['data'][d]['row']['schema']}
+							
+							
+							td(class='#{alternate}') 
+								- // NOTE: table version number currently 1, future will need to read kurunt.indexes.version. 
+								- var table = values['data'][d]['row']['schema'] + '_' + values['data'][d]['row']['id'] + '_1';
+								a(href="/query/?table=#{table}&sql=SELECT+*+FROM+#{table}+ORDER+BY+id+DESC+LIMIT+0%2C+10+OPTION+max_matches+%3D+#{option_query_max_matches}") 
+									#{table}
+							
+							td(class='#{alternate} td_address') 
+								a(href="#{protocol}:\/\/#{values['etl_host']}:#{values['data'][d]['row']['port']}", target="_blank") #{protocol}:\/\/#{values['etl_host']}:#{values['data'][d]['row']['port']}
+							td(class='#{alternate}') #{values['data'][d]['row']['port']}
+							
+							- var new_status = 'closed';
+							- if ( values['data'][d]['row']['status'] != 'open' ) {
+								- new_status = 'open';
+							- }
+							
+							td(class='#{alternate} td_status') 
+								a(href='?status=#{new_status}&id=#{values['data'][d]['row']['id']}&port=#{values['data'][d]['row']['port']}&input=#{values['data'][d]['row']['input']}&schema=#{values['data'][d]['row']['schema']}')
+									#{values['data'][d]['row']['status']}
+							td(class='#{alternate} row_del_th')
+								a(href='?delete=true&id=#{values['data'][d]['row']['id']}&port=#{values['data'][d]['row']['port']}&input=#{values['data'][d]['row']['input']}&schema=#{values['data'][d]['row']['schema']}')
+									img(src='/images/delete_icon.gif', alt='delete', title='delete')
+							
+						- }
+
+			form(method="get", name="newdatafm", action="")
+				input(type="hidden", name="data", value="new")
+				p
+					br
+					input.submit1(type="submit", value="New Data") 
+					
+		- } else {	
+		
+		// new data form.
+		div#new_data
+
+
+		
+			div.tip
+				p 
+					strong TIP:
+					|  If you're new to Kurunt, try using the Digg example to see how Kurunt works.
+				
+			
+			- for (var name in g.schemas) {  
+			
+			form(method="get", name="new", action="")
+				input(type="hidden", name="new", value="data")
+				input(type="hidden", name="input", value="#{g.schemas[name]['config']['input_type']}")
+				input(type="hidden", name="schema", value="#{g.schemas[name]['config']['name']}")	
+				
+				div.schema
+					- var schema_icon_url = "http://" + config['host'] + "/src/schemas/" + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon'];
+					- try {
+					- var stats = fs.lstatSync(config['path'] + '/src/schemas/' + g.schemas[name]['config']['name'] + "/" + g.schemas[name]['config']['icon']);
+					- if (stats.isFile()) {
+					- } else {
+						- schema_icon_url = '/images/schema_icon.png';
+					- }
+					- } catch (e) {
+						- schema_icon_url = '/images/schema_icon.png';
+					- }
+					span
+						img(src="#{schema_icon_url}", alt="#{g.schemas[name]['config']['title']}", title="#{g.schemas[name]['config']['title']}")
+						span
+							h3
+								#{g.schemas[name]['config']['title']}
+						span
+							p
+								#{g.schemas[name]['config']['description']}
+						span
+							p
+								input.submit1(type="submit", value="Load") 
+			- } 
+	
+	div.container
+		div.tip
+			p 
+				a(href="http://wiki.kurunt.org/") Create your own data schema.		
+		- } //end if else
+		
+	

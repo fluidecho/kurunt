@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<POLICY xmlns="http://www.w3.org/2000/12/P3Pv1" discuri="/privacy-policy/">
+	<ENTITY>
+		<DATA-GROUP>
+			<DATA ref="#business.name">*</DATA>
+			<DATA ref="#business.contact-info.online.uri">/privacy-policy/</DATA>
+		</DATA-GROUP>
+	</ENTITY>
+	<ACCESS><nonident/></ACCESS>
+	<STATEMENT>
+		<CONSEQUENCE>Used for collection of anonymous web site visitor statistics.</CONSEQUENCE>
+		<NON-IDENTIFIABLE/>
+		<PURPOSE>
+		</PURPOSE>
+		<RECIPIENT>
+			<ours></ours>
+		</RECIPIENT>
+		<RETENTION>
+			<indefinitely/>
+		</RETENTION>
+		<DATA-GROUP>
+		    <DATA ref="#dynamic.clickstream"/>
+		    <DATA ref="#dynamic.http"/>
+		</DATA-GROUP>
+	</STATEMENT>
+</POLICY>

@@ -1,0 +1,15 @@
+{ 
+"name": "diggi", 
+"description": "Digg Streamiong API input for Kurunt.", 
+"version": "0.1.0", 
+"homepage": "http://kurunt.org", 
+"author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)", 
+"contributors": [ 
+	{ "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" }
+],
+"repository": { "type": "git", "url": "git://github.com/kurunt/digg.git" }, 
+"engines": { "node" : ">=0.6.x" }, 
+"licenses":
+    [ { "type" : "Apache 2.0" } ], 
+"main": "index"
+}

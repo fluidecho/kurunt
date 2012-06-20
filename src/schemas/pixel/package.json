@@ -1,0 +1,18 @@
+{ 
+"name": "pixel", 
+"description": "Web analytics pixel for your web site, similar to Google Analytics but more flexible.", 
+"version": "0.1.0", 
+"homepage": "http://kurunt.org", 
+"author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)", 
+"contributors": [ 
+	{ "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" }
+], 
+"dependencies": {
+	"geoip": "0.4.5"
+},
+"repository": { "type": "git", "url": "git://github.com/kurunt/pixel.git" }, 
+"engines": { "node" : ">=0.6.x" }, 
+"licenses":
+    [ { "type" : "Apache 2.0" } ], 
+"main": "index"
+}

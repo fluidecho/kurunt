@@ -1,0 +1,40 @@
+
+#new_report {
+	/*  if has no .tip then ajust top margin up  */
+	margin-top: -1em;
+}
+
+#new_report .report {
+	float: left;
+	margin-top: 2em;
+	margin-right: 2em;
+	display: inline;
+	background: #d6d7da;
+	padding: 12px;
+	border: 1px solid #abadb3;
+	width: 176px;
+	min-height: 254px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;			
+}
+#new_report .report h3 {
+	margin-top: 5px;
+	font-size: 100%;
+	font-weight: bold;
+}
+#new_report .report  p {
+	margin-top: 4px;
+	font-size: 86%;
+	min-height: 40px;
+}
+#new_report .report span img {
+	max-width: 160px;
+	border: 1px solid #abadb3;
+	background: #fff;
+	padding: 7px;
+}
+#new_report .report  input {
+	margin-top: 10px;
+}
