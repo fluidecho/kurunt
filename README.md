@@ -16,6 +16,7 @@ Some dependencies Kurunt uses apply different open source [licenses](#licenses).
 ## To Do List ##
 
 - lots!
+- v0.2 soon.
 
 
 ## Installation from Source - Step by Step ##
