@@ -1,0 +1,25 @@
+{
+	"name": "test",
+	"title": "Test",	
+	"description": "Test 'worker' for Kurunt, processing string data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/worker/test/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp" ],
+	"mq_nodelay": true,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "text"
+					}
+				]
+			}
+		}	
+	]
+}
