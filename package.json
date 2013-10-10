@@ -1,7 +1,7 @@
 {
   "name": "kurunt",
   "description": "Scalable Message Processing Framework for Real-Time Data.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.js",
   "bin" : { "kurunt" : "bin/cli.js" },
   "homepage": "http://kurunt.com",
