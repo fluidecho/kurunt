@@ -5,6 +5,7 @@ Kurunt is a scalable message processing framework for real-time data.
 **---Under Dev---**
 
 - Implemented 100% Javascript for Node.js.
+- Scalable across cpus and machines.
 
 ### Installation
 
