@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Kurunt - Data</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Data</h1>
+<p>Some content here. Link to <a href="data.html">data</a>.</p>
+<img src="pic.jpg" alt="" />
+
+
+
+
+<script>
+
+//alert('hi');
+
+$.getJSON('http://localhost:8888/data.json', function(data) {
+  var items = [];
+ 
+  $.each(data, function(key, val) {
+    items.push('<li id="' + key + '">' + val + '</li>');
+  });
+ 
+  $('<ul/>', {
+    'class': 'my-new-list',
+    html: items.join('')
+  }).appendTo('body');
+});
+
+</script>
+
+
+</body>
+</html>

@@ -1,9 +1,0 @@
-{
-	"name": "default",
-	"title": "Default Report",	
-	"description": "Default streaming analytics report.",
-	"icon": "default_report.png",
-	"version": 0.1,	
-	"date_mod": "06/11/2012",
-	"path": "/opt/kurunt/www/reports/default"
-}

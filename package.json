@@ -1,27 +1,35 @@
-{ 
-"name": "kurunt", 
-"description": "Analytics Management Framework.", 
-"version": "0.1.0", 
-"private": true,
-"homepage": "http://kurunt.org", 
-"author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)", 
-"contributors": [ 
-	{ "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" }
-], 
-"dependencies": {
-	"zmq": "2.0.3",
-	"sqlite3": "2.1.1",
-	"mysql": "0.9.5",
-	"db-mysql": "0",
-	"express": "0",
-	"jade": "0",
-	"markdown": "0",
-	"socket.io": "0",
-	"geoip ": "0"
-},
-"repository": { "type": "git", "url": "git://github.com/kurunt/kurunt.git" }, 
-"engines": { "node" : ">=0.6.x" }, 
-"licenses":
-    [ { "type" : "Apache 2.0" } ], 
-"main": "index"
+{
+  "name": "kurunt",
+  "description": "Scalable Message Processing Framework for Real-Time Data.",
+  "version": "0.2.0",
+  "main": "index.js",
+  "bin" : { "kurunt" : "bin/cli.js" },
+  "homepage": "http://kurunt.com",
+  "author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)",
+  "contributors": [ { "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" } ],
+  "dependencies": {
+    "uid-number-bands": "~0.0.6",
+    "axon": "~0.6.1",
+    "mime": "~1.2.0"
+  },
+  "devDependencies": {
+  },
+  "repository": { "type": "git", "url": "git://github.com/kurunt/kurunt.git" },
+  "engines": { "node": ">=0.8.0" },
+  "licenses":
+    [ { "license" : "MIT" }, { "license": "Apache 2.0" } ],
+  "keywords": [
+    "messages",
+    "message processing",
+    "zmq",
+    "zeromq",
+    "0mq",    
+    "axon",
+    "scale",
+    "analytics",
+    "realtime",
+    "real-time",
+    "scalable",
+    "elastic"
+  ]    
 }

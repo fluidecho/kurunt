@@ -1,0 +1,44 @@
+{
+	"name": "benchmark_simple",
+	"title": "Benchmark Simple",	
+	"description": "Benchmark processing performance (simple schema) for Kurunt.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/schemas/benchmark_simple/",
+	"version": 0.2,	
+	"date_mod": "06/06/2013",
+	"input_type": "tcp",
+	"run_standalone": true,
+	"mq_nodelay": true,	
+	"in_host": "127.0.0.1",
+	"in_port": 3010,
+	"out_host": "127.0.0.1",
+	"out_port": 3001,
+	"reports": [ "stream" ],
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "number",
+						"type": "bigint"
+					}
+				]
+			}
+		},
+		{
+			"sphinx": {
+				"schema": [
+					{
+						"name": "number",
+						"type": "rt_attr_bigint"
+					},
+					{
+						"name": "time",
+						"type": "rt_attr_timestamp"
+					}
+				]
+			}
+		}
+	]
+}
