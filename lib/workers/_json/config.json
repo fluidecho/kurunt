@@ -1,0 +1,29 @@
+{
+	"name": "json",
+	"title": "json",	
+	"description": "JSON 'worker' message processing for Kurunt.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/worker/json/",
+	"version": 0.2,	
+	"date_mod": "10/04/2013",
+	"inputs": [ "tcp" ],
+	"mq_nodelay": true,	
+	"input_host": "127.0.0.1",
+	"input_port": 3010,
+	"store_host": "127.0.0.1",
+	"store_port": 3001,
+	"reports": [ "stream" ],
+	"message_codec": "json",	
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "json"
+					}
+				]
+			}
+		}
+	]
+}

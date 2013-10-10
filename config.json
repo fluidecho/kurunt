@@ -1,0 +1,13 @@
+{
+	"host": "127.0.0.1",
+	"this_node": 0,	
+	"debug": "benchmarking",
+	"admin_www_port": 8888,
+	"stream_api_port": 3003,
+	"mq_nodelay": false,
+	"store_host": "127.0.0.1",
+	"store_port": 3009,
+	"bands": 100,
+	"band": 99,
+	"worker_cluster_cpu": 1
+}

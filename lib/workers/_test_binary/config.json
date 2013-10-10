@@ -1,0 +1,29 @@
+{
+	"name": "test_jpeg",
+	"title": "Test jpeg",	
+	"description": "Testing jpeg image 'worker' message processing for Kurunt.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/worker/test_jpeg/",
+	"version": 0.2,	
+	"date_mod": "21/08/2013",
+	"input_type": [ "tcp" ],
+	"mq_nodelay": true,	
+	"input_host": "127.0.0.1",
+	"input_port": 3010,
+	"store_host": "127.0.0.1",
+	"store_port": 3001,
+	"reports": [ "stream" ],
+	"message_codec": "json",	
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "image"
+					}
+				]
+			}
+		}
+	]
+}
