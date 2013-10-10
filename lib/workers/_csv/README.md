@@ -1,3 +1,0 @@
-Kurunt Test Worker
-==
-

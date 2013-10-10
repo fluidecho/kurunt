@@ -1,4 +1,0 @@
-Kurunt JPEG (binary) Worker
-==
-
-
