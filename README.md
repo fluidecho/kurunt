@@ -1,6 +1,6 @@
 ## Kurunt
 
-Kurunt is a scalable message processing framework for real-time analytics, applications and E.T.L.  
+Kurunt is a scalable message processing framework for real-time data. 
 
 Can scale message processing horizontally across numerous processes and servers. Designed with zeromq message patterns to meet the demands of high concurrency with low latency, from inputs to schema-ing to db storage and visualizations.  
 
