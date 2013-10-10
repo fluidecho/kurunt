@@ -1,7 +1,0 @@
-{
-	"data": [
-		{ "apikey": "5a5f55a555aa5555", "inputs": ["tcp"], "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "tuple"], "host": "127.0.0.1", "port": 5555, "status": "open" },
-		{ "apikey": "6a6f66a666aa6666", "inputs": ["tcp"], "worker": "test_binary", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "jpeg", "binary"], "host": "127.0.0.1", "port": 6666, "status": "open" },
-		{ "apikey": "7a7f77a777aa7777", "inputs": ["tcp"], "worker": "json", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "twitter", "firehose"], "host": "127.0.0.1", "port": 7777, "status": "open" }	
-	]
-}

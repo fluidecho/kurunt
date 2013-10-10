@@ -1,9 +1,0 @@
-{
-	"name": "steam",
-	"description": "Stream",
-	"messenger_codec": "msgpack-js",
-	"debug": "benchmarking",
-	"mq_nodelay": false,
-	"admin_host": "127.0.0.1",
-	"admin_port": 3002
-}
