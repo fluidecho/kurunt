@@ -13,6 +13,7 @@ Can be used for real-time analytics, applications, ETL. It's easy to get started
 - Uses zeromq like message patterns for processing.
 - No coding required, has a web admin or can code your own inputs, workers, stores.
 - Supports any data type and format, json, ascii, binary, etc.
+- Uniquely id's messages sequentially and in nanosecond format.
 - Can be used as a Node.js module or run stand-alone.
 - Built to be fast and efficient.
 
@@ -43,20 +44,30 @@ http://localhost:8888
 Kurunt is made up of three components: inputs, workers and stores. 
 
 ```
-.   ~~~~~~~~~~~~~~~~~
-.   ~~~ YOUR DATA ~~~
-.   ~~~~~~~~~~~~~~~~~
-.           |
-.           V
-.        [INPUT]
-.         /   \
-.        V     V 
-.  [WORKER]   [WORKER]
-.        \     /
-.         V   V
-.        [STORE]
+         +---------------+
+         |   YOUR DATA   |
+         +-------+-------+
+                 |
+                 v
+            +---------+
+            |  INPUT  |
+            +--+---+--+
+               |   |
+          +----+   +----+
+          |             |
+          v             v
+     +--------+    +--------+
+     | WORKER |    | WORKER |
+     +----+---+    +----+---+
+          |             |
+          +----+   +----+
+               |   |
+               v   v
+            +---------+
+            |  STORE  |
+            +--+---+--+
 ```
-Above shows how the message is processed, this is the 'out-of-the-box' solution, you can however create all sorts of topology patterns for scalability and fault-tolerance.
+Above shows how the message (your data) is processed, this is the 'out-of-the-box' solution, you can however create all sorts of topology patterns for scalability and fault-tolerance.
 
 #### Your Data
 Could be nearly anything, like: json, web, jpeg, csv, syslog, access_log, tail a file, arduino sensors, clickstream, twitter firehose, etc.
