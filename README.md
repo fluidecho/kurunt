@@ -2,18 +2,17 @@
 
 Kurunt is a distributed message processing framework for real-time data.  
 
-Is easy to get started no coding required.  
+Kurunt can be used for real-time analytics, applications, ETL. Is easy to get started no coding required.  
 
 ## Features
 
-- Real-time message streaming system.
+- Real-time streaming system.
 - Implemented 100% Javascript for Node.js.
 - Scalable across machines or can run on a single cpu, from BeagleBone to the cloud.
-- Fault taulerant, can setup with no single point of failure.
+- Fault taulerant message delivery, can setup with no single point of failure.
 - Uses zeromq like message patterns for processing.
-- No coding required, has a web admin.
-- Is a framework, can build your own inputs, workers, stores.
-- Supports any type and format of data, json, ascii, binary, etc.
+- No coding required, has a web admin or can code your own inputs, workers, stores.
+- Supports any data type and format, json, ascii, binary, etc.
 
 ### Installation
 
