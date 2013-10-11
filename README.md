@@ -43,9 +43,9 @@ http://localhost:8888
 Kurunt is made up of three components: inputs, workers and stores. 
 
 ```
-   ~~~~~~~~~~~~~~~~~
-   ~~~ YOUR DATA ~~~
-   ~~~~~~~~~~~~~~~~~
+\   ~~~~~~~~~~~~~~~~~
+\   ~~~ YOUR DATA ~~~
+\   ~~~~~~~~~~~~~~~~~
            |
            V
         [INPUT]
