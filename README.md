@@ -40,21 +40,23 @@ http://localhost:8888
 
 ## How does it work?
 
+Kurunt is made up of three components: inputs, workers and stores. 
+
 ```
-------------------
-|   YOUR DATA    |
-------------------
+-----------------
+|~~~YOUR DATA~~~|
+-----------------
         |
         V
      [INPUT]
       /   \
      V     V 
-[WORKER] [WORKER]
+[WORKER][WORKER]
      \     /
       V   V
      [STORE]
 ```
-* Above shows how the message is processed, this is the 'out-of-the-box' solution. Can however create all sorts of sophisticated patterns for scalability and fault-tolerance.
+Above shows how the message is processed, this is the 'out-of-the-box' solution, you can however create all sorts of patterns for scalability and fault-tolerance.
 
 #### YOUR DATA
 Could be nearly anything, like: csv, json, web, jpeg, syslog, access_log, tail a file, arduino sensors, twitter firehose, etc.
@@ -63,7 +65,7 @@ Could be nearly anything, like: csv, json, web, jpeg, syslog, access_log, tail a
 Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 
 #### WORKERS
-Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack. Or do something like regex a access_log. Filter a image. etc... It's easy to build your own workers. 
+Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log, filter a image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
 #### STORES
 Store your messages any way you want. In your favorite database, filesystem, streaming api, socket.io.
