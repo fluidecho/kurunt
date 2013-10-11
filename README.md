@@ -68,7 +68,19 @@ Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log, filter a image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
 #### STORES
-Store your messages any way you want. In your favorite database, filesystem, streaming api, socket.io.
+Store your messages any way you want. In your favorite database, filesystem, stream api (default), socket.io.
+
+## Performance
+
+You can benchmark Kurunt by opening the 'test' data, using the [web admin](http://localhost:8888). And run the data simulation client.
+```
+> perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
+```
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.
+
+#### Results
+
+Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 50,000 messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend a lot on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. 
 
 ## Module
 
