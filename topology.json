@@ -10,10 +10,10 @@
 					"namespace": "tcp",
 					"connections": [
 						{
-						  "apikey": "*",
-						  "zmq_pattern": "push",
-						  "zmq_socket": "bind",
-						  "zmq_address": "tcp://127.0.0.1:3005"
+							"apikey": "*",
+							"zmq_pattern": "push",
+							"zmq_socket": "bind",
+							"zmq_address": "tcp://127.0.0.1:3005"
 						}
 					]
 				},
