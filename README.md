@@ -71,7 +71,7 @@ Process the messages any way you want. Turn structured, semi-structured or unstr
 Store your messages any way you want. In your favorite database, filesystem, stream api, socket.io.
 
 #### Stream Report
-You can visulize your data from within the [web admin](http://localhost:8888) 'stream' report (requires the socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
+You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 ## Performance
 
