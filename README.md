@@ -17,6 +17,8 @@ Can be used for real-time analytics, applications, ETL. Is's easy to get started
 
 ### Installation
 
+Requires [Node.js](http://nodejs.org/).
+
 ```js
 npm install -g kurunt
 ```
