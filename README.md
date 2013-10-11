@@ -43,18 +43,18 @@ http://localhost:8888
 Kurunt is made up of three components: inputs, workers and stores. 
 
 ```
-\   ~~~~~~~~~~~~~~~~~
-\   ~~~ YOUR DATA ~~~
-\   ~~~~~~~~~~~~~~~~~
-           |
-           V
-        [INPUT]
-         /   \
-        V     V 
-   [WORKER] [WORKER]
-        \     /
-         V   V
-        [STORE]
+.   ~~~~~~~~~~~~~~~~~
+.   ~~~ YOUR DATA ~~~
+.   ~~~~~~~~~~~~~~~~~
+.           |
+.           V
+.        [INPUT]
+.         /   \
+.        V     V 
+.  [WORKER]   [WORKER]
+.        \     /
+.         V   V
+.        [STORE]
 ```
 Above shows how the message is processed, this is the 'out-of-the-box' solution, you can however create all sorts of topology patterns for scalability and fault-tolerance.
 
