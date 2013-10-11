@@ -80,7 +80,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 #### Results
 
-Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 50,000 messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend a lot on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. 
+Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend a lot on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. 
 
 ## Module
 
