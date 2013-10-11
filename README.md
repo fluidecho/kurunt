@@ -70,19 +70,22 @@ Kurunt is made up of three components: inputs, workers and stores.
 Above shows how the message (your data) is processed, this is the 'out-of-the-box' solution, you can however create all sorts of topology patterns for scalability and fault-tolerance.
 
 #### Your Data
-Could be nearly anything, like: json, web, jpeg, csv, syslog, access_log, tail a file, arduino sensors, clickstream, twitter firehose, etc.
+Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
 
 #### Inputs
 Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 
 #### Workers
-Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log, filter an image, etc. It's easy to build your own workers in just a few lines of Javascript. 
+Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log line, filter an image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
 #### Stores
 Store your now 'schemed' messages any way you want. In your favorite database, filesystem, or don't store your messages but 'stream' them, stream api (default), socket.io.
 
 #### Stream Report
 You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
+
+#### Why do all of this?
+The simple answer is because their is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines. Answer: efficiency.
 
 ## Performance
 
@@ -94,7 +97,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 #### Results
 
-Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. The topology you set will also determin performance.
+Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. The topology you set will also determine performance.
 
 ## Module
 
