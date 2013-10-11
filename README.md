@@ -68,7 +68,10 @@ Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log, filter a image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
 #### Stores
-Store your messages any way you want. In your favorite database, filesystem, stream api (default), socket.io.
+Store your messages any way you want. In your favorite database, filesystem, stream api, socket.io.
+
+#### Stream Report
+You can visulize your data from within the [web admin](http://localhost:8888) 'stream' report (requires the socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 ## Performance
 
