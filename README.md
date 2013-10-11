@@ -13,7 +13,7 @@ Is easy to get started no coding required.
 - Uses zeromq like message patterns for processing.
 - No coding required, has a web admin.
 - Is a framework, can build your own inputs, workers, stores.
-- Supports any type of data, json, ascii, binary, etc.
+- Supports any type and format of data, json, ascii, binary, etc.
 
 ### Installation
 
