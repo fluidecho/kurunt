@@ -38,6 +38,35 @@ Then to administer can open your browser at:
 http://localhost:8888
 ```
 
+## How does it work?
+
+------------------
+|   YOUR DATA    |
+------------------
+        |
+        V
+     [INPUT]
+      /   \
+     V     V 
+[WORKER] [WORKER]
+     \     /
+      V   V
+     [STORE]
+
+* Above shows how the message is processed, this is the 'out-of-the-box' solution. Can however create all sorts of sophisticated patterns for scalability and fault-tolerance.
+
+#### YOUR DATA
+Could be nearly anything, like: csv, json, web, jpeg, syslog, access_log, arduino sensors, twitter firehose, etc.
+
+#### INPUTS
+Kurunt open inputs using: TCP, HTTP or UDP.
+
+#### WORKERS
+Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack. Or do something like regex a access_log. Filter a image. 
+
+#### STORES
+Store your messages any way you want. In your favorite: database, filesystem, streaming api, socket.io.
+
 ## Module
 
 ```js
