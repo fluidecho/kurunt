@@ -44,7 +44,7 @@ Kurunt is made up of three components: inputs, workers and stores.
 
 ```
 -----------------
-|~~~YOUR DATA~~~|
+~~~ YOUR DATA ~~~
 -----------------
         |
         V
@@ -58,16 +58,16 @@ Kurunt is made up of three components: inputs, workers and stores.
 ```
 Above shows how the message is processed, this is the 'out-of-the-box' solution, you can however create all sorts of patterns for scalability and fault-tolerance.
 
-#### YOUR DATA
+#### Your Data
 Could be nearly anything, like: csv, json, web, jpeg, syslog, access_log, tail a file, arduino sensors, twitter firehose, etc.
 
-#### INPUTS
+#### Inputs
 Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 
-#### WORKERS
+#### Workers
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log, filter a image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
-#### STORES
+#### Stores
 Store your messages any way you want. In your favorite database, filesystem, stream api (default), socket.io.
 
 ## Performance
@@ -80,7 +80,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 #### Results
 
-Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend a lot on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. 
+Results depend a little bit on what you mean by 'message processing', I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend a lot on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example.
 
 ## Module
 
