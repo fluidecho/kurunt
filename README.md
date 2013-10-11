@@ -89,6 +89,8 @@ The simple answer is because their is a limit to how much 'processing' a single 
 
 ## Performance
 
+#### Benchmark
+
 You can benchmark Kurunt by opening the 'test' data, using the [web admin](http://localhost:8888). And run the data simulation client.
 ```
 > perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
