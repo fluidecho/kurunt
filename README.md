@@ -9,10 +9,11 @@ Kurunt can be used for real-time analytics, applications, ETL. Is easy to get st
 - Real-time streaming system.
 - Implemented 100% Javascript for Node.js.
 - Scalable across machines or can run on a single cpu, from BeagleBone to the cloud.
-- Fault taulerant message delivery, can setup with no single point of failure.
+- Fault taulerant message delivery, can be setup with no single point of failure.
 - Uses zeromq like message patterns for processing.
 - No coding required, has a web admin or can code your own inputs, workers, stores.
 - Supports any data type and format, json, ascii, binary, etc.
+- Can be used as a Node.js module or run stand-alone.
 
 ### Installation
 
