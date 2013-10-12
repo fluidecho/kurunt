@@ -1,5 +1,22 @@
 # Kurunt Test Worker
 
+Use this 'worker' for testing and benchmarking Kurunt. Is a simple toString 'worker', will accept any string data sent, EG: "hello world" and set within the 'text' schema attribute.  
+
+You can test/benchmark Kurunt by opening the 'test' data, using the [web admin](http://localhost:8888), or manually by adding this to the _../../data.json_ file:
+
+```js
+{
+	"data": [
+		{ "apikey": "5a5a55a555aa5555", "inputs": ["tcp"], "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
+	]
+}
+```
+Then sending data using:
+```
+> perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
+```
+Note, that the port number must be matching, IE: 5555 in both.
+
 ## index.js
 
 See _index.js_ file to see how a simple 'worker' works.
@@ -18,14 +35,14 @@ module.exports.work = function (message, config, fn, callback) {
   // use try catch so can skip over invalid messages.
   try {
   
-    // (1) convert the incomming message.message from buffer to string (text).
+    // (1) convert the incoming message.message from buffer to string (text).
     var string = message.message.toString(config['encoding']);    // "hello world" or whatever sent.
     
     // (2) add string value to this attribute, which get's added to this messages: stores: schema.
     var attributes = [];
     attributes['text'] = string;    // "hello world" or whatever sent.
 
-    // (3) return processed message (required) and attributes (otional, set manually within message otherwise) back to kurunt.
+    // (3) return processed message (required) and attributes (optional, set manually within message otherwise) back to kurunt.
     return callback( [ message, attributes ] );
   
   } catch(e) {

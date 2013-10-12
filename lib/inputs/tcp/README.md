@@ -1,4 +1,4 @@
-# Kurunt Test Worker
+# Kurunt TCP Input
 
 TCP input server for Kurunt. Can ingest data using the TCP protocol from trusted sources, varified by the datas' apikey.
 
