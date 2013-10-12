@@ -45,17 +45,17 @@ http://localhost:8888
 
 Kurunt is made up of three components: inputs, workers and stores. 
 
-<pre>
+```
          *****************
          *   YOUR DATA   *   (json, syslog, csv, sensors, jpeg, access_log, tail, etc)
          *****************
-.................|
-.................v
-............***********
-............*  INPUT  *   (tcp, udp, http)
-............***********
-...............|   |
-.......+-------+   +-------+
+                 |
+                 v
+            ***********
+            *  INPUT  *   (tcp, udp, http)
+            ***********
+               |   |
+       +-------+   +-------+
        |                   |
        v                   v
   **********          **********
@@ -68,23 +68,7 @@ Kurunt is made up of three components: inputs, workers and stores.
             ***********
             *  STORE  *   (stream, socket.io, mongo, mysql, redis, S3, solr, sphinx, etc)
             ***********
-</pre>
-
-    +-------+----------+------+
-    | Table Headings   | Here |
-    +-------+----------+------+
-    | Sub   | Headings | Too  |
-    +=======+==========+======+
-    | cell  | column spanning |
-    + spans +----------+------+
-    | rows  | normal   | cell |
-    +-------+----------+------+
-    | multi | * cells can be  |
-    | line  | * formatted     |
-    | cells | * paragraphs    |
-    | too   |                 |
-    +-------+-----------------+
-
+```
 Above shows how the message (your data) is processed, this is the 'out-of-the-box' topology, you can however create all sorts of patterns for scalability and fault-tolerance. Some of the 'worker' and 'store' actions shown require you coding or use community submitted modules.
 
 #### Your Data
