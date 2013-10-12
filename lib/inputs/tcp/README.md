@@ -15,13 +15,13 @@ See _client.pl_ file to send this 'worker' data.
 ```
 Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.
 
-#### Arduino sensors
+#### Arduino Sensors
 
 See _/clients/arduino/arduino.ino_ file. Can send data from Arduino if it's connected to the Internet/Network using the [Arduino Eithernet module](http://arduino.cc/en/reference/ethernet), using JSON format. Will need a 'data' open with JSON 'worker'.
 
 #### Twitter API (Firehose)
 
-See _/clients/twitter/index.js_ file, need to rename _/clients/twitter/\_keys.json_ to _/clients/twitter/keys.json_ and set fields within.
+See _/clients/twitter/index.js_ file, need to rename */clients/twitter/_keys.json* to _/clients/twitter/keys.json_ and set fields within.
 
 ## config.json
 
