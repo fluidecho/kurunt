@@ -1,12 +1,12 @@
 ## Kurunt Test Worker
 
-#### index.js
+### index.js
 
 See _index.js_ file to see how a simple 'worker' works.
 
 ```js
-// must export 'process' module.
-module.exports.process = function (message, config, fn, callback) {
+// must export 'work' module.
+module.exports.work = function (message, config, fn, callback) {
 
   // 'message.message' Format: string
   // Sample: "hello world"
@@ -38,7 +38,7 @@ module.exports.process = function (message, config, fn, callback) {
 
 ```
 
-#### config.json
+### config.json
 
 See _config.json_ file to set options like message encoding and set the 'schema' for the message which can be used by the 'store'.
 
@@ -71,7 +71,7 @@ See _config.json_ file to set options like message encoding and set the 'schema'
 
 ```
 
-#### Send Data
+### Send Data
 
 See _client.pl_ file to send this 'worker' data.
 
