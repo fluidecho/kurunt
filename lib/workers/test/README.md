@@ -9,7 +9,7 @@ See _index.js_ file to see how a simple 'worker' works.
 module.exports.process = function (message, config, fn, callback) {
 
   // 'message.message' Format: string
-  // Sample: "world"
+  // Sample: "hello world"
   //
   // See: http://docs.kurunt.com/worker/test/
 
@@ -52,7 +52,7 @@ See _config.json_ file to set options like message encoding and set the 'schema'
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp" ],
-	"mq_nodelay": true,
+	"mq_nodelay": false,
 	"reports": [ "stream" ],
 	"message_codec": "json",
 	"encoding": "utf8",
@@ -71,7 +71,7 @@ See _config.json_ file to set options like message encoding and set the 'schema'
 
 ```
 
-#### client.pl
+#### Send Data
 
 See _client.pl_ file to send this 'worker' data.
 
