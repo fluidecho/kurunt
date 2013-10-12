@@ -66,10 +66,10 @@ Kurunt is made up of three components: inputs, workers and stores.
                |   |
                v   v
             ***********
-            *  STORE  *   (stream, socket.io, mongo, mysql, redis, solr, sphinx, etc)
+            *  STORE  *   (stream, socket.io, mongo, mysql, redis, S3, solr, sphinx, etc)
             ***********
 ```
-Above shows how the message (your data) is processed, this is the 'out-of-the-box' solution, you can however create all sorts of topology patterns for scalability and fault-tolerance.
+Above shows how the message (your data) is processed, this is the 'out-of-the-box' topology, you can however create all sorts of patterns for scalability and fault-tolerance. Some of the 'worker' and 'store' actions shown require you coding or use community submitted modules.
 
 #### Your Data
 Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
