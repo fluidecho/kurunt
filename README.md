@@ -55,14 +55,14 @@ Kurunt is made up of three components: inputs, workers and stores.
             *  INPUT  *   (tcp, udp, http)
             ***********
                |   |
-       +-------+   +-------+
+       +++++++++   +++++++++
        |                   |
        v                   v
   **********          **********
   * WORKER *          * WORKER *   (json, toString, RegExp, split, etc)
   **********          **********
        |                   |
-       +-------+   +-------+
+       +++++++++   +++++++++
                |   |
                v   v
             ***********
