@@ -6,9 +6,9 @@ Will open data inputs found in the ../../data.json file on the _port_ field.
 
 ## Clients
 
-#### Send Data
+#### Perl client.pl Data Generator
 
-See _client.pl_ file to send this 'worker' data.
+See _/kurunt/lib/workers/test/client.pl_ file. Why use Perl and not Node.js to send data? When benchmarking Kurunts performance at __processing__ data.
 
 ```
 > perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
