@@ -1,10 +1,10 @@
-## Kurunt Test Worker
+# Kurunt Test Worker
 
 TCP input server for Kurunt. Can ingest data using the TCP protocol from trusted sources, varified by the datas' apikey.
 
 Will open data inputs found in the ../../data.json file.
 
-### Clients
+## Clients
 
 #### Send Data
 
@@ -23,7 +23,7 @@ See _/clients/arduino/arduino.ino_ file. Can send data from Arduino if it's conn
 
 See _/clients/twitter/index.js_ file, need to rename _/clients/twitter/\_keys.json_ to _/clients/twitter/keys.json_ and set fields within.
 
-### config.json
+## config.json
 
 See _config.json_ file to set options.
 
