@@ -95,5 +95,7 @@ See _client.pl_ file to send this 'worker' data.
 ```
 > perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
 ```
-Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.  
+
+Why use Perl and not Node.js to send data? When benchmarking Kurunts performance at __processing__ data.
 
