@@ -87,7 +87,7 @@ Store your now 'schemed' messages any way you want. In your favorite database, f
 You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
-The simple answer is because their is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines. Answer: efficiency.
+The simple answer is because there is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines. Answer: efficiency.
 
 ## Performance
 

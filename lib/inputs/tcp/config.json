@@ -3,11 +3,9 @@
 	"description": "TCP server input.",
 	"bands": 100,
 	"band": 99,
-	"messenger_codec": "msgpack-js",
+	"messenger_codec": "json",
 	"message_delineate": 10,
 	"message_buffer_limit": 10485760,
 	"debug": "benchmarking",
-	"mq_nodelay": false,
-	"admin_host": "127.0.0.1",
-	"admin_port": 3002
+	"mq_nodelay": false
 }

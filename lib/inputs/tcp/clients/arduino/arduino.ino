@@ -2,11 +2,11 @@
 -----------------------------------------------------------------------------
  Kurunt Arduino Sensor TCP Client
  
- This arduino sketch connects a sensor to Kurunt (http://kurunt.org)
+ This arduino sketch connects a sensor to Kurunt (http://kurunt.com)
  via a Ethernet shield (Wiznet Ethernet module).
 
- Sending messages format: duid pin value LF
- EG: 34d1c35063280164 A03 55\n
+ Sending messages format: JSON + LF
+ EG (pin and value): {"A03": 55}\n
 
  Version: 0.1
  Author: Mark W. B. Ashcroft (mark [at] kurunt [dot] com)
