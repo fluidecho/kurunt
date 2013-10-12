@@ -1,8 +1,8 @@
 # Kurunt TCP Input
 
-TCP input server for Kurunt. Can ingest data using the TCP protocol from trusted sources, varified by the datas' apikey.
+TCP input server for Kurunt. Can ingest data using the TCP protocol from trusted sources, varified by the datas' apikey (_port_ field for TCP input).
 
-Will open data inputs found in the ../../data.json file.
+Will open data inputs found in the ../../data.json file on the _port_ field.
 
 ## Clients
 
