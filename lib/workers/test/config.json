@@ -7,7 +7,7 @@
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp" ],
-	"mq_nodelay": true,
+	"mq_nodelay": false,
 	"reports": [ "stream" ],
 	"message_codec": "json",
 	"encoding": "utf8",
