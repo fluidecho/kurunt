@@ -2,7 +2,7 @@
 
 Kurunt is a distributed message processing framework for real-time data.  
 
-Can be used for real-time analytics, applications, ETL. It's easy to get started no coding required.
+Can be used for real-time analytics, applications, ETL for __big__ and __small data__. It's easy to get started no coding required.
 
 ### *** UNDER DEV, COMING SOON (star me if interested) ***
 
