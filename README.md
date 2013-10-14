@@ -2,7 +2,7 @@
 
 Kurunt is a distributed message processing framework for real-time data.  
 
-Can be used for real-time analytics, applications, ETL for both small and big data.  
+Can be used for real-time analytics, applications, ETL, for both small and big data.  
 
 It's easy to get started no coding required.
 
@@ -60,7 +60,7 @@ Kurunt is made up of three components: inputs, workers and stores.
      |                   |
      v                   v
 **********          **********
-* WORKER *          * WORKER *  (json, toString, RegExp, split, etc)
+* WORKER *          * WORKER *  (JSON.parse, toString, RegExp, split, etc)
 **********          **********
      |                   |
      +-------+   +-------+
@@ -89,7 +89,7 @@ Store your now 'schemed' messages any way you want. In your favorite database, f
 You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
-The simple answer is because there is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines. Answer: efficiency.
+The Simplest answer is for efficiency. There is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
 ## Performance
 
@@ -103,7 +103,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 #### Results
 
-Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is much faster than RegExp for example. The topology you set will also determine performance.
+Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is faster than RegExp for example. The topology you set will also determine performance.
 
 ## Module
 
