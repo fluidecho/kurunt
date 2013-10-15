@@ -6,6 +6,5 @@
 	"stream_api_port": 3003,
 	"mq_nodelay": true,
 	"bands": 100,
-	"band": 99,
-	"worker_cluster_cpu": 1
+	"band": 99
 }
