@@ -13,10 +13,10 @@ It's easy to get started no coding required.
 - Streaming system, processing messages in real-time.
 - Implemented in 100% Javascript for Node.js.
 - Scalable across machines or on a single cpu, from BeagleBone to the cloud.
+- Supports any data type and format, json, ascii, binary, etc.
 - Fault tolerant message delivery, can be setup with no single point of failure.
 - Uses zeromq like message patterns for processing.
 - No coding required, has a web admin or can code your own inputs, workers, stores.
-- Supports any data type and format, json, ascii, binary, etc.
 - Uniquely id's messages sequentially and in nanosecond format.
 - Can be used as a Node.js module or run stand-alone.
 - Built to be fast and efficient.

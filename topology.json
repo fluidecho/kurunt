@@ -8,6 +8,7 @@
 				{
 					"object": "input",
 					"namespace": "tcp",
+					"cluster": false,
 					"connections": [
 						{
 							"apikey": "*",
@@ -20,6 +21,8 @@
 				{
 					"object": "worker",
 					"namespace": "*",
+					"cluster": true,
+					"cluster_cpu": 1,
 					"connections": [
 						{
 							"object": "input",
@@ -39,7 +42,8 @@
 				},
 				{
 					"object": "store",
-					"namespace": "stream",
+					"namespace": "*",
+					"cluster": false,
 					"connections": [
 						{
 							"object": "worker",
