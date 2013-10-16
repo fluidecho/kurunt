@@ -21,8 +21,8 @@
 				{
 					"object": "worker",
 					"namespace": "*",
-					"cluster": true,
-					"cluster_cpu": 1,
+					"cluster": false,
+					"cluster_cpus": "*",
 					"connections": [
 						{
 							"object": "input",
