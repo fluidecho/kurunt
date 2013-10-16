@@ -21,7 +21,7 @@
 				{
 					"object": "worker",
 					"namespace": "*",
-					"cluster": false,
+					"cluster": true,
 					"cluster_cpus": "*",
 					"connections": [
 						{
@@ -41,9 +41,39 @@
 					]
 				},
 				{
+					"object": "worker",
+					"namespace": "*",
+					"cluster": true,
+					"cluster_cpus": "*",
+					"connections": [
+						{
+							"object": "input",
+							"namespace": "tcp",
+							"zmq_pattern": "pull",
+							"zmq_socket": "connect",
+							"zmq_address": "tcp://127.0.0.1:3005"
+						},
+						{
+							"object": "store",
+							"namespace": "stream",
+							"zmq_pattern": "push",
+							"zmq_socket": "connect",
+							"zmq_address": "tcp://127.0.0.1:3009"
+						},
+						{
+							"object": "store",
+							"namespace": "stream",
+							"zmq_pattern": "push",
+							"zmq_socket": "connect",
+							"zmq_address": "tcp://127.0.0.1:3099"
+						}					
+					]
+				},
+				{
 					"object": "store",
 					"namespace": "*",
 					"cluster": false,
+					"cluster_cpus": "*",					
 					"connections": [
 						{
 							"object": "worker",
@@ -51,6 +81,21 @@
 							"zmq_pattern": "pull",
 							"zmq_socket": "bind",
 							"zmq_address": "tcp://127.0.0.1:3009"
+						}
+					]
+				},
+				{
+					"object": "store",
+					"namespace": "*",
+					"cluster": false,
+					"cluster_cpus": "*",					
+					"connections": [
+						{
+							"object": "worker",
+							"namespace": "*",
+							"zmq_pattern": "pull",
+							"zmq_socket": "bind",
+							"zmq_address": "tcp://127.0.0.1:3099"
 						}
 					]
 				}
