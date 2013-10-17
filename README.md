@@ -4,7 +4,7 @@ Kurunt is a distributed message processing framework for real-time data using no
 
 Can be used for real-time analytics, applications, ETL, for both small and big data.  
 
-It's easy to get started no coding required.
+It's easy to get started using the web admin.
 
 ### *** UNDER DEV, COMING SOON (star me if interested) ***
 
@@ -15,8 +15,7 @@ It's easy to get started no coding required.
 - Scalable across machines or on a single cpu, from BeagleBone to the cloud.
 - Supports any data type and format, json, ascii, binary, etc.
 - Fault tolerant message delivery, can be setup with no single point of failure.
-- Uses zeromq (axon) like message patterns for processing.
-- No coding required, has a web admin or can code your own inputs, workers, stores.
+- Uses zeromq like (axon) message patterns for processing.
 - Uniquely id's messages sequentially and in nanosecond format.
 - Can be used as a node.js module or run stand-alone.
 - Built to be fast and efficient.
@@ -104,6 +103,8 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 #### Results
 
 Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is faster than RegExp for example. The topology you set will also determine performance.
+
+Tuple testing: Sending 1,000 tuples (comma seperated values: A,B,C,...) in each message, I get 30,000 messages per second * 1,000 tuples extracted = 300,000 tuples per second, processed.
 
 ## Module
 

@@ -37,7 +37,14 @@
 							"zmq_pattern": "push",
 							"zmq_socket": "connect",
 							"zmq_address": "tcp://127.0.0.1:3009"
-						}						
+						},
+						{
+							"object": "store",
+							"namespace": "stream",
+							"zmq_pattern": "push",
+							"zmq_socket": "connect",
+							"zmq_address": "tcp://127.0.0.1:3099"
+						}					
 					]
 				},
 				{
