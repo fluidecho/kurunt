@@ -3,7 +3,7 @@
 	"this_node": 0,	
 	"debug": "benchmarking",
 	"admin_www_port": 8888,
-	"stream_api_port": 3003,
+	"stream_api_port": 3333,
 	"mq_nodelay": true,
 	"bands": 100,
 	"band": 99
