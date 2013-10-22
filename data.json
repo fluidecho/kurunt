@@ -1,5 +1,5 @@
 {
-	"data": [
-		{ "apikey": "5555", "input": "tcp", "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
-	]
+  "data": [
+    { "apikey": "5555", "input": "tcp", "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
+  ]
 }
