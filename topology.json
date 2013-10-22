@@ -7,8 +7,7 @@
 			"process": [
 				{
 					"object": "input",
-					"namespace": "tcp",
-					"cluster": false,
+					"namespace": "*",
 					"connections": [
 						{
 							"apikey": "*",
@@ -17,12 +16,22 @@
 							"zmq_address": "tcp://127.0.0.1:3005"
 						}
 					]
+				},				
+				{
+					"object": "input",
+					"namespace": "*",
+					"connections": [
+						{
+							"apikey": "*",
+							"zmq_pattern": "push",
+							"zmq_socket": "bind",
+							"zmq_address": "tcp://127.0.0.1:6005"
+						}
+					]
 				},
 				{
 					"object": "worker",
 					"namespace": "*",
-					"cluster": true,
-					"cluster_cpus": "*",
 					"connections": [
 						{
 							"object": "input",
@@ -50,8 +59,6 @@
 				{
 					"object": "worker",
 					"namespace": "*",
-					"cluster": true,
-					"cluster_cpus": "*",
 					"connections": [
 						{
 							"object": "input",
@@ -78,9 +85,7 @@
 				},
 				{
 					"object": "store",
-					"namespace": "*",
-					"cluster": false,
-					"cluster_cpus": "*",					
+					"namespace": "*",		
 					"connections": [
 						{
 							"object": "worker",
@@ -93,9 +98,7 @@
 				},
 				{
 					"object": "store",
-					"namespace": "*",
-					"cluster": false,
-					"cluster_cpus": "*",					
+					"namespace": "*",				
 					"connections": [
 						{
 							"object": "worker",
