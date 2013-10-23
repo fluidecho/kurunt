@@ -1,5 +1,11 @@
 {
-	"name": "tcp",
-	"title": "tcp",	
-	"description": "TCP server input."
+        "name": "tcp",
+        "description": "TCP server input.",
+        "bands": 100,
+        "band": 99,
+        "messenger_codec": "json",
+        "message_delineate": 10,
+        "message_buffer_limit": 10485760,
+        "debug": "benchmarking",
+        "mq_nodelay": false
 }
