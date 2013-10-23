@@ -4,6 +4,9 @@
 	"debug": "benchmarking",
 	"admin_www_port": 8888,
 	"stream_api_port": 3333,
+	"messenger_codec": "json",
+	"input_tcp_message_delineate": 10,
+	"input_tcp_message_buffer_limit": 10485760,	
 	"mq_nodelay": true,
 	"bands": 100,
 	"band": 99

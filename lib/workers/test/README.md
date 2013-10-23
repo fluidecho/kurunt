@@ -7,7 +7,7 @@ You can test/benchmark Kurunt by opening the 'test' data, using the [web admin](
 ```js
 {
 	"data": [
-		{ "apikey": "5a5a55a555aa5555", "inputs": ["tcp"], "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
+		{ "apikey": "5555", "input": "tcp", "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
 	]
 }
 ```
@@ -97,5 +97,5 @@ See _client.pl_ file to send this 'worker' data.
 ```
 Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.  
 
-Why use Perl and not Node.js to send data? When benchmarking Kurunts performance at __processing__ data.
+Why use Perl and not Node.js to send data? Because we're benchmarking Kurunts (& node.js) performance at __processing__ data, not at sending data.
 

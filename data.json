@@ -1,5 +1,6 @@
 {
-	"data": [
-		{ "apikey": "5a5a55a555aa5555", "inputs": ["tcp"], "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "host": "127.0.0.1", "port": 5555, "status": "open" }
-	]
+  "data": [
+    { "apikey": 5555, "input": { "object": "tcp", "id": 0 }, "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "status": "open" },
+    { "apikey": 5556, "input": { "object": "tcp", "id": 1 }, "worker": "test", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "status": "open" }
+  ]
 }

@@ -8,7 +8,7 @@
   "author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)",
   "contributors": [ { "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" } ],
   "dependencies": {
-    "uid-number-bands": "~0.0.6",
+    "uid-number-bands": "~0.0.7",
     "axon": "~0.6.1",
     "mime": "~1.2.0"
   },
@@ -22,15 +22,13 @@
     "messages",
     "message processing",
     "zmq",
-    "zeromq",
-    "0mq",    
+    "zeromq",    
     "axon",
-    "scale",
     "analytics",
     "realtime",
     "real-time",
+    "distributed",
     "scalable",
-    "elastic",
     "big data",
     "etl"
   ]    

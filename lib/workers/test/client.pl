@@ -90,7 +90,7 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 
 print "Finished sending all cycles and messages! Good-bye.\n";
 
-sleep (1);								# pause for 1 second before closing connection, dont forget to - 1 second from benchmarking results!
+#sleep (1);								# pause for 1 second before closing connection, dont forget to - 1 second from benchmarking results!
 $socket->close();
 
 exit(0);
