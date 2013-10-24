@@ -6,7 +6,7 @@
       "private_address": "",
       "process": [
         {
-        	"id": 0,
+          "id": 0,
           "object": "input",
           "namespace": "tcp",
           "connections": [
@@ -18,7 +18,7 @@
           ]
         },
         {
-        	"id": 1,
+          "id": 1,
           "object": "input",
           "namespace": "tcp",
           "connections": [
@@ -30,7 +30,7 @@
           ]
         },        
         {
-        	"id": 0,
+          "id": 0,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -65,7 +65,7 @@
           ]
         },
         {
-        	"id": 1,
+          "id": 1,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -100,7 +100,7 @@
           ]
         },
         {
-        	"id": 0,
+          "id": 0,
           "object": "store",
           "namespace": "*",   
           "connections": [
@@ -114,7 +114,7 @@
           ]
         },
         {
-        	"id": 1,
+          "id": 1,
           "object": "store",
           "namespace": "*",       
           "connections": [
