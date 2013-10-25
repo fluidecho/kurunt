@@ -104,7 +104,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is faster than RegExp for example. The topology you set will also determine performance.
 
-Tuple testing: Sending 1,000 tuples (comma seperated values: A,B,C,...) in each message, I get 30,000 messages per second * 1,000 tuples extracted = 300,000 tuples per second, processed.
+Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 ## Module
 

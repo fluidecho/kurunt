@@ -405,7 +405,7 @@ position: relative;
 	var smoothieChart = new TimeSeries();
 	var msgps = 0;
 
-  var socket = io.connect('http://192.168.1.22');  // localhost, set ip for remote access.
+  var socket = io.connect('http://localhost');  // localhost, set ip for remote access.
 
 	var num_from = 0;
 	function update_events_number(divid, num_to) {

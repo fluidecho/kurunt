@@ -1,0 +1,25 @@
+{
+	"name": "csv",
+	"title": "csv",	
+	"description": "Comma Separated Values 'worker' for Kurunt, processing tuple data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/worker/csv/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "tuples"
+					}
+				]
+			}
+		}	
+	]
+}

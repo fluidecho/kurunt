@@ -6,31 +6,19 @@
       "private_address": "",
       "process": [
         {
-        	"id": 0,
+          "id": 0,
           "object": "input",
           "namespace": "tcp",
           "connections": [
             {
               "zmq_pattern": "push",
               "zmq_socket": "bind",
-              "zmq_address": "tcp://127.0.0.1:3005"
-            }
-          ]
-        },
-        {
-        	"id": 1,
-          "object": "input",
-          "namespace": "tcp",
-          "connections": [
-            {
-              "zmq_pattern": "push",
-              "zmq_socket": "bind",
-              "zmq_address": "tcp://127.0.0.1:3006"
+              "zmq_address": "tcp://127.0.0.1:3001"
             }
           ]
         },        
         {
-        	"id": 0,
+          "id": 0,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -39,26 +27,19 @@
               "namespace": "tcp",
               "zmq_pattern": "pull",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3005"
-            },
+              "zmq_address": "tcp://127.0.0.1:3001"
+            },           
             {
               "object": "store",
               "namespace": "stream",
               "zmq_pattern": "push",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3009"
-            },
-            {
-              "object": "store",
-              "namespace": "stream",
-              "zmq_pattern": "push",
-              "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3099"
-            }         
+              "zmq_address": "tcp://127.0.0.1:3002"
+            }       
           ]
         },
         {
-        	"id": 1,
+          "id": 1,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -67,26 +48,19 @@
               "namespace": "tcp",
               "zmq_pattern": "pull",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3006"
-            },
+              "zmq_address": "tcp://127.0.0.1:3001"
+            },           
             {
               "object": "store",
               "namespace": "stream",
               "zmq_pattern": "push",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3009"
-            },
-            {
-              "object": "store",
-              "namespace": "stream",
-              "zmq_pattern": "push",
-              "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3099"
-            }         
+              "zmq_address": "tcp://127.0.0.1:3002"
+            }       
           ]
         },
         {
-        	"id": 0,
+          "id": 0,
           "object": "store",
           "namespace": "*",   
           "connections": [
@@ -95,21 +69,7 @@
               "namespace": "*",
               "zmq_pattern": "pull",
               "zmq_socket": "bind",
-              "zmq_address": "tcp://127.0.0.1:3009"
-            }
-          ]
-        },
-        {
-        	"id": 1,
-          "object": "store",
-          "namespace": "*",       
-          "connections": [
-            {
-              "object": "worker",
-              "namespace": "*",
-              "zmq_pattern": "pull",
-              "zmq_socket": "bind",
-              "zmq_address": "tcp://127.0.0.1:3099"
+              "zmq_address": "tcp://127.0.0.1:3002"
             }
           ]
         }
