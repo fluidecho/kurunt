@@ -1,0 +1,25 @@
+{
+	"name": "json",
+	"title": "json",	
+	"description": "JSON 'worker' for Kurunt, processing json data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/worker/json/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "json"
+					}
+				]
+			}
+		}	
+	]
+}

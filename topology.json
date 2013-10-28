@@ -19,6 +19,7 @@
         },        
         {
           "id": 0,
+          "ignore": false,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -40,6 +41,7 @@
         },
         {
           "id": 1,
+          "ignore": false,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -58,7 +60,7 @@
               "zmq_address": "tcp://127.0.0.1:3002"
             }       
           ]
-        },
+        },        
         {
           "id": 0,
           "object": "store",
