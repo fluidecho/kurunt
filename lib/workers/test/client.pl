@@ -79,7 +79,9 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 			break;
 		}
 		
-		$socket->send($d . "\n");
+		my $random_number = rand();
+		
+		$socket->send($random_number . "\n");
 		
 		$i++;
 	}
