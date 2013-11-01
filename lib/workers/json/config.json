@@ -20,6 +20,33 @@
 					}
 				]
 			}
-		}		
+		},
+		{
+			"redis": {
+				"schema": [
+					{
+						"name": "json"
+					}
+				]
+			}
+		},		
+		{
+			"mongo": {
+				"schema": [
+					{
+						"name": "json"
+					}
+				]
+			}
+		},		
+		{
+			"mysql": {
+				"schema": [
+					{
+						"name": "json"
+					}
+				]
+			}
+		}	
 	]
 }

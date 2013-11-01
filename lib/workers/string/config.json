@@ -1,9 +1,9 @@
 {
-	"name": "csv",
-	"title": "csv",	
-	"description": "Comma Separated Values 'worker' for Kurunt, processing tuple data.",
+	"name": "string",
+	"title": "String",	
+	"description": "String 'worker' for Kurunt, processing text data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/worker/csv/",
+	"url": "http://docs.kurunt.com/worker/string/",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp" ],
@@ -16,7 +16,7 @@
 			"stream": {
 				"schema": [
 					{
-						"name": "tuples"
+						"name": "text"
 					}
 				]
 			}
@@ -25,7 +25,7 @@
 			"redis": {
 				"schema": [
 					{
-						"name": "tuples"
+						"name": "text"
 					}
 				]
 			}
@@ -34,7 +34,7 @@
 			"mongo": {
 				"schema": [
 					{
-						"name": "tuples"
+						"name": "text"
 					}
 				]
 			}
@@ -43,10 +43,15 @@
 			"mysql": {
 				"schema": [
 					{
-						"name": "tuples"
-					}
+						"name": "text",
+						"type": "varchar(250)"
+					},
+					{
+						"name": "fooInt",
+						"type": "tinyint"
+					}					
 				]
 			}
-		}	
+		}
 	]
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/perl -s
 #
-# Test (worker) Client for Kurunt (sending via TCP or UDP).
+# String (worker) Client for Kurunt (sending via TCP or UDP).
 #
 # /kurunt/lib/workers/test
 #
@@ -79,9 +79,9 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 			break;
 		}
 		
-		my $random_number = rand();
+		#my $random_number = rand();
 		
-		$socket->send($random_number . "\n");
+		$socket->send($d . "\n");
 		
 		$i++;
 	}

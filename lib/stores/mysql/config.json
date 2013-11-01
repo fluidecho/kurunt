@@ -1,0 +1,8 @@
+{
+	"name": "mysql",
+	"title": "MySQL",	
+	"description": "MySQL store",
+	"messenger_codec": "json",
+	"debug": "benchmarking",
+	"dbname": "kurunt"
+}
