@@ -1,0 +1,8 @@
+{
+	"name": "redis",
+	"title": "Redis",	
+	"description": "Redis store",
+	"messenger_codec": "json",
+	"debug": "benchmarking",
+	"dbname": "kurunt"
+}
