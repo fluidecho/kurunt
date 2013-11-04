@@ -3,7 +3,7 @@
 	"title": "csv",	
 	"description": "Comma Separated Values 'worker' for Kurunt, processing tuple data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/worker/csv/",
+	"url": "http://docs.kurunt.com/workers/csv/",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp" ],
@@ -43,10 +43,11 @@
 			"mysql": {
 				"schema": [
 					{
-						"name": "tuples"
+						"name": "text",
+						"type": "varchar(250)"
 					}
 				]
 			}
-		}	
+		}
 	]
 }

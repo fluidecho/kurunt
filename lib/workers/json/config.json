@@ -3,7 +3,7 @@
 	"title": "json",	
 	"description": "JSON 'worker' for Kurunt, processing json data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/worker/json/",
+	"url": "http://docs.kurunt.com/workers/json/",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp" ],
@@ -43,10 +43,11 @@
 			"mysql": {
 				"schema": [
 					{
-						"name": "json"
+						"name": "text",
+						"type": "varchar(250)"
 					}
 				]
 			}
-		}	
+		}
 	]
 }
