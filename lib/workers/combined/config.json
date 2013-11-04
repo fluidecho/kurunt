@@ -1,0 +1,80 @@
+{
+	"name": "combined",
+	"title": "Combined",	
+	"description": "Apache Combined Access Log 'worker' for Kurunt, processing access_log data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/workers/combined/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": [
+					{
+						"name": "client_ip"
+					},
+					{
+						"name": "identd"
+					},
+					{
+						"name": "userid"
+					},
+					{
+						"name": "unixtime_utc"
+					},
+					{
+						"name": "request"
+					},
+					{
+						"name": "status_code"
+					},
+					{
+						"name": "size"
+					},
+					{
+						"name": "referer"
+					},
+					{
+						"name": "user_agent"
+					},
+					{
+						"name": "cookie"
+					}													
+				]
+			}
+		},
+		{
+			"redis": {
+				"schema": [
+					{
+						"name": "text"
+					}
+				]
+			}
+		},		
+		{
+			"mongo": {
+				"schema": [
+					{
+						"name": "text"
+					}
+				]
+			}
+		},		
+		{
+			"mysql": {
+				"schema": [
+					{
+						"name": "text",
+						"type": "varchar(250)"
+					}
+				]
+			}
+		}
+	]
+}
