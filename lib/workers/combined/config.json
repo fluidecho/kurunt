@@ -70,9 +70,45 @@
 			"mysql": {
 				"schema": [
 					{
-						"name": "text",
-						"type": "varchar(250)"
-					}
+						"name": "client_ip",
+						"type": "varchar(128)"
+					},
+					{
+						"name": "identd",
+						"type": "varchar(128)"						
+					},
+					{
+						"name": "userid",
+						"type": "varchar(128)"						
+					},
+					{
+						"name": "unixtime_utc",
+						"type": "int"						
+					},
+					{
+						"name": "request",
+						"type": "varchar(512)"						
+					},
+					{
+						"name": "status_code",
+						"type": "int"
+					},
+					{
+						"name": "size",
+						"type": "bigint"	
+					},
+					{
+						"name": "referer",
+						"type": "varchar(512)"
+					},
+					{
+						"name": "user_agent",
+						"type": "varchar(512)"
+					},
+					{
+						"name": "cookie",
+						"type": "varchar(512)"
+					}	
 				]
 			}
 		}
