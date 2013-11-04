@@ -6,7 +6,7 @@
 	"url": "http://docs.kurunt.com/workers/combined/",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
-	"inputs": [ "tcp" ],
+	"inputs": [ "tcp", "udp" ],
 	"mq_nodelay": false,
 	"reports": [ "stream" ],
 	"message_codec": "json",
@@ -44,7 +44,7 @@
 					},
 					{
 						"name": "cookie"
-					}													
+					}											
 				]
 			}
 		},
@@ -52,7 +52,34 @@
 			"redis": {
 				"schema": [
 					{
-						"name": "text"
+						"name": "client_ip"
+					},
+					{
+						"name": "identd"
+					},
+					{
+						"name": "userid"
+					},
+					{
+						"name": "unixtime_utc"
+					},
+					{
+						"name": "request"
+					},
+					{
+						"name": "status_code"
+					},
+					{
+						"name": "size"
+					},
+					{
+						"name": "referer"
+					},
+					{
+						"name": "user_agent"
+					},
+					{
+						"name": "cookie"
 					}
 				]
 			}
@@ -61,7 +88,34 @@
 			"mongo": {
 				"schema": [
 					{
-						"name": "text"
+						"name": "client_ip"
+					},
+					{
+						"name": "identd"
+					},
+					{
+						"name": "userid"
+					},
+					{
+						"name": "unixtime_utc"
+					},
+					{
+						"name": "request"
+					},
+					{
+						"name": "status_code"
+					},
+					{
+						"name": "size"
+					},
+					{
+						"name": "referer"
+					},
+					{
+						"name": "user_agent"
+					},
+					{
+						"name": "cookie"
 					}
 				]
 			}
@@ -70,9 +124,45 @@
 			"mysql": {
 				"schema": [
 					{
-						"name": "text",
-						"type": "varchar(250)"
-					}
+						"name": "client_ip",
+						"type": "varchar(128)"
+					},
+					{
+						"name": "identd",
+						"type": "varchar(128)"						
+					},
+					{
+						"name": "userid",
+						"type": "varchar(128)"						
+					},
+					{
+						"name": "unixtime_utc",
+						"type": "int"						
+					},
+					{
+						"name": "request",
+						"type": "varchar(512)"						
+					},
+					{
+						"name": "status_code",
+						"type": "int"
+					},
+					{
+						"name": "size",
+						"type": "bigint"	
+					},
+					{
+						"name": "referer",
+						"type": "varchar(512)"
+					},
+					{
+						"name": "user_agent",
+						"type": "varchar(512)"
+					},
+					{
+						"name": "cookie",
+						"type": "varchar(512)"
+					}	
 				]
 			}
 		}

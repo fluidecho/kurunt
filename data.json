@@ -1,8 +1,8 @@
 {
   "data": [
-    { "apikey": 5555, "input": { "object": "tcp", "id": 0 }, "worker": "string", "stores": ["stream", "mysql"], "reports": ["stream"], "tags": ["test", "text", "string"], "status": "open", "access_hosts": [""] },
+    { "apikey": 5555, "input": { "object": "tcp", "id": 0 }, "worker": "string", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "status": "open", "access_hosts": [""] },
     { "apikey": 5557, "input": { "object": "tcp", "id": 0 }, "worker": "csv", "stores": ["stream"], "reports": ["stream"], "tags": ["csv", "tuple"], "status": "open", "access_hosts": [""] },
     { "apikey": 5558, "input": { "object": "tcp", "id": 0 }, "worker": "json", "stores": ["stream"], "reports": ["stream"], "tags": ["json"], "status": "open", "access_hosts": [""] },
-		{ "apikey": 5559, "input": { "object": "tcp", "id": 0 }, "worker": "combined", "stores": ["stream"], "reports": ["stream"], "tags": ["combined", "test"], "status": "open", "access_hosts": [""] }    
+		{ "apikey": 5559, "input": { "object": "tcp", "id": 0 }, "worker": "combined", "stores": ["stream", "mongo"], "reports": ["stream"], "tags": ["combined", "test"], "status": "open", "access_hosts": [""] }    
   ]
 }

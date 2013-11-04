@@ -2,9 +2,7 @@
 
 Kurunt is a distributed message processing framework for real-time data using node.js.  
 
-Can be used for real-time analytics, applications, ETL, for both small and big data.  
-
-It's easy to get started using the web admin.
+Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL. It's easy to get started using the web admin.
 
 ### *** UNDER DEV, COMING SOON (star me if interested) ***
 
@@ -59,7 +57,7 @@ Kurunt is made up of three components: inputs, workers and stores.
      |                   |
      v                   v
 **********          **********
-* WORKER *          * WORKER *  (JSON.parse, toString, RegExp, split, filter, etc)
+* WORKER *          * WORKER *  (JSON.parse, RegExp, split, filter, etc)
 **********          **********
      |                   |
      +-------+   +-------+
