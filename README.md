@@ -75,16 +75,16 @@ Above shows how the message (your data) is processed, this is the 'out-of-the-bo
 #### Your Data
 Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
 
-#### Inputs
+#### Inputs (/kurunt/lib/inputs/)
 Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 
-#### Workers
+#### Workers (/kurunt/lib/workers/)
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log line, filter an image, etc. It's easy to build your own workers in just a few lines of Javascript. 
 
-#### Stores
+#### Stores (/kurunt/lib/stores/)
 Store your now 'schemed' messages any way you want. In your favorite database, filesystem, or don't store your messages but 'stream' them, stream api (default), socket.io.
 
-#### Stream Report
+#### Stream Report (/kurunt/lib/reports/)
 You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
