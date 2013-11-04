@@ -20,8 +20,8 @@ if ( $h ne '' || $help ne '' ) {
 	print "   -d = data (access_log line, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";
 	print "   -c = 10 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=5555 -m=100 -c=10 -d='access_log line...'\n";
-	print "This example would send 100 messages every second for 10 seconds through port 5555, -H (host), -d (data) hello world.\n";
+	print "For example> perl client.pl -T=tcp -P=5555 -m=100 -c=10 -d='127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326 \"http://www.example.com/start.html\" \"Mozilla/4.08 [en] (Win98; I ;Nav)\" \"USERID=Zepheira;IMPID=01234\"'\n";
+	print "This example would send 100 messages every second for 10 seconds through port 5555, -H (host), -d (data).\n";
 	exit(0);
 }
 if ( $P eq '' ) {

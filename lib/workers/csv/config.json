@@ -6,7 +6,7 @@
 	"url": "http://docs.kurunt.com/workers/csv/",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
-	"inputs": [ "tcp" ],
+	"inputs": [ "tcp", "udp", "http" ],
 	"mq_nodelay": false,
 	"reports": [ "stream" ],
 	"message_codec": "json",

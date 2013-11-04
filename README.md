@@ -59,7 +59,7 @@ Kurunt is made up of three components: inputs, workers and stores.
      |                   |
      v                   v
 **********          **********
-* WORKER *          * WORKER *  (JSON.parse, toString, RegExp, split, filter, etc)
+* WORKER *          * WORKER *  (JSON.parse, RegExp, split, filter, etc)
 **********          **********
      |                   |
      +-------+   +-------+
