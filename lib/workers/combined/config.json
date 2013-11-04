@@ -44,7 +44,7 @@
 					},
 					{
 						"name": "cookie"
-					}													
+					}											
 				]
 			}
 		},
@@ -52,7 +52,34 @@
 			"redis": {
 				"schema": [
 					{
-						"name": "text"
+						"name": "client_ip"
+					},
+					{
+						"name": "identd"
+					},
+					{
+						"name": "userid"
+					},
+					{
+						"name": "unixtime_utc"
+					},
+					{
+						"name": "request"
+					},
+					{
+						"name": "status_code"
+					},
+					{
+						"name": "size"
+					},
+					{
+						"name": "referer"
+					},
+					{
+						"name": "user_agent"
+					},
+					{
+						"name": "cookie"
 					}
 				]
 			}
@@ -61,7 +88,34 @@
 			"mongo": {
 				"schema": [
 					{
-						"name": "text"
+						"name": "client_ip"
+					},
+					{
+						"name": "identd"
+					},
+					{
+						"name": "userid"
+					},
+					{
+						"name": "unixtime_utc"
+					},
+					{
+						"name": "request"
+					},
+					{
+						"name": "status_code"
+					},
+					{
+						"name": "size"
+					},
+					{
+						"name": "referer"
+					},
+					{
+						"name": "user_agent"
+					},
+					{
+						"name": "cookie"
 					}
 				]
 			}
