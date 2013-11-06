@@ -1,6 +1,6 @@
 #!/usr/bin/perl -s
 #
-# Test (worker) Client for Kurunt (sending via TCP or UDP).
+# JSON (worker) Client for Kurunt (sending via TCP or UDP).
 #
 # /kurunt/lib/workers/test
 #
@@ -8,7 +8,7 @@
 use IO::Socket::INET;
 
 
-print "--- Test Client for Kurunt ---\n\n";
+print "--- JSON Client for Kurunt ---\n\n";
 
 # get command line settings: -m = number of messages, -c = cycles to run of messages, -P = port number.
 # -h, help options.

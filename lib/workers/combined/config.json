@@ -24,8 +24,7 @@
 					"size": { },
 					"referer": { },
 					"user_agent": { },
-					"cookie": { },
-					"client_ip": { }
+					"cookie": { }
 				}
 			}
 		},
@@ -41,8 +40,43 @@
 					"size": { },
 					"referer": { },
 					"user_agent": { },
-					"cookie": { },
-					"client_ip": { }			
+					"cookie": { }
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"client_ip": { 
+						"type": "varchar(128)" 
+					},
+					"identd": { 
+						"type": "varchar(128)" 
+					},
+					"userid": { 
+						"type": "varchar(128)" 
+					},
+					"unixtime_utc": { 
+						"type": "int" 
+					},
+					"request": { 
+						"type": "varchar(512)" 
+					},
+					"status_code": { 
+						"type": "int" 
+					},
+					"size": { 
+						"type": "bigint" 
+					},
+					"referer": { 
+						"type": "varchar(512)" 
+					},
+					"user_agent": { 
+						"type": "varchar(512)" 
+					},
+					"cookie": { 
+						"type": "varchar(512)" 
+					}
 				}
 			}
 		}
