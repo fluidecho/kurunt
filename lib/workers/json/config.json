@@ -14,39 +14,16 @@
 	"stores": [
 		{
 			"stream": {
-				"schema": [
-					{
-						"name": "json"
-					}
-				]
+				"schema": {
+					"json": { }
+				}
 			}
 		},
 		{
-			"redis": {
-				"schema": [
-					{
-						"name": "json"
-					}
-				]
-			}
-		},		
-		{
 			"mongo": {
-				"schema": [
-					{
-						"name": "json"
-					}
-				]
-			}
-		},		
-		{
-			"mysql": {
-				"schema": [
-					{
-						"name": "text",
-						"type": "varchar(250)"
-					}
-				]
+				"schema": {
+					"json": { }		
+				}
 			}
 		}
 	]
