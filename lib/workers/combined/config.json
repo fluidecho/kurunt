@@ -14,156 +14,36 @@
 	"stores": [
 		{
 			"stream": {
-				"schema": [
-					{
-						"name": "client_ip"
-					},
-					{
-						"name": "identd"
-					},
-					{
-						"name": "userid"
-					},
-					{
-						"name": "unixtime_utc"
-					},
-					{
-						"name": "request"
-					},
-					{
-						"name": "status_code"
-					},
-					{
-						"name": "size"
-					},
-					{
-						"name": "referer"
-					},
-					{
-						"name": "user_agent"
-					},
-					{
-						"name": "cookie"
-					}											
-				]
+				"schema": {
+					"client_ip": { },
+					"identd": { },
+					"userid": { },
+					"unixtime_utc": { },
+					"request": { },
+					"status_code": { },
+					"size": { },
+					"referer": { },
+					"user_agent": { },
+					"cookie": { },
+					"client_ip": { }
+				}
 			}
 		},
 		{
-			"redis": {
-				"schema": [
-					{
-						"name": "client_ip"
-					},
-					{
-						"name": "identd"
-					},
-					{
-						"name": "userid"
-					},
-					{
-						"name": "unixtime_utc"
-					},
-					{
-						"name": "request"
-					},
-					{
-						"name": "status_code"
-					},
-					{
-						"name": "size"
-					},
-					{
-						"name": "referer"
-					},
-					{
-						"name": "user_agent"
-					},
-					{
-						"name": "cookie"
-					}
-				]
-			}
-		},		
-		{
 			"mongo": {
-				"schema": [
-					{
-						"name": "client_ip"
-					},
-					{
-						"name": "identd"
-					},
-					{
-						"name": "userid"
-					},
-					{
-						"name": "unixtime_utc"
-					},
-					{
-						"name": "request"
-					},
-					{
-						"name": "status_code"
-					},
-					{
-						"name": "size"
-					},
-					{
-						"name": "referer"
-					},
-					{
-						"name": "user_agent"
-					},
-					{
-						"name": "cookie"
-					}
-				]
-			}
-		},		
-		{
-			"mysql": {
-				"schema": [
-					{
-						"name": "client_ip",
-						"type": "varchar(128)"
-					},
-					{
-						"name": "identd",
-						"type": "varchar(128)"						
-					},
-					{
-						"name": "userid",
-						"type": "varchar(128)"						
-					},
-					{
-						"name": "unixtime_utc",
-						"type": "int"						
-					},
-					{
-						"name": "request",
-						"type": "varchar(512)"						
-					},
-					{
-						"name": "status_code",
-						"type": "int"
-					},
-					{
-						"name": "size",
-						"type": "bigint"	
-					},
-					{
-						"name": "referer",
-						"type": "varchar(512)"
-					},
-					{
-						"name": "user_agent",
-						"type": "varchar(512)"
-					},
-					{
-						"name": "cookie",
-						"type": "varchar(512)"
-					}	
-				]
+				"schema": {
+					"client_ip": { },
+					"identd": { },
+					"userid": { },
+					"unixtime_utc": { },
+					"request": { },
+					"status_code": { },
+					"size": { },
+					"referer": { },
+					"user_agent": { },
+					"cookie": { },
+					"client_ip": { }			
+				}
 			}
 		}
 	]
