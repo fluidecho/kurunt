@@ -2,7 +2,7 @@
 #
 # JSON (worker) Client for Kurunt (sending via TCP or UDP).
 #
-# /kurunt/lib/workers/test
+# /kurunt/lib/workers/json
 #
 
 use IO::Socket::INET;
