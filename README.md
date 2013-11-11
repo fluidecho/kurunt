@@ -19,7 +19,7 @@ Can be used to capture, process and store both big and small data. Useful for re
 
 ## Installation
 
-Requires [Node.js](http://nodejs.org/).
+Requires [node.js](http://nodejs.org/).
 
 ```js
 npm install -g kurunt
@@ -56,7 +56,7 @@ Kurunt is made up of three components: inputs, workers and stores.
      |                   |
      v                   v
 **********          **********
-* WORKER *          * WORKER *  (functions, regex, filter, augment, aggregate, etc)
+* WORKER *          * WORKER *  (functions, parse, regex, filter, augment, etc)
 **********          **********
      |                   |
      +-------+   +-------+
