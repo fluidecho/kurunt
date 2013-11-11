@@ -2,21 +2,20 @@
 
 Kurunt is a distributed message processing framework for real-time data using node.js.  
 
-Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL. It's easy to get started using the web admin.
+Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL and time series data. Has been build to be efficient and fast, benchmarked at processing over a million tuples per second per node. Simple to use through its web admin.
 
 ### *** UNDER DEV, COMING SOON (star me if interested) ***
 
 ## Features
 
-- Streaming system, processing messages in real-time.
+- Streaming system, processing message events in real-time.
 - Implemented in 100% javascript for node.js.
 - Scalable across machines or on a single cpu, from BeagleBone to the cloud.
 - Supports any data type and format, json, ascii, binary, etc.
 - Fault tolerant message delivery, can be setup with no single point of failure.
 - Uses zeromq like (axon) message patterns for processing.
-- Uniquely id's messages sequentially and in nanosecond format.
+- Uniquely id's messages sequentially and in time series format.
 - Can be used as a node.js module or run stand-alone.
-- Built to be fast and efficient.
 
 ## Installation
 
@@ -57,7 +56,7 @@ Kurunt is made up of three components: inputs, workers and stores.
      |                   |
      v                   v
 **********          **********
-* WORKER *          * WORKER *  (JSON.parse, RegExp, split, filter, etc)
+* WORKER *          * WORKER *  (functions, regex, filter, augment, aggregate, etc)
 **********          **********
      |                   |
      +-------+   +-------+
@@ -86,7 +85,7 @@ Store your now 'schemed' messages any way you want. In your favorite database, f
 You can visualize your data from within the [web admin](http://localhost:8888) 'stream' report (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
-The Simplest answer is for efficiency. There is a limit to how much 'processing' a single Node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
+The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
 ## Performance
 
