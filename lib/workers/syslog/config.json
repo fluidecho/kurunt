@@ -11,6 +11,7 @@
 	"reports": [ "stream" ],
 	"message_codec": "json",
 	"encoding": "utf8",
+	"trim_message": true,	
 	"stores": [
 		{
 			"stream": {
@@ -19,7 +20,7 @@
 					"pid": { },
 					"tag": { },
 					"pre": { },					
-					"timestamp": { },
+					"unixtime": { },
 					"message": { }
 				}
 			}
