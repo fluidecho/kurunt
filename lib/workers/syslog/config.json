@@ -1,0 +1,29 @@
+{
+	"name": "syslog",
+	"title": "Syslog",	
+	"description": "Syslog 'worker' for Kurunt, processing syslog data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/workers/syslog/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp", "udp" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"trim_message": true,	
+	"stores": [
+		{
+			"stream": {
+				"schema": {
+					"userid": { },
+					"pid": { },
+					"tag": { },
+					"pre": { },					
+					"unixtime": { },
+					"message": { }
+				}
+			}
+		}
+	]
+}

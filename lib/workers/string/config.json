@@ -14,39 +14,9 @@
 	"stores": [
 		{
 			"stream": {
-				"schema": [
-					{
-						"name": "text"
-					}
-				]
-			}
-		},
-		{
-			"redis": {
-				"schema": [
-					{
-						"name": "text"
-					}
-				]
-			}
-		},		
-		{
-			"mongo": {
-				"schema": [
-					{
-						"name": "text"
-					}
-				]
-			}
-		},		
-		{
-			"mysql": {
-				"schema": [
-					{
-						"name": "text",
-						"type": "varchar(250)"
-					}
-				]
+				"schema": {
+					"text": { }
+				}
 			}
 		}
 	]
