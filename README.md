@@ -67,7 +67,7 @@ Kurunt is made up of three components: inputs, workers and stores.
           ***********
 </pre>
 
-Above shows how the message (your data) is processed, this is the 'out-of-the-box' topology, you can however create all sorts of patterns for scalability and fault-tolerance. Some of the 'worker' and 'store' actions shown require you coding or use community submitted modules.
+Above shows how the message (your data) is processed using the default topology, you can however create all sorts of patterns for scalability and fault-tolerance.
 
 #### Your Data
 Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
@@ -76,7 +76,7 @@ Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpac
 Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 
 #### Workers
-Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Some are easy like: json, msgpack - or something like regex a access_log line, filter an image, etc. It's easy to build your own workers in just a few lines of Javascript. 
+Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
 
 #### Stores
 Store your now 'schemed' messages any way you want. In your favorite database, filesystem, or don't store your messages but 'stream' them, stream api (default), socket.io.
@@ -91,7 +91,7 @@ The simplest answer is for efficiency. There is a limit to how much 'processing'
 
 #### Benchmark
 
-You can benchmark Kurunt by opening the 'test' data, using the [web admin](http://localhost:8888). And run the data simulation client.
+You can benchmark Kurunt by opening some data, using the [web admin](http://localhost:8888). And run the data simulation client.
 ```
 > perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
 ```
@@ -99,7 +99,7 @@ Can set options: -m = number of messages to send per second, -c = number of seco
 
 #### Results
 
-Results depend a little bit on what you mean by "message processing", I mean it to be from ingestion (input) to worker (test) to store (stream) - around 30,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. It will also depend on the amount of work you are getting your 'worker' to do, JSON.parse is faster than RegExp for example. The topology you set will also determine performance.
+Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
 
 Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
