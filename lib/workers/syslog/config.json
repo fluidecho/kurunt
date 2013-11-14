@@ -1,7 +1,7 @@
 {
 	"name": "syslog",
 	"title": "Syslog",	
-	"description": "Syslog 'worker' for Kurunt, processing syslog data.",
+	"description": "Syslog 'worker' for Kurunt, processing rsyslog data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/syslog/",
 	"version": 0.2,	
@@ -21,9 +21,22 @@
 					"tag": { },
 					"pre": { },					
 					"unixtime": { },
+					"message": { },
+					"nada": { }
+				}
+			}
+		},
+		{
+			"mongo": {
+				"schema": {
+					"userid": { },
+					"pid": { },
+					"tag": { },
+					"pre": { },					
+					"unixtime": { },
 					"message": { }
 				}
 			}
-		}
+		}		
 	]
 }
