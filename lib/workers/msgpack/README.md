@@ -11,6 +11,6 @@ MessagePack worker for Kurunt, processing msgpack formated data.
 ```
 Then sending data using:
 ```
-> perl /kurunt/lib/workers/msgpack/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='{"hello": "world"}'
+> perl /kurunt/lib/workers/msgpack/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
 ```
 
