@@ -1,0 +1,30 @@
+{
+	"name": "msgpack",
+	"title": "msgpack",	
+	"description": "MessagePack 'worker' for Kurunt, processing msgpack data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/workers/msgpack/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp", "udp", "http" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": {
+					"msgpack": { }
+				}
+			}
+		},
+		{
+			"mongo": {
+				"schema": {
+					"msgpack": { }		
+				}
+			}
+		}
+	]
+}
