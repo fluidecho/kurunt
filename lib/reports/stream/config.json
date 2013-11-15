@@ -2,5 +2,6 @@
 	"name": "steam",
 	"title": "Steam",	
 	"description": "Stream report",
-	"debug": "benchmarking"
+	"debug": "benchmarking",
+	"truncate_message": false
 }
