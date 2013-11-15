@@ -15,7 +15,7 @@ Can be used to capture, process and store both big and small data. Useful for re
 - Fault tolerant message delivery, can be setup with no single point of failure.
 - Uses zeromq like (axon) message patterns for processing.
 - Uniquely id's messages sequentially and in time series format.
-- Can be used as a node.js module or run stand-alone.
+- Build as a framework, can be used as a node.js module or run stand-alone.
 
 ## Installation
 
@@ -91,7 +91,7 @@ The simplest answer is for efficiency. There is a limit to how much 'processing'
 
 #### Benchmark
 
-You can benchmark Kurunt by opening some data, using the [web admin](http://localhost:8888). And run the data simulation client.
+You can benchmark Kurunt by opening a 'stream', using the [web admin](http://localhost:8888). And run the data simulation client.
 ```
 > perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
 ```
