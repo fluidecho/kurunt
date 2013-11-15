@@ -1,6 +1,6 @@
 {
   "name": "kurunt",
-  "description": "Distributed message processing framework for real-time data.",
+  "description": "Real-time processing of streaming data at any scale.",
   "version": "0.2.1",
   "main": "index.js",
   "bin" : { "kurunt" : "bin/cli.js" },
