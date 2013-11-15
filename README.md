@@ -19,7 +19,7 @@ Can be used to capture, process and store both big and small data. Useful for re
 
 ## Installation
 
-Requires [node.js](http://nodejs.org/).
+From your terminal, requires [node.js](http://nodejs.org/).
 
 ```js
 npm install -g kurunt
