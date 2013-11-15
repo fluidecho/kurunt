@@ -15,9 +15,9 @@
 
 var Kurunt    		= require("../");																	// call the Kurunt module [require('kurunt')].
 var config    		= require(".././config.json");
-var data      		= require(".././data.json");
+var streams    		= require(".././streams.json");
 var topology  		= require(".././topology.json");
-var kurunt    		= new Kurunt.init(config, data, topology);				// initiate the Kurunt aplication.
+var kurunt    		= new Kurunt.init(config, streams, topology);				// initiate the Kurunt aplication.
 
 var util      		= require('util');
 
@@ -60,14 +60,14 @@ kurunt.getStores(function (err, stores) {
 });
 
 
-// get the list of data.
-kurunt.getData(function (err, data) {
+// get the list of streams.
+kurunt.getStreams(function (err, streams) {
 	if ( err ) {
 		throw new Error(err.message);
 	} 
 
-	// datas: array
-	//console.log('data> ' + util.inspect(data, true, 99, true));
+	// streams: array
+	//console.log('streams> ' + util.inspect(streams, true, 99, true));
 }); 
 	
 
