@@ -7,6 +7,7 @@
       "process": [
         {
           "id": 0,
+          "ignore": false,
           "object": "input",
           "namespace": "tcp",
           "connections": [
@@ -63,6 +64,7 @@
         },        
         {
           "id": 0,
+          "ignore": false,
           "object": "store",
           "namespace": "*",   
           "connections": [
