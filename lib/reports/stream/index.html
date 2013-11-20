@@ -294,7 +294,7 @@ position: relative;
 	height: 66px;
 	margin: 0;
 	width: 100%;
-	background: #DE45B3;
+	background: #fff;
 	border-bottom: 1px solid #fff;
 }
 
@@ -388,12 +388,8 @@ position: relative;
 
 <div id="select_data">
 	<h5>Streams:</h5>
-	<select>
-		<option>test_5a5f55a555aa5555</option>
-		<option>jpeg_2a5f55a555aa2222</option>
-		<option>benchmark_1a5f55a555aa1234</option>
+	<select id="select_items">
 	</select>
-	
 </div>
 
 <h1>Stream Report</h1>
@@ -401,10 +397,48 @@ position: relative;
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
+	// set header colour:
+	var header_colours = ['#DE45B3','#FF6640','#4840FF','#0C9688','#3B5998','#C05949','#753A48','#1352A2','#442D65','#007034','#FE9601'];
+	$('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+
 	var smoothieChart = new TimeSeries();
 	var msgps = 0;
 
   var socket = io.connect('http://localhost');  // localhost, set ip for remote access.
+	
+	
+	socket.on('connect', function (data) {
+		//socket.emit('getStream', 'all' );
+		
+		
+		// gstStreams and popluate the pulldown select menu.
+		var hrefstream = window.location.href.indexOf('?stream=');
+		if ( hrefstream != -1 ) {
+			var s = window.location.href.substring(window.location.href.indexOf('?stream=') + 8);
+		} else {
+			var s = 'all';
+		}
+		console.log('stream selected: ' + s);
+		if ( s != '' ) {
+			socket.emit('getStream', s);
+		}
+		socket.emit('getStreams');
+		socket.on('streams', function (streams) {
+			//console.log('got streams: ' + streams);
+			$('#select_items').append($("<option></option>").attr("value", 'all').text('All'));
+			for ( var stream in streams.streams ) {
+				var select_item = streams.streams[stream]['worker'] + '_' + streams.streams[stream]['apikey'];
+				$('#select_items').append($("<option></option>").attr("value", select_item).text(select_item));
+			}
+			$('#select_items').val(s);
+		});		
+		
+		
+  });	
+	//socket.join('all');
+	//alert('connected to room');
+
+
 
 	var num_from = 0;
 	function update_events_number(divid, num_to) {
@@ -449,6 +483,18 @@ position: relative;
 			i++;
 		}
 	});
+	
+	
+
+
+	// on stream pullldown select menu change.
+	$('#select_items').on('change', function() {
+		//alert( this.value ); // or $(this).val()
+		window.location = window.location.pathname + '?stream=' + this.value;
+		//socket.emit('getStream', this.value);
+	});
+
+
 	
 	var addItem = undefined;
 	var QUE_MESSAGES_SLY_X = 10;
