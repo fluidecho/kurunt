@@ -7,7 +7,7 @@
       "process": [
         {
           "id": 0,
-          "ignore": false,
+          "falk": true,
           "object": "input",
           "namespace": "tcp",
           "connections": [
@@ -20,7 +20,7 @@
         },        
         {
           "id": 0,
-          "ignore": false,
+          "falk": true,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -42,7 +42,7 @@
         },
         {
           "id": 1,
-          "ignore": false,
+          "falk": true,
           "object": "worker",
           "namespace": "*",
           "connections": [
@@ -64,7 +64,7 @@
         },        
         {
           "id": 0,
-          "ignore": false,
+          "falk": true,
           "object": "store",
           "namespace": "*",   
           "connections": [

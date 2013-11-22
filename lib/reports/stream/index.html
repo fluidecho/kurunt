@@ -414,30 +414,25 @@ position: relative;
 		// gstStreams and popluate the pulldown select menu.
 		var hrefstream = window.location.href.indexOf('?stream=');
 		if ( hrefstream != -1 ) {
-			var s = window.location.href.substring(window.location.href.indexOf('?stream=') + 8);
+			var stream = window.location.href.substring(window.location.href.indexOf('?stream=') + 8);
 		} else {
-			var s = 'all';
+			var stream = 'all';
 		}
-		console.log('stream selected: ' + s);
-		if ( s != '' ) {
-			socket.emit('getStream', s);
-		}
+		console.log('stream selected: ' + stream);
+		socket.emit('getStream', stream);
 		socket.emit('getStreams');
 		socket.on('streams', function (streams) {
 			//console.log('got streams: ' + streams);
 			$('#select_items').append($("<option></option>").attr("value", 'all').text('All'));
-			for ( var stream in streams.streams ) {
-				var select_item = streams.streams[stream]['worker'] + '_' + streams.streams[stream]['apikey'];
+			for ( var st in streams.streams ) {
+				var select_item = streams.streams[st]['worker'] + '_' + streams.streams[st]['apikey'];
 				$('#select_items').append($("<option></option>").attr("value", select_item).text(select_item));
 			}
-			$('#select_items').val(s);
+			$('#select_items').val(stream);
 		});		
 		
 		
-  });	
-	//socket.join('all');
-	//alert('connected to room');
-
+  });
 
 
 	var num_from = 0;
@@ -473,33 +468,36 @@ position: relative;
   	msgps = mps;
   });
   
+  
+  var lastid = undefined;
 	socket.on('messages', function (messages) {
 		i = 0; // reset
-		for ( var m in messages ) {
-			if ( ids[messages[m].id] === undefined ) {
-				ids[messages[m].id] = 1;
-				addItem(messages[m], i);
+		if ( messages != '' ) {
+			console.log(messages[messages.length - 1].id);
+			if ( messages[messages.length - 1].id != lastid ) {
+				lastid = messages[messages.length - 1].id;
+				for ( var m in messages ) {
+				//if ( ids[messages[m].id] === undefined ) {
+					//ids[messages[m].id] = 1;
+
+					addItem(messages[m], i);
+				
+				//}
+					i++;
+				}
 			}
-			i++;
 		}
 	});
-	
-	
-
 
 	// on stream pullldown select menu change.
 	$('#select_items').on('change', function() {
-		//alert( this.value ); // or $(this).val()
 		window.location = window.location.pathname + '?stream=' + this.value;
-		//socket.emit('getStream', this.value);
 	});
 
-
-	
 	var addItem = undefined;
 	var QUE_MESSAGES_SLY_X = 10;
 
-	var ids = {};
+	//var ids = {};
 	var firstItem = true;
 
 	var x = 0;
