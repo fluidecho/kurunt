@@ -48,9 +48,14 @@ if ( $T eq '' ) {
 	$T = 'tcp';
 }
 
+my $sequential = 1;
 # default sending messages in string format.
 if ( $d eq '' ) {
-	$d = 'hello world';
+	if ( $sequential eq 1 ) {
+		$d = '{"hello": "world", "i": ';
+	} else {
+		$d = '{"hello": "world"}';
+	}
 }
 
 if ( $H eq '' ) {
@@ -79,7 +84,14 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 			break;
 		}
 		
-		$socket->send($d . "\n");
+		my $data = $d;
+		if ( $sequential eq 1 ) {
+			$data = $d . $i . '}';  
+		}
+		
+		#print "data: " . $data . "\n";
+		
+		$socket->send($data . "\n");
 		
 		$i++;
 	}
