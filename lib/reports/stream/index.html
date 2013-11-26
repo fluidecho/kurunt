@@ -12,10 +12,11 @@
 <meta name="viewport" content="user-scalable=yes" /> 
 
 <style type="text/css">
-html { height: 100%; margin-bottom: 0.00em; background: #535151; }
+html { height: 100%; margin: 0; background: #535151; }
 
 * { padding:0; margin:0; }
 body {
+	margin-top: 0em;
 	text-align: center;
 	position: relative;
 	font-family: arial,helvetica,sans-serif,"Lucida Grande","Lucida Sans Unicode";
@@ -34,16 +35,12 @@ img { border:0; }
 
 .spaceout { padding-top: 11px; }
 .nada { display: none; }
-.wraper { 
+.wrapper { 
 	padding: 0 2.5em 0 2.5em; 
 	margin: 0 auto; 
 	width: 1060px; 
 	text-align: left;
-	overflow: auto;
 }
-
-
-
 
 .white { background: #fff; }
 
@@ -73,7 +70,6 @@ h2 {
 
 /* Messages Totals */ 
 .rounded-corners {
-	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	-khtml-border-radius: 20px;
 	border-radius: 20px;
@@ -155,7 +151,7 @@ h2 {
 
 /* Frame */
 .frame {
-	height: 250px;
+	height: 255px;
 	overflow: hidden;
 }
 .frame ul {
@@ -188,8 +184,23 @@ h2 {
 	color: #fff;
 }
 
+.frame h2 {
+	font-size: 24pt; 
+	font-weight: normal;
+	text-align: center;
+	margin: 4em 0 0 0;
+	color: #fff;
+}
+.frame p {
+	font-size: 24pt; 
+	font-weight: bold;
+	text-align: center;
+	margin-top: -0.7em;
+	color: #fff;
+}
+
 .message {
-	margin: 1em 2em 2em 2em;
+	margin: 2em;
 }
 
 .message p {
@@ -200,7 +211,7 @@ h2 {
 }
 
 .messagejson {
-	height: 196px;
+	height: 250px;
 	background: #413F3F;
 	overflow-y: scroll;
 	border: 1px solid #4A4A4A;
@@ -237,7 +248,7 @@ pre { outline: 0px solid #ccc; padding: 5px; margin: 5px; color: #7F7F7F; }
 
 /* One Item Per Frame example*/
 .oneperframe { 
-	height: 300px;
+	height: 305px;
 }
 .oneperframe ul li { width: 1060px; }
 .oneperframe ul li.active { background: #333; }
@@ -282,20 +293,15 @@ pre { outline: 0px solid #ccc; padding: 5px; margin: 5px; color: #7F7F7F; }
 
 
 /* top toolbar */
-header {
-	
-width: 100%;
-float: left;
-position: relative;
-}
-
 
 #headermenu{
 	height: 66px;
 	margin: 0;
+	padding: 0;
 	width: 100%;
 	background: #fff;
 	border-bottom: 1px solid #fff;
+	margin-bottom: -2.6em;
 }
 
 #logo {
@@ -326,6 +332,13 @@ position: relative;
 /* footer */
 
 
+#contents h1 {
+	padding-top: 1em;
+}
+#contents {
+	padding-bottom: 1px;
+}
+
 #footer {
 	padding-top: 3px;
 	background: #535151;
@@ -346,19 +359,19 @@ position: relative;
 	margin-top: 2.7em;
 	padding: 8px;
 	float: right;
-	background: #D6D7DA;
+	background: #717171;
 }
 
 #select_data h5 {
 	font-size: 11pt; 
 	padding: 3px;
 	font-weight: normal;
-	color: #000;
+	color: #fff;
 	display: inline;
 }
 
 #select_data select {
-		min-width: 250px;
+		min-width: 230px;
 }
 
 </style>
@@ -366,25 +379,20 @@ position: relative;
 </head>
 <body onload="createSmoothieChart()">
 
-<header role="banner">
+
 <div id="headermenu">
-	<div class="wraper">
-			
+	<div class="wrapper">
 		<div id="logo"><img src="logo.png" alt="" /></div>
-				
 		<div id="navs">
-		
 			<a href="streams.html">Streams</a>
-			<a href="report.html">Report</a>		
-					
-		</div>	
-				
+			<a href="report.html">Report</a>	
+		</div>
 	</div>
 </div>
-</header>
 
 
-<div class="wraper white">
+
+<div class="wrapper white" id="contents">
 
 <div id="select_data">
 	<h5>Streams:</h5>
@@ -398,13 +406,13 @@ position: relative;
 <script>
 
 	// set header colour:
-	var header_colours = ['#DE45B3','#FF6640','#4840FF','#0C9688','#3B5998','#C05949','#753A48','#1352A2','#442D65','#007034','#FE9601'];
+	var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
 	$('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
 
 	var smoothieChart = new TimeSeries();
 	var msgps = 0;
 
-  var socket = io.connect('http://localhost');  // localhost, set ip for remote access.
+  var socket = io.connect('http://10.0.0.22');  // localhost, set ip for remote access.
 	
 	
 	socket.on('connect', function (data) {
@@ -420,6 +428,8 @@ position: relative;
 		}
 		console.log('stream selected: ' + stream);
 		socket.emit('getStream', stream);
+		
+		
 		socket.emit('getStreams');
 		socket.on('streams', function (streams) {
 			//console.log('got streams: ' + streams);
@@ -463,6 +473,12 @@ position: relative;
 	}
 
   socket.on('ticker', function (tot, mps) {
+  	if ( tot === null ) {
+  		tot = 0;
+  	}
+   	if ( mps === null ) {
+  		mps = 0;
+  	} 	
     update_events_number('#messages_total_int', tot);
 		$('#messages_ps_int').text(int_commas(mps));
   	msgps = mps;
@@ -473,7 +489,7 @@ position: relative;
 	socket.on('messages', function (messages) {
 		i = 0; // reset
 		if ( messages != '' ) {
-			console.log(messages[messages.length - 1].id);
+			//console.log(messages.length);
 			if ( messages[messages.length - 1].id != lastid ) {
 				lastid = messages[messages.length - 1].id;
 				for ( var m in messages ) {
@@ -495,7 +511,10 @@ position: relative;
 	});
 
 	var addItem = undefined;
-	var QUE_MESSAGES_SLY_X = 10;
+	var QUE_MESSAGES_SLY_X = 20;
+
+	var msgarray = [];		// store array of latest messages.
+
 
 	//var ids = {};
 	var firstItem = true;
@@ -544,11 +563,17 @@ position: relative;
 				firstItem = false;
 			}
 
+			//var json = jsonHighlight(JSON.stringify(m, undefined, 4));
+
 			if ( x >= QUE_MESSAGES_SLY_X ) {
-				$('#m' + i).replaceWith('<li id="m' + i + '"><h3>' + m.id + '</h3><div class="message"><div class="messagejson"><pre><code>' + jsonHighlight(JSON.stringify(m, undefined, 4)) + '</code></pre></div></div></li>');
+				//$('#m' + i).replaceWith('<li id="m' + i + '"><h3>' + m.id + '</h3><div class="message"><div class="messagejson"><pre><code>' + json + '</code></pre></div></div></li>');
+				$('#m' + i).replaceWith('<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
 			} else {
-				$frame.sly('add', '<li id="m' + i + '"><h3>' + m.id + '</h3><div class="message"><div class="messagejson"><pre><code>' + jsonHighlight(JSON.stringify(m, undefined, 4)) + '</code></pre></div></div></li>');		
+				//$frame.sly('add', '<li id="m' + i + '"><h3>' + m.id + '</h3><div class="message"><div class="messagejson"><pre><code>' + json + '</code></pre></div></div></li>');
+				$frame.sly('add', '<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
 			}
+			
+			msgarray[i] = m;		// add message contents into array for retieval.
 	
 			$frame.sly('toEnd');
 	
@@ -566,6 +591,12 @@ position: relative;
 				i = x;
 			}
 		});
+		
+		// onclick message id, display message contents.
+		getMessage = function(i) {
+  		var json = jsonHighlight(JSON.stringify(msgarray[i], undefined, 4));
+			$('#m' + i).replaceWith('<li id="m' + i + '"><div class="message"><div class="messagejson"><pre><code>' + json + '</code></pre></div></div></li>');		
+		};
 
 		}());
 	});
@@ -639,7 +670,7 @@ position: relative;
 
 
 	<div id="footer">
-			<div class="wraper">
+			<div class="wrapper">
 				<p> 
 					<a href="http://kurunt.com">Kurunt</a>
 					<span class="seperator"> |</span>
