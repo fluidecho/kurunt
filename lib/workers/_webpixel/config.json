@@ -1,0 +1,84 @@
+{
+	"name": "combined",
+	"title": "Combined",	
+	"description": "Apache Combined Access Log 'worker' for Kurunt, processing access_log data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/workers/combined/",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp", "udp" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": {
+					"client_ip": { },
+					"identd": { },
+					"userid": { },
+					"unixtime_utc": { },
+					"request": { },
+					"status_code": { },
+					"size": { },
+					"referer": { },
+					"user_agent": { },
+					"cookie": { }
+				}
+			}
+		},
+		{
+			"mongo": {
+				"schema": {
+					"client_ip": { },
+					"identd": { },
+					"userid": { },
+					"unixtime_utc": { },
+					"request": { },
+					"status_code": { },
+					"size": { },
+					"referer": { },
+					"user_agent": { },
+					"cookie": { }
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"client_ip": { 
+						"type": "varchar(128)" 
+					},
+					"identd": { 
+						"type": "varchar(128)" 
+					},
+					"userid": { 
+						"type": "varchar(128)" 
+					},
+					"unixtime_utc": { 
+						"type": "int" 
+					},
+					"request": { 
+						"type": "varchar(512)" 
+					},
+					"status_code": { 
+						"type": "int" 
+					},
+					"size": { 
+						"type": "bigint" 
+					},
+					"referer": { 
+						"type": "varchar(512)" 
+					},
+					"user_agent": { 
+						"type": "varchar(512)" 
+					},
+					"cookie": { 
+						"type": "varchar(512)" 
+					}
+				}
+			}
+		}
+	]
+}

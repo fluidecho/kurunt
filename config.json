@@ -6,7 +6,7 @@
   "stream_api": true,
   "stream_api_port": 3333,
   "stream_api_pass": "pass",
-  "stream_api_all_pass": "passall",  
+  "stream_api_all_pass": "pass",  
   "messenger_codec": "json",
   "input_tcp_message_delineate": 10,
   "input_tcp_message_buffer_limit": 10485760, 
