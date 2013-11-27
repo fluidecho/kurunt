@@ -338,7 +338,7 @@
     padding-top: 3px;
     background: #535151;
     border-top: 1px solid #c1c8c8;
-
+		padding-bottom: 0.5em;
   }
 
   #footer p{ text-align: left; font-size: 10pt; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
@@ -403,7 +403,7 @@
       var smoothieChart = new TimeSeries();
       var msgps = 0;
 
-      var socket = io.connect('http://10.0.0.22');  // localhost, set ip for remote access.
+      var socket = io.connect('http://localhost');  // localhost, set ip/host for remote access.
   
       socket.on('connect', function (data) {
         // gstStreams and popluate the pulldown select menu.
@@ -413,7 +413,7 @@
         } else {
           var stream = 'all';
         }
-        console.log('stream selected: ' + stream);
+        //console.log('stream selected: ' + stream);
         socket.emit('getStream', stream);
         socket.emit('getStreams');
         socket.on('streams', function (streams) {
@@ -466,16 +466,38 @@
         msgps = mps;
       });
     
+      var addItem = undefined;
+      var QUE_MESSAGES_SLY_X = 20;
+      var msgarray = [];    // store array of latest messages.
+      var firstItem = true;
+      var x = 0;    
       var lastid = undefined;
+      var paused = false;
+      var i = 0;
+      
       socket.on('messages', function (messages) {
-        i = 0; // reset
+        if ( i >= QUE_MESSAGES_SLY_X ) {
+          i = 0; // reset
+        }
         if ( messages != null ) {
-          if ( messages[messages.length - 1].id != lastid ) {
-            lastid = messages[messages.length - 1].id;
-            for ( var m in messages ) {
-              addItem(messages[m], i);
-              i++;
-            }
+        	if ( messages.length != 0 ) {
+		        if ( messages[messages.length - 1].id != lastid ) {
+		          lastid = messages[messages.length - 1].id;
+		          for ( var m in messages ) {
+		          	
+		          	console.log('m: ' + m + ' i: ' + i);
+		          	
+		          	if ( i >= QUE_MESSAGES_SLY_X ) {
+		              addItem(messages[m], i);
+		            } else {
+		              if ( m >= i ) {
+		                addItem(messages[m], i);
+		              }
+		            }
+		            
+		            i++;
+		          }
+		        }
           }
         }
       });
@@ -484,15 +506,6 @@
       $('#select_items').on('change', function() {
         window.location = window.location.pathname + '?stream=' + this.value;
       });
-
-      var addItem = undefined;
-      var QUE_MESSAGES_SLY_X = 20;
-
-      var msgarray = [];    // store array of latest messages.
-
-      var firstItem = true;
-
-      var x = 0;
 
       jQuery(function($){
 
@@ -520,10 +533,6 @@
             dynamicHandle: 1,
             clickBar: 1
           });
-
-        // Pause button
-        var paused = false;
-        var i = 0;
 
         addItem = function(m, i) {
   
@@ -611,25 +620,20 @@
 
     <div class="pagespan container">
       <div class="wrap">
-    
           <div class="btn">
             <button class="pauseMe"></button>
-          </div>      
-
+          </div>
           <br/>
-      
           <div class="scrollbar">
             <div class="handle">
               <div class="mousearea"></div>
             </div>
           </div>
-
           <div class="frame oneperframe" id="oneperframe">
             <ul class="clearfix">
               <li></li>
             </ul>
           </div>
-
         </div>
     </div>
 
