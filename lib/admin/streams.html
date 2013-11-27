@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Kurunt - Streams</title>
+
+  <script src="jquery.min.js"></script>
+
+  <meta name="viewport" content="user-scalable=yes" /> 
+
+  <style type="text/css">
+  html { height: 100%; margin: 0; background: #535151; }
+
+  * { padding:0; margin:0; }
+  body {
+    margin-top: 0em;
+    text-align: center;
+    position: relative;
+    font-family: arial,helvetica,sans-serif,"Lucida Grande","Lucida Sans Unicode";
+    font-size: 10pt;
+    background: #d6d7da;
+  }
+  p {
+    font-size: 10pt;
+    line-height: 1.2em;
+    color: #1d272e;
+    margin: 8px 0 8px 0;
+  }
+  a:link, a:visited { color:#258b86; }
+  a:hover { color:#000; }
+  img { border:0; }
+
+  .spaceout { padding-top: 11px; }
+  .nada { display: none; }
+  .wrapper { 
+    padding: 0 2.5em 0 2.5em; 
+    margin: 0 auto; 
+    width: 1060px; 
+    text-align: left;
+  }
+
+  .white { background: #fff; }
+
+  h1 {  
+    margin-top: 1em;
+
+    font-size: 26pt; 
+    font-weight: bold;
+    color: #000;
+  }
+
+  h2 {  
+    margin-top: 10px;
+    font-size: 20pt; 
+    font-weight: bold;
+    color: #000;
+    padding-bottom: 8px;
+  }
+
+
+
+  .rounded-corners {
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+  }
+
+
+  .pagespan { clear: both; margin: 2em 0 4em 0; }
+
+  /* Example wrapper */
+  .wrap {
+    position: relative;
+    margin: 2em 0;
+  }
+
+  
+  /* top toolbar */
+  #headermenu{
+    height: 66px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -2.6em;
+  }
+
+  #logo {
+    margin: 19px 0 0 0;
+    padding: 0;
+    text-align: left;
+    float: left;
+  }
+
+  #navs {
+    margin-top: 21px;
+    float: left;
+    text-align: right;
+  }
+
+  #navs a {
+    font-size: 17pt; 
+    font-weight: normal;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 4em;
+  }
+
+  #navs a:hover { color: #c1c8c8; }
+  .nav_seperator { margin: 0 6px 0 6px; color: #fff; }
+
+  #contents h1 {
+    padding-top: 1em;
+  }
+  #contents {
+    padding-bottom: 1px;
+  }
+
+  /* footer */
+  #footer {
+    padding-top: 3px;
+    background: #535151;
+    border-top: 1px solid #c1c8c8;
+    padding-bottom: 0.5em;
+  }
+
+  #footer p{ text-align: left; font-size: 10pt; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
+  #footer a { color: #c1c8c8; text-decoration: none; }
+  #footer a:hover { color: #fff; }
+
+  #footer .copyright a { text-decoration: underline; }
+
+  .seperator { margin: 0 5px 0 5px; color: #c1c8c8; }
+
+  /* select_data pulldown menu */
+  #select_data {
+    margin-top: 2.7em;
+    padding: 8px;
+    float: right;
+    background: #717171;
+  }
+
+  #select_data h5 {
+    font-size: 11pt; 
+    padding: 3px;
+    font-weight: normal;
+    color: #fff;
+    display: inline;
+  }
+
+  #select_data select {
+      min-width: 230px;
+  }
+  </style>
+</head>
+
+<body>
+
+  <div id="headermenu">
+    <div class="wrapper">
+      <div id="logo"><img src="logo.png" alt="" /></div>
+      <div id="navs">
+        <a href="streams.html">Streams</a>
+        <a href="report.html">Report</a>  
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper white" id="contents">
+
+
+    <h1>Streams</h1>
+
+  
+    <script>
+
+      // set header colour:
+      var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
+      $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+
+     
+
+    </script>
+
+
+
+
+    <div class="pagespan container">
+      <div class="wrap">
+      
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+      <div class="wrapper">
+        <p> 
+          <a href="http://kurunt.com">Kurunt</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/support/">Support</a>
+          <span class="seperator"> |</span> 
+          <a href="https://github.com/kurunt">GitHub</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/license/">License</a>
+        </p>  
+        <p class="copyright">
+          &copy; Copyright Kurunt 2013. Except where otherwise <a href="http://kurunt.com/license/">noted</a>, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+        </p>
+      </div>
+    </div>
+
+</body>
+</html>
