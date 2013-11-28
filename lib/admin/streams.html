@@ -2,157 +2,89 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=yes" /> 
   <title>Kurunt - Streams</title>
 
   <script src="jquery.min.js"></script>
 
-  <meta name="viewport" content="user-scalable=yes" /> 
-
+  <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
-  html { height: 100%; margin: 0; background: #535151; }
+ 
+table{
+	border-collapse: collapse;
+	margin: 0px 0 0 0;
+	color: #000;
+ 	width: 100%;
+	border-top: 1px solid #000;
+	border-spacing: 1px;
+}
 
-  * { padding:0; margin:0; }
-  body {
-    margin-top: 0em;
-    text-align: center;
-    position: relative;
-    font-family: arial,helvetica,sans-serif,"Lucida Grande","Lucida Sans Unicode";
-    font-size: 10pt;
-    background: #d6d7da;
-  }
-  p {
-    font-size: 10pt;
-    line-height: 1.2em;
-    color: #1d272e;
-    margin: 8px 0 8px 0;
-  }
-  a:link, a:visited { color:#258b86; }
-  a:hover { color:#000; }
-  img { border:0; }
+table th {
+	height: 20px;
+	font-size: 12px;
+	padding: 7px 11px 7px 11px;
+	border: 1px solid #505258;
+	color: #fff;
+	background: #252829;
+}
 
-  .spaceout { padding-top: 11px; }
-  .nada { display: none; }
-  .wrapper { 
-    padding: 0 2.5em 0 2.5em; 
-    margin: 0 auto; 
-    width: 1060px; 
-    text-align: left;
-  }
+table tbody {  }
 
-  .white { background: #fff; }
+table td {
+	font-size: 11px; 
+	padding: 7px 11px 7px 11px;
+	border: 1px solid #abadb3;
+	color: #313131;
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow:ellipsis;
+}
 
-  h1 {  
-    margin-top: 1em;
+table .row_num_th {
+	width: 15px;
+	border: 1px solid #abadb3;
+	background: #637383;
+	color: #fff;
+	text-align: center;        
+}
+table .row_num {
+	border: 1px solid #abadb3;
+ 	color: #fff;
+	background: #39424b;
+	text-align: center;
+}
+table .row_del_th {
+	color: #fff;
+	text-align: center;        
+	width: 30px;
+}
+table .row_edit_th {
+	color: #fff;
+	text-align: center;        
+	width: 30px;
+}
+table .row_api_th {
+	color: #fff;
+	text-align: center;        
+	width: 30px;
+}
 
-    font-size: 26pt; 
-    font-weight: bold;
-    color: #000;
-  }
-
-  h2 {  
-    margin-top: 10px;
-    font-size: 20pt; 
-    font-weight: bold;
-    color: #000;
-    padding-bottom: 8px;
-  }
-
-
-
-  .rounded-corners {
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    border-radius: 20px;
-  }
-
-
-  .pagespan { clear: both; margin: 2em 0 4em 0; }
-
-  /* Example wrapper */
-  .wrap {
-    position: relative;
-    margin: 2em 0;
-  }
-
-  
-  /* top toolbar */
-  #headermenu{
-    height: 66px;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #fff;
-    margin-bottom: -2.6em;
-  }
-
-  #logo {
-    margin: 19px 0 0 0;
-    padding: 0;
-    text-align: left;
-    float: left;
-  }
-
-  #navs {
-    margin-top: 21px;
-    float: left;
-    text-align: right;
-  }
-
-  #navs a {
-    font-size: 17pt; 
-    font-weight: normal;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-left: 4em;
-  }
-
-  #navs a:hover { color: #c1c8c8; }
-  .nav_seperator { margin: 0 6px 0 6px; color: #fff; }
-
-  #contents h1 {
-    padding-top: 1em;
-  }
-  #contents {
-    padding-bottom: 1px;
-  }
-
-  /* footer */
-  #footer {
-    padding-top: 3px;
-    background: #535151;
-    border-top: 1px solid #c1c8c8;
-    padding-bottom: 0.5em;
-  }
-
-  #footer p{ text-align: left; font-size: 10pt; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
-  #footer a { color: #c1c8c8; text-decoration: none; }
-  #footer a:hover { color: #fff; }
-
-  #footer .copyright a { text-decoration: underline; }
-
-  .seperator { margin: 0 5px 0 5px; color: #c1c8c8; }
-
-  /* select_data pulldown menu */
-  #select_data {
-    margin-top: 2.7em;
-    padding: 8px;
-    float: right;
-    background: #717171;
-  }
-
-  #select_data h5 {
-    font-size: 11pt; 
-    padding: 3px;
-    font-weight: normal;
-    color: #fff;
-    display: inline;
-  }
-
-  #select_data select {
-      min-width: 230px;
-  }
+table tr:hover td {
+	background: #fdf2f2;
+}
+table .alternate_open {
+	background: #e9fecb;
+}
+table .alternate_closed {
+	background: url(/images/bg_grey.gif) top repeat;
+}
+table .td_address {
+	width: 35%;
+}
+table .td_status {
+	text-align: center;
+}
+ 
   </style>
 </head>
 
@@ -160,10 +92,10 @@
 
   <div id="headermenu">
     <div class="wrapper">
-      <div id="logo"><img src="logo.png" alt="" /></div>
+      <div id="logo"><img src="/images/logo.png" alt="" /></div>
       <div id="navs">
         <a href="streams.html">Streams</a>
-        <a href="report.html">Report</a>  
+        <a id="report-address" href="<kurunt-report-address>">Report</a>  
       </div>
     </div>
   </div>
@@ -180,59 +112,40 @@
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
 
-/*
-function hand () {
-	console.log(this.getResponseHeader('X-report-address'));
-}
-var x = new XMLHttpRequest();
-x.onreadystatechange = hand;
-x.open('GET', 'index.html', true);
-x.send();
 
-
-// this works
-function loadXMLDoc(url) {
-if (window.XMLHttpRequest) {		// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-} else {		// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-}
-xmlhttp.onreadystatechange = function() {
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		console.log('X-report-address: ' + xmlhttp.getResponseHeader('X-report-address'));
-	}
-}
-	xmlhttp.open("GET",url,true);
-	xmlhttp.send();
-}
-loadXMLDoc('index.html'); 
- */
- 
-
- 
- 
-      
-      
-      
-      
       var reports_address = '<kurunt-report-address>';
       console.log('reports_address: ' + reports_address);
       
       
       // another tag
       
-      //var version = <kurunt-version>;
-      //console.log('version: ' +version);
+      var version = <kurunt-version>;
+      console.log('version: ' +version);
       
-      
+ 
+ 
       
       var streams = JSON.parse(<kurunt-streams>);
      	//console.log('streams: ' + streams['streams'][1]['apikey']);
-			
+			var i = 1;
+			var alternate = '';
 			
 			jQuery(function($){       
 			 	$.each(streams['streams'], function(key, val) {
 					console.log('<tr id="stream_' + key + '">' + val['apikey'] + ' worker: ' + val['worker'] + '</tr>');
+					
+					
+					if ( i%2 != 1 ) {
+						alternate = 'alternate';
+					}
+					if ( val['status'] === 'closed' ) {
+						alternate = 'alternate_closed';
+					} else {
+						alternate = 'alternate_open';
+					}
+				
+					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">stream, mongo</td><td class="'+alternate+'">test</td><td class="'+alternate+'"><a href="#">stream</a></td><td class="'+alternate+'"><a href="#">tcp://127.0.0.1:5555</a></td><td class="'+alternate+' row_api_th"><a href="#"><img src="/images/api_icon.gif" alt="api" title="api" /></a></td><td class="'+alternate+'"><a href="#">' + val['status'] + '</a></td><td class="'+alternate+' row_edit_th"><img onclick="editStream('+ val['apikey'] +')" src="/images/edit_icon.gif" alt="edit" title="edit" /></td><td class="'+alternate+' row_del_th"><img onclick="deleteStream('+ val['apikey'] +')" src="/images/delete_icon.gif" alt="delete" title="delete" /></td></tr>').appendTo("#streams_table tbody");
+					i++;
 				});
       });
       
@@ -243,6 +156,33 @@ loadXMLDoc('index.html');
 
     <div class="pagespan container">
       <div class="wrap">
+  
+  			<div id="streams_table">
+  				<table>
+  					<thead>
+  						<tr>
+  							<th class="row_num_th">-</th>
+  							<th>apikey</th>
+  							<th>Input</th>
+  							<th>Worker</th>
+  							<th>Stores</th>
+  							<th>Tags</th>
+  							<th>Reports</th>
+  							<th>Input Address</th>
+  							<th>API</th>  							
+  							<th>Status</th>
+  							<th class="row_edit_th">-</th>
+  							<th class="row_del_th">-</th>
+              </tr>
+            </thead>
+            <tbody>
+
+          	</tbody>
+      		</table>
+      	</div>
+      
+      <br/>
+      <a href="/new-stream.html">New Stream</a>
       
       </div>
     </div>

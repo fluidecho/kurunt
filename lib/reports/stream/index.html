@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=yes" /> 
   <title>Kurunt - Stream Report</title>
 
   <script src="jquery.min.js"></script>
@@ -9,57 +10,9 @@
   <script src="plugins.js"></script>
   <script src="smoothie.js"></script>
 
-  <meta name="viewport" content="user-scalable=yes" /> 
-
+  <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
-  html { height: 100%; margin: 0; background: #535151; }
-
-  * { padding:0; margin:0; }
-  body {
-    margin-top: 0em;
-    text-align: center;
-    position: relative;
-    font-family: arial,helvetica,sans-serif,"Lucida Grande","Lucida Sans Unicode";
-    font-size: 10pt;
-    background: #d6d7da;
-  }
-  p {
-    font-size: 10pt;
-    line-height: 1.2em;
-    color: #1d272e;
-    margin: 8px 0 8px 0;
-  }
-  a:link, a:visited { color:#258b86; }
-  a:hover { color:#000; }
-  img { border:0; }
-
-  .spaceout { padding-top: 11px; }
-  .nada { display: none; }
-  .wrapper { 
-    padding: 0 2.5em 0 2.5em; 
-    margin: 0 auto; 
-    width: 1060px; 
-    text-align: left;
-  }
-
-  .white { background: #fff; }
-
-  h1 {  
-    margin-top: 1em;
-
-    font-size: 26pt; 
-    font-weight: bold;
-    color: #000;
-  }
-
-  h2 {  
-    margin-top: 10px;
-    font-size: 20pt; 
-    font-weight: bold;
-    color: #000;
-    padding-bottom: 8px;
-  }
-
+  
   /* Smoothie Chart */
   #chart {
     margin-top: 3em;
@@ -290,65 +243,6 @@
     transform: rotateY(-60deg) scale(0.9);
   }
 
-  /* top toolbar */
-  #headermenu{
-    height: 66px;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #fff;
-    margin-bottom: -2.6em;
-  }
-
-  #logo {
-    margin: 19px 0 0 0;
-    padding: 0;
-    text-align: left;
-    float: left;
-  }
-
-  #navs {
-    margin-top: 21px;
-    float: left;
-    text-align: right;
-  }
-
-  #navs a {
-    font-size: 17pt; 
-    font-weight: normal;
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-left: 4em;
-  }
-
-  #navs a:hover { color: #c1c8c8; }
-  .nav_seperator { margin: 0 6px 0 6px; color: #fff; }
-
-  #contents h1 {
-    padding-top: 1em;
-  }
-  #contents {
-    padding-bottom: 1px;
-  }
-
-  /* footer */
-  #footer {
-    padding-top: 3px;
-    background: #535151;
-    border-top: 1px solid #c1c8c8;
-    padding-bottom: 0.5em;
-  }
-
-  #footer p{ text-align: left; font-size: 10pt; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
-  #footer a { color: #c1c8c8; text-decoration: none; }
-  #footer a:hover { color: #fff; }
-
-  #footer .copyright a { text-decoration: underline; }
-
-  .seperator { margin: 0 5px 0 5px; color: #c1c8c8; }
-
   /* select_data pulldown menu */
   #select_data {
     margin-top: 2.7em;
@@ -377,8 +271,8 @@
     <div class="wrapper">
       <div id="logo"><img src="logo.png" alt="" /></div>
       <div id="navs">
-        <a href="streams.html">Streams</a>
-        <a href="report.html">Report</a>  
+        <a id="admin-address" href="#">Streams</a>
+        <a id="report-address" href="#">Report</a> 
       </div>
     </div>
   </div>
@@ -399,6 +293,30 @@
       // set header colour:
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+
+
+			// gets X-kurunt-admin-address header.
+			function loadXMLDoc(url) {
+			if (window.XMLHttpRequest) {		// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			} else {		// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					console.log('X-kurunt-admin-address: ' + xmlhttp.getResponseHeader('X-kurunt-admin-address'));
+					$("#admin-address").attr("href", xmlhttp.getResponseHeader('X-kurunt-admin-address') + "/streams.html");
+				}
+			}
+				xmlhttp.open("GET",url,true);
+				xmlhttp.send();
+			}
+			loadXMLDoc('X-kurunt.info'); 		// requests info file which returns values in http header.
+
+
+			// set reports url from self.
+			$("#report-address").attr("href", window.location.pathname);
+			// $("#report-address").attr("href", reports_address);
 
       var smoothieChart = new TimeSeries();
       var msgps = 0;
