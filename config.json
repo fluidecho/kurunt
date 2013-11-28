@@ -1,15 +1,12 @@
 {
   "host": "127.0.0.1",
-  "this_node": 0, 
+  "this_node": 0,
   "debug": "benchmarking",
+  "admin_www": true,
   "admin_www_port": 8888,
-  "stream_api": true,
-  "stream_api_port": 3333,
-  "stream_api_pass": "pass",
-  "stream_api_all_pass": "pass",  
   "messenger_codec": "json",
   "input_tcp_message_delineate": 10,
-  "input_tcp_message_buffer_limit": 10485760, 
+  "input_tcp_message_buffer_limit": 10485760,
   "mq_nodelay": true,
   "bands": 100,
   "band": 0

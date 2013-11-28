@@ -180,8 +180,62 @@
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
 
-     
+/*
+function hand () {
+	console.log(this.getResponseHeader('X-report-address'));
+}
+var x = new XMLHttpRequest();
+x.onreadystatechange = hand;
+x.open('GET', 'index.html', true);
+x.send();
 
+
+// this works
+function loadXMLDoc(url) {
+if (window.XMLHttpRequest) {		// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+} else {		// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		console.log('X-report-address: ' + xmlhttp.getResponseHeader('X-report-address'));
+	}
+}
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+}
+loadXMLDoc('index.html'); 
+ */
+ 
+
+ 
+ 
+      
+      
+      
+      
+      var reports_address = '<kurunt-report-address>';
+      console.log('reports_address: ' + reports_address);
+      
+      
+      // another tag
+      
+      //var version = <kurunt-version>;
+      //console.log('version: ' +version);
+      
+      
+      
+      var streams = JSON.parse(<kurunt-streams>);
+     	//console.log('streams: ' + streams['streams'][1]['apikey']);
+			
+			
+			jQuery(function($){       
+			 	$.each(streams['streams'], function(key, val) {
+					console.log('<tr id="stream_' + key + '">' + val['apikey'] + ' worker: ' + val['worker'] + '</tr>');
+				});
+      });
+      
     </script>
 
 

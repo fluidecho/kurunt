@@ -10,7 +10,8 @@
   "dependencies": {
     "uid-number-bands": "~0.0.7",
     "axon": "~0.6.1",
-    "mime": "~1.2.0"
+    "mime": "~1.2.0",
+    "nimble": "~0.0.2"
   },
   "devDependencies": {
   },
