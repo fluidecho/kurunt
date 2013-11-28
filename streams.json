@@ -5,6 +5,6 @@
     { "apikey": 5558, "input": { "object": "tcp", "id": 0 }, "worker": "json", "stores": ["stream"], "reports": ["stream"], "tags": ["json", "test"], "status": "open", "access_hosts": [""] },
 		{ "apikey": 5559, "input": { "object": "tcp", "id": 0 }, "worker": "combined", "stores": ["stream"], "reports": ["stream"], "tags": ["combined", "test"], "status": "open", "access_hosts": [""] },  
 		{ "apikey": 5560, "input": { "object": "tcp", "id": 0 }, "worker": "syslog", "stores": ["stream"], "reports": ["stream"], "tags": ["syslog", "test"], "status": "open", "access_hosts": [""] },
-		{ "apikey": 5561, "input": { "object": "tcp", "id": 0 }, "worker": "msgpack", "stores": ["stream"], "reports": ["stream"], "tags": ["msgpack", "test"], "status": "open", "access_hosts": [""] }
+		{ "apikey": 5561, "input": { "object": "udp", "id": 0 }, "worker": "msgpack", "stores": ["stream"], "reports": ["stream"], "tags": ["msgpack", "test"], "status": "closed", "access_hosts": [""] }
   ]
 }
