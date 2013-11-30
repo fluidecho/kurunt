@@ -1,7 +1,7 @@
 {
 	"name": "msgpack",
-	"title": "msgpack",	
-	"description": "MessagePack 'worker' for Kurunt, processing msgpack data.",
+	"title": "MessagePack",	
+	"description": "MessagePack, for processing MessagePack data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/msgpack/",
 	"version": 0.2,	

@@ -1,7 +1,7 @@
 {
 	"name": "combined",
 	"title": "Combined",	
-	"description": "Apache Combined Access Log 'worker' for Kurunt, processing access_log data.",
+	"description": "Apache Combined Access Log, for processing access_log data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/combined/",
 	"version": 0.2,	

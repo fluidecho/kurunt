@@ -1,7 +1,7 @@
 {
 	"name": "csv",
-	"title": "csv",	
-	"description": "Comma Separated Values 'worker' for Kurunt, processing tuple data.",
+	"title": "CSV",	
+	"description": "Comma Separated Values, for processing tuple data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/csv/",
 	"version": 0.2,	

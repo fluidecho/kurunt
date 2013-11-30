@@ -1,7 +1,7 @@
 {
 	"name": "string",
 	"title": "String",	
-	"description": "String 'worker' for Kurunt, processing text data.",
+	"description": "String, for processing text data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/string/",
 	"version": 0.2,	

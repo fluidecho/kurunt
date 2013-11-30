@@ -54,6 +54,7 @@ html { height: 100%; margin: 0; background: #535151; }
     border-radius: 20px;
   }
 
+	.clearBoth { clear:both; }
 
   .pagespan { clear: both; margin: 2em 0 4em 0; }
 
@@ -123,22 +124,17 @@ html { height: 100%; margin: 0; background: #535151; }
 
   .seperator { margin: 0 5px 0 5px; color: #c1c8c8; }
 
-  /* select_data pulldown menu */
-  #select_data {
-    margin-top: 2.7em;
-    padding: 8px;
-    float: right;
-    background: #717171;
-  }
 
-  #select_data h5 {
-    font-size: 11pt; 
-    padding: 3px;
-    font-weight: normal;
-    color: #fff;
-    display: inline;
-  }
-
-  #select_data select {
-      min-width: 230px;
-  }
+	.submit1 {
+		background: #00877A;
+		color: #fff;
+		padding: 8px 15px 8px 15px;
+		border: 1px solid #00877A;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		border-radius: 3px;                
+	}
+	.submit1:hover {
+		background: #085951;
+	}  
