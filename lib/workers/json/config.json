@@ -1,7 +1,7 @@
 {
 	"name": "json",
-	"title": "json",	
-	"description": "JSON 'worker' for Kurunt, processing json data.",
+	"title": "JSON",	
+	"description": "JavaScript Object Notation, for processing JSON data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/json/",
 	"version": 0.2,	

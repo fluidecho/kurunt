@@ -9,7 +9,47 @@
 
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
-  
+
+		.workers {
+			float: left;
+			display: inline;            
+		}
+		
+		.worker {
+			float: left;
+			margin: 0 1em 1em 0;
+			background: #333333;
+			padding: 12px;
+			border: 1px solid #abadb3;
+			width: 160px;
+			min-height: 110px;
+			-moz-border-radius: 13px;
+			-webkit-border-radius: 13px;
+			-khtml-border-radius: 13px;
+			border-radius: 13px;                   
+		}
+		.worker h3 {
+			margin: 0.5em;
+			font-size: 120%;
+			font-weight: bold;
+			color: #fff;
+			text-align: left;
+		}
+		.worker p {
+			margin: 0.5em;
+			font-size: 88%;
+			min-height: 40px;
+			color: #fff;
+			text-align: left;
+		}
+		
+		
+		.worker:hover {
+			background: #00877A;
+			cursor: pointer;
+		}
+		
+		
   </style>
 </head>
 
@@ -48,27 +88,44 @@
       
       
       
-      //var workers = JSON.parse(<kurunt-workers>);
-     	//console.log('workers: ' + workers['workers'][0]['apikey']);
-			
-			/*
+      var workers = JSON.parse(<kurunt-workers>);
+
 			jQuery(function($){       
-			 	$.each(streams['streams'], function(key, val) {
-					console.log('<tr id="stream_' + key + '">' + val['apikey'] + ' worker: ' + val['worker'] + '</tr>');
+			 	$.each(workers, function(key, val) {
+					
+					console.log('key: ' + key + ' val: ' + val);
+					
+					
+					
+					
+					
+					
+					$('<span onclick="newWorker(\''+key+'\')" class="worker"><h3>'+val['title']+'</h3><p>'+val['description']+'</p></span>').appendTo("#workers");
+					
 				});
       });
-      */
+      
+      
+      function newWorker(worker) {
+      	console.log('new worker: ' + worker);
+      }
+      
     </script>
 
 
-
-
-    <div class="pagespan container">
+ 		<div class="pagespan container">
       <div class="wrap">
-      
+  
+  			<div id="workers">
+
+				</div>
+
       </div>
     </div>
-
+    
+   	<br class="clearBoth" />
+   	<br/>
+    
   </div>
 
   <div id="footer">

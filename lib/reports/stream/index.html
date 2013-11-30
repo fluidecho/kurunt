@@ -338,8 +338,16 @@
           //console.log('got streams: ' + streams);
           $('#select_items').append($("<option></option>").attr("value", 'all').text('All'));
           for ( var st in streams.streams ) {
-            var select_item = streams.streams[st]['worker'] + '_' + streams.streams[st]['apikey'];
-            $('#select_items').append($("<option></option>").attr("value", select_item).text(select_item));
+						var hasStreamStore = false;		// check if has 'stream' store.
+						for ( var s in streams.streams[st]['stores'] ) {
+							if ( streams.streams[st]['stores'][s] === 'stream' ) {
+								hasStreamStore = true;
+							}
+						}
+						if ( hasStreamStore === true ) {
+            	var select_item = streams.streams[st]['worker'] + '_' + streams.streams[st]['apikey'];
+            	$('#select_items').append($("<option></option>").attr("value", select_item).text(select_item));
+            }
           }
           $('#select_items').val(stream);
         });   

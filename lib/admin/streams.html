@@ -9,82 +9,96 @@
 
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
+
+		table{
+			border-collapse: collapse;
+			margin: 0px 0 0 0;
+			color: #000;
+		 	width: 100%;
+			border-top: 1px solid #000;
+			border-spacing: 1px;
+		}
+
+		table th {
+			height: 20px;
+			font-size: 12px;
+			padding: 7px 11px 7px 11px;
+			border: 1px solid #505258;
+			color: #fff;
+			background: #333333;
+		}
+
+		table tbody {  }
+
+		table td {
+			font-size: 11px; 
+			padding: 7px 11px 7px 11px;
+			border: 1px solid #abadb3;
+			color: #313131;
+			white-space: nowrap; 
+			overflow: hidden; 
+			text-overflow:ellipsis;
+		}
+
+		table .row_num_th {
+			width: 15px;
+			border: 1px solid #abadb3;
+			background: #BDBDBD;
+			color: #fff;
+			text-align: center;        
+		}
+		table .row_num {
+			border: 1px solid #abadb3;
+		 	color: #fff;
+			background: #535151;
+			text-align: center;
+		}
+		table .row_del_th, .row_edit_th, .row_api_th, .row_status_th {
+			color: #fff;
+			text-align: center;        
+			width: 30px;
+		}
+
+
+		table tr:hover td {
+			background: #fdf2f2;
+		}
+		table .alternate_open {
+			background: #F2FFE0;
+		}
+		table .alternate_closed {
+			background: url(/images/bg_grey.gif) top repeat;
+		}
+		table .td_address {
+			width: 35%;
+		}
+		table .td_status {
+			text-align: center;
+		}
+
+ 		
+ 		#send_data h2 {
+ 			margin-bottom: 15px;
+ 		}
  
-table{
-	border-collapse: collapse;
-	margin: 0px 0 0 0;
-	color: #000;
- 	width: 100%;
-	border-top: 1px solid #000;
-	border-spacing: 1px;
-}
+ 		#send_data code {
+			width: 100%;
+    	text-align: center;
+    	background: #535151;
+    	color: #fff;
+    	padding: 15px;
+ 		}
+ 		
+ 		#send_data p {
+ 			margin-top: 1.5em;
+ 		}
+		.rounded-corners-10 {
+		  -webkit-border-radius: 10px;
+		  -khtml-border-radius: 10px;
+		  border-radius: 10px;
+		}
 
-table th {
-	height: 20px;
-	font-size: 12px;
-	padding: 7px 11px 7px 11px;
-	border: 1px solid #505258;
-	color: #fff;
-	background: #252829;
-}
 
-table tbody {  }
-
-table td {
-	font-size: 11px; 
-	padding: 7px 11px 7px 11px;
-	border: 1px solid #abadb3;
-	color: #313131;
-	white-space: nowrap; 
-	overflow: hidden; 
-	text-overflow:ellipsis;
-}
-
-table .row_num_th {
-	width: 15px;
-	border: 1px solid #abadb3;
-	background: #637383;
-	color: #fff;
-	text-align: center;        
-}
-table .row_num {
-	border: 1px solid #abadb3;
- 	color: #fff;
-	background: #39424b;
-	text-align: center;
-}
-table .row_del_th {
-	color: #fff;
-	text-align: center;        
-	width: 30px;
-}
-table .row_edit_th {
-	color: #fff;
-	text-align: center;        
-	width: 30px;
-}
-table .row_api_th {
-	color: #fff;
-	text-align: center;        
-	width: 30px;
-}
-
-table tr:hover td {
-	background: #fdf2f2;
-}
-table .alternate_open {
-	background: #e9fecb;
-}
-table .alternate_closed {
-	background: url(/images/bg_grey.gif) top repeat;
-}
-table .td_address {
-	width: 35%;
-}
-table .td_status {
-	text-align: center;
-}
- 
   </style>
 </head>
 
@@ -105,26 +119,12 @@ table .td_status {
 
     <h1>Streams</h1>
 
-  
     <script>
 
       // set header colour:
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
 
-
-      var reports_address = '<kurunt-report-address>';
-      console.log('reports_address: ' + reports_address);
-      
-      
-      // another tag
-      
-      var version = <kurunt-version>;
-      console.log('version: ' +version);
-      
- 
- 
-      
       var streams = JSON.parse(<kurunt-streams>);
      	//console.log('streams: ' + streams['streams'][1]['apikey']);
 			var i = 1;
@@ -132,8 +132,6 @@ table .td_status {
 			
 			jQuery(function($){       
 			 	$.each(streams['streams'], function(key, val) {
-					console.log('<tr id="stream_' + key + '">' + val['apikey'] + ' worker: ' + val['worker'] + '</tr>');
-					
 					
 					if ( i%2 != 1 ) {
 						alternate = 'alternate';
@@ -144,14 +142,55 @@ table .td_status {
 						alternate = 'alternate_open';
 					}
 				
-					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">stream, mongo</td><td class="'+alternate+'">test</td><td class="'+alternate+'"><a href="#">stream</a></td><td class="'+alternate+'"><a href="#">tcp://127.0.0.1:5555</a></td><td class="'+alternate+' row_api_th"><a href="#"><img src="/images/api_icon.gif" alt="api" title="api" /></a></td><td class="'+alternate+'"><a href="#">' + val['status'] + '</a></td><td class="'+alternate+' row_edit_th"><img onclick="editStream('+ val['apikey'] +')" src="/images/edit_icon.gif" alt="edit" title="edit" /></td><td class="'+alternate+' row_del_th"><img onclick="deleteStream('+ val['apikey'] +')" src="/images/delete_icon.gif" alt="delete" title="delete" /></td></tr>').appendTo("#streams_table tbody");
+					var hasStreamStore = false;		// check if has 'stream' store, else dont link api and stream report.
+					var stores = '';
+					for ( var s in val['stores'] ) {
+						stores = stores + val['stores'][s] + ', ';
+						if ( val['stores'][s] === 'stream' ) {
+							hasStreamStore = true;
+						}
+					}
+					stores = stores.substring(0, stores.length - 2);
+					//console.log('stores: ' + stores);
+					
+					var tags = '';
+					for ( var t in val['tags'] ) {
+						tags = tags + val['tags'][t] + ', ';
+					}
+					tags = tags.substring(0, tags.length - 2);
+					//console.log('tags: ' + tags);
+					
+					// stream api address:
+					var stream_api_address = 'http://' + val['apikey'] + ':<kurunt-stream-api-pass>@<kurunt-host>:<kurunt-stream-api-port>';					
+					
+					if ( hasStreamStore === true ) {
+						var stream_report = '<a href="<kurunt-report-address>' + '?stream=' + val['worker'] + '_' + val['apikey']+'">stream</a>';
+						var api_link = '<a href="'+stream_api_address+'" target="_blank"><img src="/images/api_icon.gif" alt="api" title="api" /></a>';
+					} else {
+						var stream_report = '';
+						var api_link = '';
+					}
+				
+					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'">'+stream_report+'</td><td class="'+alternate+'"><a href="#">tcp://127.0.0.1:5555</a></td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="'+alternate+' row_status_th"><a href="#">' + val['status'] + '</a></td><td class="'+alternate+' row_edit_th"><a href="#" onclick="editStream('+ val['apikey'] +')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="'+alternate+' row_del_th"><a href="#" onclick="deleteStream('+ val['apikey'] +')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
 					i++;
 				});
       });
       
+
+      function deleteStream(apikey) {
+				var r = confirm("Are you sure you wish to delete this ("+apikey+") stream?");
+				if ( r == true ) {
+					// delete.
+					console.log('delete this stream: ' + apikey);
+				}
+      }
+
+
+      function editStream(apikey) {
+				console.log('edit this stream: ' + apikey);
+      }    
+
     </script>
-
-
 
 
     <div class="pagespan container">
@@ -169,8 +208,8 @@ table .td_status {
   							<th>Tags</th>
   							<th>Reports</th>
   							<th>Input Address</th>
-  							<th>API</th>  							
-  							<th>Status</th>
+  							<th class="row_api_th">API</th>  							
+  							<th class="row_status_th">Status</th>
   							<th class="row_edit_th">-</th>
   							<th class="row_del_th">-</th>
               </tr>
@@ -181,8 +220,24 @@ table .td_status {
       		</table>
       	</div>
       
-      <br/>
-      <a href="/new-stream.html">New Stream</a>
+      	<br/>
+
+				<form method="get" name="newstreamfm" action="/new-stream.html">
+          <p>
+          	<br/>
+          	<input class="submit1" type="submit" value="New Stream"/> 
+          </p>       				
+				</form>
+				
+      	<br/><br/><br/>
+      	
+      	<div id="send_data">
+      		<h2>Send some data to stream</h2>
+      		<code class="rounded-corners-10">> node kurunt/client/send.js -apikey=APIKEY -data='hello world'</code>
+      		<p><b><i>-data</i></b> should be in the format of the 'worker', for example json, -data='{"hello": "world"}' or can be left blank for default values.</p>
+      	</div>
+      	
+      	<br/>
       
       </div>
     </div>
