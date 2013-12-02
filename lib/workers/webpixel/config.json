@@ -1,7 +1,7 @@
 {
 	"name": "webpixel",
 	"title": "Web Pixel",	
-	"description": "Web Pixel, for processing clickstream data, used for web analytics.",
+	"description": "Web Pixel, for processing clickstream data.",
 	"icon": "",
 	"url": "http://docs.kurunt.com/workers/combined/",
 	"version": 0.2,	

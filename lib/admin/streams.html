@@ -79,19 +79,34 @@
  		
  		#send_data h2 {
  			margin-bottom: 15px;
+ 			border-bottom: solid 1px #C0B6B6;
+ 			
  		}
  
- 		#send_data code {
-			width: 100%;
+ 		code {
+			width: 110%;
     	text-align: center;
     	background: #535151;
     	color: #fff;
-    	padding: 15px;
+    	padding: 10px;
+    	line-height: 300%;
+ 		  -webkit-border-radius: 5px;
+		  -khtml-border-radius: 5px;
+		  border-radius: 5px;
  		}
  		
+
+ 		
  		#send_data p {
- 			margin-top: 1.5em;
+ 			margin-top: 10px;
+ 			margin-bottom: 0.8em;
  		}
+ 		
+ 		#send_data h3 {
+ 			margin-top: 1.3em;
+ 		}
+ 		
+ 		
 		.rounded-corners-10 {
 		  -webkit-border-radius: 10px;
 		  -khtml-border-radius: 10px;
@@ -162,7 +177,10 @@
 					
 					// stream api address:
 					var stream_api_address = 'http://' + val['apikey'] + ':<kurunt-stream-api-pass>@<kurunt-host>:<kurunt-stream-api-port>';					
-					
+
+					// input address:
+					var input_address = val['input']['object'] + '://<kurunt-host>:' + val['apikey'];
+				
 					if ( hasStreamStore === true ) {
 						var stream_report = '<a href="<kurunt-report-address>' + '?stream=' + val['worker'] + '_' + val['apikey']+'">stream</a>';
 						var api_link = '<a href="'+stream_api_address+'" target="_blank"><img src="/images/api_icon.gif" alt="api" title="api" /></a>';
@@ -171,7 +189,7 @@
 						var api_link = '';
 					}
 				
-					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'">'+stream_report+'</td><td class="'+alternate+'"><a href="#">tcp://127.0.0.1:5555</a></td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="'+alternate+' row_status_th"><a href="#">' + val['status'] + '</a></td><td class="'+alternate+' row_edit_th"><a href="#" onclick="editStream('+ val['apikey'] +')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="'+alternate+' row_del_th"><a href="#" onclick="deleteStream('+ val['apikey'] +')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
+					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'">'+stream_report+'</td><td class="'+alternate+'"><a href="'+input_address+'">'+input_address+'</a></td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="'+alternate+' row_status_th"><a href="#">' + val['status'] + '</a></td><td class="'+alternate+' row_edit_th"><a href="#" onclick="editStream('+ val['apikey'] +')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="'+alternate+' row_del_th"><a href="#" onclick="deleteStream('+ val['apikey'] +')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
 					i++;
 				});
       });
@@ -229,12 +247,37 @@
           </p>       				
 				</form>
 				
-      	<br/><br/><br/>
+      	<br/><br/><br/><br/>
       	
       	<div id="send_data">
-      		<h2>Send some data to stream</h2>
-      		<code class="rounded-corners-10">> node kurunt/client/send.js -apikey=APIKEY -data='hello world'</code>
-      		<p><b><i>-data</i></b> should be in the format of the 'worker', for example json, -data='{"hello": "world"}' or can be left blank for default values.</p>
+      		<h2>Sending data to the stream</h2>
+      		<p>Your data can be inputed many ways through Kurunts TCP, UDP and HTTP inputs. These inputs allows you to use your own clients sending your data through these protocols. Below are some examples of different ways of sending data to Kurunt. Note that the data you send should be in the format of the coresponding 'worker' for your stream.</p>
+
+      		<h3>Curl (http input only)</h3>
+      		<p>You can use GET, PUT or POST to send data through the http input.</p>
+      		<code>curl -X POST|PUT|GET -d 'YOUR_MESSAGE' INPUT_ADDRESS</code>
+      		<p>For example, sending JSON data.</p>
+      		<code>curl -X POST -H "Content-Type: application/json" -d '{"hello":"world"}' http://127.0.0.1:5005/fde5554c4a7b00cf</code>
+
+
+      		<h3>Web browser/client (http input only)</h3>
+      		<p>GET, can optionally use a .gif file extention, will return a 1 pixel transparent gif.</p>
+      		<code>INPUT_ADDRESS/?KEY=VALUE</code>
+      		<p>For example:</p>
+      		<code>http://127.0.0.1:5005/fde5554c4a7b00cf/pic.gif?hello=world</code>
+
+      		<h3>Kurunt Client Module (all inputs)</h3>
+					<p>You can use the cli as shown bellow to send data or use the node Kurunt Client Module (<b>npm install kurunt-client</b>) to incorporate sending data into your own projects.</p>
+      		<code>node kurunt/client/send.js -apikey=APIKEY -data=YOUR_MESSAGE</code>
+      		<p><b><i>-data</i></b> should be in the format of the 'worker', for example using JSON:</p>
+      		<code>node kurunt/client/send.js -apikey=5555 -data='{"hello":"world"}'</code>
+      		
+
+      		<h3>Perl benchmarking (tcp or udp inputs)</h3>
+      		<p>If you want to benchmark Kurunts performance at processing messages you can use the perl benchmarking client. Use -help command to see options.</p>
+      		<code>perl kurunt/client/send.pl -help</code>
+      		<p>For example sending 100 json messages over 10 seconds through a tcp input:</p>
+      		<code>perl kurunt/client/send.pl -T=tcp -apikey=5555 -m=100 -c=10 -d='{"hello":"world"}'</code>
       	</div>
       	
       	<br/>

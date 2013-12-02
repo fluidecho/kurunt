@@ -3,52 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="user-scalable=yes" /> 
-  <title>Kurunt - New Stream</title>
+  <title>Kurunt - New Stream Settings</title>
 
   <script src="jquery.min.js"></script>
 
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
 
-		.workers {
-			float: left;
-			display: inline;            
-		}
-		
-		.worker {
-			float: left;
-			margin: 0 1.5em 1.5em 0;
-			background: #333333;
-			padding: 12px;
-			border: 1px solid #abadb3;
-			width: 166px;
-			min-height: 110px;
-			-moz-border-radius: 13px;
-			-webkit-border-radius: 13px;
-			-khtml-border-radius: 13px;
-			border-radius: 13px;                   
-		}
-		.worker h3 {
-			margin: 0.5em 0 0.5em 0.35em;
-			font-size: 120%;
-			font-weight: bold;
-			color: #fff;
-			text-align: left;
-		}
-		.worker p {
-			margin: 0.5em;
-			font-size: 88%;
-			min-height: 40px;
-			color: #fff;
-			text-align: left;
-			line-height: 130%;
-		}
-		
-		
-		.worker:hover {
-			background: #00877A;
-			cursor: pointer;
-		}
 		
 		
   </style>
@@ -69,7 +30,7 @@
   <div class="wrapper white" id="contents">
 
 
-    <h1>New Stream</h1>
+    <h1>New Stream Settings</h1>
 
   
     <script>
@@ -77,25 +38,36 @@
       // set header colour:
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+
+
+      var reports_address = '<kurunt-report-address>';
+      console.log('reports_address: ' + reports_address);
+
+      // another tag
+      
+      var version = <kurunt-version>;
+      console.log('version: ' +version);
+      
+      
       
       var workers = JSON.parse(<kurunt-workers>);
 
 			jQuery(function($){       
 			 	$.each(workers, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
-					$('<span onclick="newStream(\''+key+'\')" class="worker"><h3>'+val['title']+'</h3><p>'+val['description']+'</p></span>').appendTo("#workers");
+					
+					console.log('key: ' + key + ' val: ' + val);
+
+					//$('<span onclick="newWorker(\''+key+'\')" class="worker"><h3>'+val['title']+'</h3><p>'+val['description']+'</p></span>').appendTo("#workers");
+					
 				});
-				$('<span onclick="customWorker()" class="worker"><h3>Custom</h3><p>Create your own custom stream worker. It can be and do anything you want.</p></span>').appendTo("#workers");
       });
       
-      function newStream(worker) {
-      	console.log('new worker: ' + worker);
-      	window.location.href = 'new-stream-settings.html?worker=' + worker;
+      
+      function saveStream() {
+      	console.log('save stream');
       }
       
-      function customWorker() {
-      	window.open("http://docs.kurunt.com/workers/custom/");
-      }
+
       
     </script>
 
@@ -103,22 +75,52 @@
  		<div class="pagespan container">
       <div class="wrap">
   
-  			<div id="workers">
-
-				</div>
+ 				<form id="new-stream" method="post">
+ 				
+ 					<h4>Input:</h4>
+ 					<select name="input">
+						<option value="http">http</option>
+						<option value="tcp">tcp</option>
+						<option value="udp">upd</option>
+					</select>
+					
+					
+ 					<h4>Worker:</h4>
+					<input type="hidden" name="worker" value="json" />
+					<p>JSON</p>
+					
+ 					<h4>Stores:</h4>
+ 					<select name="stores" multiple>
+						<option value="stream">stream</option>
+						<option value="mongo">mongo</option>
+						<option value="mysql">mysql</option>
+					</select>	
+					<p>(Ctrl to select multiple stores.)</p>					
+ 					
+ 					<h4>Tags:</h4>
+ 					<input type="text" name="tags" />
+ 					<p>(Comma sperated.)</p>
+ 				
+ 					<h4>Access Hosts</h4>
+ 					<textarea rows="5" cols="30"></textarea>
+ 					<p>(One per line, leave bank to allow all.)</p>
+ 				
+ 				
+ 				          <p>
+          	<br/>
+          	<input class="submit1" type="submit" value="New Stream"/> 
+          </p>   
+ 				
+ 				</form>
+ 
+ 
 
       </div>
     </div>
     
    	<br class="clearBoth" />
    	<br/>
-   	
-   	<h3>About Streams</h3>
-   	<p>Streams are inputs to your data. A stream coresponds with a format or 'worker' for processing your data. 
-For example, opening a JSON stream, where you are inputing JSON formatted data. 
-If your data is a combination of formats or does not corespond with the above list then you can built your own custom stream worker.</p>
-    
-    <br/><br/>
+
     
   </div>
 
