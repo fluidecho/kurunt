@@ -1,6 +1,6 @@
 {
-	"name": "steam",
-	"title": "Steam",	
+	"name": "stream",
+	"title": "Stream",	
 	"description": "Stream store",
 	"messenger_codec": "json",
   "stream_api": true,
