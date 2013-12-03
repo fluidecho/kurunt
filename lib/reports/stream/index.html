@@ -321,7 +321,7 @@
       var smoothieChart = new TimeSeries();
       var msgps = 0;
 
-      var socket = io.connect('http://10.0.0.22');  // localhost, set ip/host for remote access.
+      var socket = io.connect('http://localhost');  // localhost, set ip/host for remote access.
   
       socket.on('connect', function (data) {
         // gstStreams and popluate the pulldown select menu.
