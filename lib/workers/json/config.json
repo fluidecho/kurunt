@@ -3,7 +3,7 @@
 	"title": "JSON",	
 	"description": "JavaScript Object Notation, for processing JSON data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/workers/json/",
+	"url": "http://docs.kurunt.com/JSON__Worker",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp", "udp", "http" ],

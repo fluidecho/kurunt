@@ -3,7 +3,7 @@
 	"title": "Syslog",	
 	"description": "Syslog, for processing rsyslog data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/workers/syslog/",
+	"url": "http://docs.kurunt.com/Syslog_Worker",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp", "udp" ],
