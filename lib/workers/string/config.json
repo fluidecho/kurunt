@@ -3,7 +3,7 @@
 	"title": "String",	
 	"description": "String, for processing text data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/workers/string/",
+	"url": "http://docs.kurunt.com/String_Worker",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp", "udp", "http" ],

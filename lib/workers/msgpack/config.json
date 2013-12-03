@@ -3,7 +3,7 @@
 	"title": "MessagePack",	
 	"description": "MessagePack, for processing MessagePack data.",
 	"icon": "",
-	"url": "http://docs.kurunt.com/workers/msgpack/",
+	"url": "http://docs.kurunt.com/MsgPack_Worker",
 	"version": 0.2,	
 	"date_mod": "10/22/2013",
 	"inputs": [ "tcp", "udp", "http" ],

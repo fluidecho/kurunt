@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=yes" /> 
+  <title>Kurunt - socket.io</title>
+
+  <script src="jquery.min.js"></script>
+
+  <link href="style.css" media="all" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+
+		 code {
+			width: 110%;
+    	text-align: center;
+    	background: #535151;
+    	color: #fff;
+    	padding: 10px;
+    	line-height: 300%;
+ 		  -webkit-border-radius: 5px;
+		  -khtml-border-radius: 5px;
+		  border-radius: 5px;
+ 		}
+		
+  </style>
+</head>
+
+<body>
+
+  <div id="headermenu">
+    <div class="wrapper">
+      <div id="logo"><img src="/images/logo.png" alt="" /></div>
+      <div id="navs">
+        <a href="streams.html">Streams</a>
+        <a id="report-address" href="<kurunt-report-address>">Report</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper white" id="contents">
+
+
+    <h1>Install socket.io</h1>
+
+  
+    <script>
+
+      // set header colour:
+      var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
+      $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+      
+     
+      
+    </script>
+
+
+ 		<div class="pagespan container">
+      <div class="wrap">
+		
+		 		<p>You need to install socket.io to view the stream report. It's easy using npm from your terminal:</p>
+		 		<code>npm install socket.io</code>
+				<p>Then restart kurunt.</p>
+			
+      </div>
+    </div>
+    
+   	<br class="clearBoth" />
+   	<br/>
+   	
+
+    
+  </div>
+
+  <div id="footer">
+      <div class="wrapper">
+        <p> 
+          <a href="http://kurunt.com">Kurunt</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/support/">Support</a>
+          <span class="seperator"> |</span> 
+          <a href="https://github.com/kurunt">GitHub</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/license/">License</a>
+        </p>  
+        <p class="copyright">
+          &copy; Copyright Kurunt 2013. Except where otherwise <a href="http://kurunt.com/license/">noted</a>, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+        </p>
+      </div>
+    </div>
+
+</body>
+</html>
