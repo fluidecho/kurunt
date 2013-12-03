@@ -10,7 +10,37 @@
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
 
+		h4 {  
+		  margin-top: 1em;
+		  font-size: 14pt; 
+		  font-weight: bold;
+		  color: #333333;
+		  padding-bottom: 4px;
+		}
+
+		h5 {  
+		  margin-top: 4px;
+		  font-size: 10pt; 
+		  font-weight: normal;
+		  color: #333333;
+		  padding-bottom: 4px;
+		}		
 		
+		#worker-text {
+			font-size: 10pt;
+			margin-top: 0px;
+			border: solid 1px #C0B6B6;
+			width: 263px;
+			padding: 3px;
+			background: #E5E3E1;
+		}
+		
+		
+		select, textarea, #tags {
+			width: 270px;
+		}
+		
+
 		
   </style>
 </head>
@@ -41,33 +71,38 @@
 
 
       var reports_address = '<kurunt-report-address>';
-      console.log('reports_address: ' + reports_address);
+      //console.log('reports_address: ' + reports_address);
 
-      // another tag
-      
-      var version = <kurunt-version>;
-      console.log('version: ' +version);
-      
-      
-      
-      var workers = JSON.parse(<kurunt-workers>);
-
+      var stores = JSON.parse(<kurunt-stores>);
 			jQuery(function($){       
-			 	$.each(workers, function(key, val) {
-					
-					console.log('key: ' + key + ' val: ' + val);
+			 	$.each(stores, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					var checked = ' ';
+					if ( key === 'stream' ) {
+						checked = ' checked';
+					}
+					$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
+				});
+      
+      	// set selected worker.
+      	var worker =  window.location.href.substring(window.location.href.indexOf('?worker=') + 8);
+      	//console.log('worker: ' + worker );
+      	$('#worker').val(worker);
+      	$('#worker-text').text(worker);
+      });
 
-					//$('<span onclick="newWorker(\''+key+'\')" class="worker"><h3>'+val['title']+'</h3><p>'+val['description']+'</p></span>').appendTo("#workers");
-					
+
+			var inputs = JSON.parse(<kurunt-inputs>);
+			jQuery(function($){
+				$.each(inputs, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					var checked = ' ';
+					if ( key === 'stream' ) {
+						checked = ' selected';
+					}
+					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
 				});
       });
-      
-      
-      function saveStream() {
-      	console.log('save stream');
-      }
-      
-
       
     </script>
 
@@ -75,45 +110,35 @@
  		<div class="pagespan container">
       <div class="wrap">
   
- 				<form id="new-stream" method="post">
- 				
- 					<h4>Input:</h4>
- 					<select name="input">
-						<option value="http">http</option>
-						<option value="tcp">tcp</option>
-						<option value="udp">upd</option>
+ 				<form id="new-stream" method="post" action="/streams.html">
+ 					<input type="hidden" name="newStream" value="true" />
+ 					<input type="hidden" name="status" value="open" />
+ 					
+ 					<h4>Input</h4>
+ 					<select id="inputs" name="input">
 					</select>
 					
+ 					<h4>Worker</h4>
+					<input type="hidden" id="worker" name="worker" value="json" />
+					<p id="worker-text"></p>
 					
- 					<h4>Worker:</h4>
-					<input type="hidden" name="worker" value="json" />
-					<p>JSON</p>
-					
- 					<h4>Stores:</h4>
- 					<select name="stores" multiple>
-						<option value="stream">stream</option>
-						<option value="mongo">mongo</option>
-						<option value="mysql">mysql</option>
-					</select>	
-					<p>(Ctrl to select multiple stores.)</p>					
- 					
- 					<h4>Tags:</h4>
- 					<input type="text" name="tags" />
- 					<p>(Comma sperated.)</p>
+ 					<h4>Stores</h4>
+					<div id="stores">
+					</div>
+
+ 					<h4>Tags</h4>
+ 					<input id="tags" type="text" name="tags" />
+ 					<h5>(Optional: comma sperated)</h5>
  				
  					<h4>Access Hosts</h4>
- 					<textarea rows="5" cols="30"></textarea>
- 					<p>(One per line, leave bank to allow all.)</p>
+ 					<textarea name="accesshosts" rows="5" cols="30"></textarea>
+ 					<h5>(Optional: one per line, leave bank to allow all)</h5>
  				
- 				
- 				          <p>
+ 				  <p>
           	<br/>
           	<input class="submit1" type="submit" value="New Stream"/> 
-          </p>   
- 				
+          </p>
  				</form>
- 
- 
 
       </div>
     </div>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=yes" /> 
+  <title>Kurunt - Edit Stream Settings</title>
+
+  <script src="jquery.min.js"></script>
+
+  <link href="style.css" media="all" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+
+		h4 {  
+		  margin-top: 1em;
+		  font-size: 14pt; 
+		  font-weight: bold;
+		  color: #333333;
+		  padding-bottom: 4px;
+		}
+
+		h5 {  
+		  margin-top: 4px;
+		  font-size: 10pt; 
+		  font-weight: normal;
+		  color: #333333;
+		  padding-bottom: 4px;
+		}		
+		
+		#worker-text {
+			font-size: 10pt;
+			margin-top: 0px;
+			border: solid 1px #C0B6B6;
+			width: 263px;
+			padding: 3px;
+			background: #E5E3E1;
+		}
+		
+		
+		select, textarea, #tags {
+			width: 270px;
+		}
+		
+		
+		#stream_info {
+			float: right;
+			border-left: solid 1px #C0B6B6;
+			width: 600px;
+			height: 400px;
+			padding-left: 2em;
+		}
+
+		
+		
+ 
+
+
+ 				
+		
+  </style>
+</head>
+
+<body>
+
+  <div id="headermenu">
+    <div class="wrapper">
+      <div id="logo"><img src="/images/logo.png" alt="" /></div>
+      <div id="navs">
+        <a href="streams.html">Streams</a>
+        <a id="report-address" href="<kurunt-report-address>">Report</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper white" id="contents">
+
+
+    <h1>Edit Stream Settings</h1>
+
+  
+    <script>
+
+      // set header colour:
+      var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
+      $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
+
+
+      var reports_address = '<kurunt-report-address>';
+      console.log('reports_address: ' + reports_address);
+
+      // another tag
+      
+      var version = <kurunt-version>;
+      console.log('version: ' +version);
+      
+  
+      var apikey =  window.location.href.substring(window.location.href.indexOf('?apikey=') + 8);
+			if ( apikey.length != 16 ) {
+				apikey = Number(apikey);		// is port number.
+			}      
+      console.log('apikey: ' + apikey );
+      //$('#worker').val(worker);
+      //$('#worker-text').text(worker);      
+      
+			var this_stream = {};      
+
+			var streams = JSON.parse(<kurunt-streams>);
+			jQuery(function($){     
+			 	$.each(streams['streams'], function(key, val) {
+			 		//console.log('streams, key: ' + key + ' val: ' + val);
+					if ( val['apikey'] === apikey ) {
+						//console.log('htis is the store');
+						this_stream.apikey = val['apikey'];
+						this_stream.status = val['status'];
+						this_stream.input = val['input'].object;
+						this_stream.worker = val['worker'];
+						this_stream.stores = [];
+						this_stream.stores = val['stores'];
+						this_stream.tags = [];
+						this_stream.tags = val['tags'];
+						this_stream.access_hosts = [];
+						this_stream.access_hosts = val['access_hosts'];
+					}		
+				});
+				//console.log('this_stream.worker: ' + this_stream.worker);
+				$('#worker-text').text(this_stream.worker);
+				$('#apikey').val(apikey);
+				$('.apikey').text(apikey);
+				
+				// stream api address:
+				var stream_api_address = 'http://' + this_stream.apikey + ':<kurunt-stream-api-pass>@<kurunt-host>:<kurunt-stream-api-port>';
+		    $('#stream_api_address').html('<a href="'+stream_api_address+'" target="_blank">' + stream_api_address + '</a>');  
+				
+				// input address:
+				if ( this_stream.input === 'http' ) {
+					var input_address = this_stream.input + '://<kurunt-host>:<kurunt-http-port>/' + this_stream.apikey + '/';
+				} else {
+					var input_address = this_stream.input + '://<kurunt-host>:' + this_stream.apikey;
+				}
+				$('#input_address').html('<a href="'+input_address+'" target="_blank">' + input_address + '</a>');  
+							
+				
+				if ( this_stream.status === 'open' ) {
+					$('<option value="open" selected>open</option>').appendTo("#status");
+					$('<option value="closed">closed</option>').appendTo("#status");
+				} else {
+					$('<option value="open">open</option>').appendTo("#status");
+					$('<option value="closed" selected>closed</option>').appendTo("#status");
+				}
+      });
+
+
+			var inputs = JSON.parse(<kurunt-inputs>);
+			jQuery(function($){
+			 	$.each(inputs, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					var checked = ' ';
+					if ( key === this_stream.input ) {
+						checked = ' selected';
+					}
+					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
+				});
+      });
+
+
+      var stores = JSON.parse(<kurunt-stores>);
+			jQuery(function($){
+			 	$.each(stores, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					var checked = ' ';
+					for ( var st in this_stream.stores ) {
+						//console.log('st: ' + this_stream.stores[st]);
+						if ( key === this_stream.stores[st] ) {
+							checked = ' checked';
+						}
+					}
+					$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
+				});
+      });
+
+
+			jQuery(function($){
+				var tags = '';
+				for ( var t in this_stream['tags'] ) {
+					tags = tags + this_stream['tags'][t].trim() + ', ';
+				}
+				tags = tags.substring(0, tags.length - 2);
+				console.log('tags: ' + tags);
+		    $('#tags').val(tags);  
+		   });
+		    
+			jQuery(function($){
+				var access_hosts = '';
+				for ( var ah in this_stream['access_hosts'] ) {
+				access_hosts = access_hosts + this_stream['access_hosts'][ah] + '\r\n';
+				}
+				access_hosts = access_hosts.substring(0, access_hosts.length - 2);
+				console.log('access_hosts: ' + access_hosts);
+		    $('#access_hosts').val(access_hosts);  
+		   });
+
+
+
+    
+      
+      function saveStream() {
+      	console.log('save stream');
+      }
+      
+      
+    </script>
+
+
+ 		<div class="pagespan container">
+      <div class="wrap">
+ 
+				<div id="stream_info">
+				
+					<h4>apikey</h4>
+					<p class="apikey"></p>
+				
+					<h4>Stream API</h4>
+					<p id="stream_api_address"></p>
+					
+					<h4>Input Address</h4>
+					<p id="input_address"></p>			
+
+
+      	
+      		<br/>
+
+				</div>
+
+
+
+ 				<form id="new-stream" method="post" action="/streams.html">
+ 					<input type="hidden" name="editStream" value="true" />
+ 					<input type="hidden" id="apikey" name="apikey" value="" />
+ 	
+ 					
+ 					<h4>Status</h4>
+ 					<select id="status" name="status">
+					</select>
+					 					
+ 					<h4>Input</h4>
+ 					<select id="inputs" name="input">
+					</select>
+					
+ 					<h4>Worker</h4>
+					<input type="hidden" id="worker" name="worker" value="json" />
+					<p id="worker-text"></p>
+					
+ 					<h4>Stores</h4>
+					<div id="stores">
+					</div>
+
+ 					<h4>Tags</h4>
+ 					<input id="tags" type="text" name="tags" />
+ 					<h5>(Optional: comma sperated)</h5>
+ 				
+ 					<h4>Access Hosts</h4>
+ 					<textarea id="access_hosts" name="accesshosts" rows="5" cols="30"></textarea>
+ 					<h5>(Optional: one per line, leave bank to allow all)</h5>
+ 				
+ 				  <p>
+          	<br/>
+          	<input class="submit1" type="submit" value="Save Stream"/> 
+          </p>
+ 				</form>
+
+      </div>
+    </div>
+
+   	<br class="clearBoth" />
+   	<br/>
+    
+  </div>
+
+  <div id="footer">
+      <div class="wrapper">
+        <p> 
+          <a href="http://kurunt.com">Kurunt</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/support/">Support</a>
+          <span class="seperator"> |</span> 
+          <a href="https://github.com/kurunt">GitHub</a>
+          <span class="seperator"> |</span>
+          <a href="http://kurunt.com/license/">License</a>
+        </p>  
+        <p class="copyright">
+          &copy; Copyright Kurunt 2013. Except where otherwise <a href="http://kurunt.com/license/">noted</a>, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+        </p>
+      </div>
+    </div>
+
+</body>
+</html>

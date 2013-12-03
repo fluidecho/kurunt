@@ -1,10 +1,1 @@
-{
-  "streams": [
-    { "apikey": 5555, "input": { "object": "tcp", "id": 0 }, "worker": "string", "stores": ["stream"], "reports": ["stream"], "tags": ["test", "text", "string"], "status": "open", "access_hosts": [""] },
-    { "apikey": 5557, "input": { "object": "tcp", "id": 0 }, "worker": "csv", "stores": ["stream"], "reports": ["stream"], "tags": ["csv", "tuple"], "status": "open", "access_hosts": [""] },
-    { "apikey": 5558, "input": { "object": "tcp", "id": 0 }, "worker": "json", "stores": ["stream"], "reports": ["stream"], "tags": ["json", "test"], "status": "open", "access_hosts": [""] },
-		{ "apikey": 5559, "input": { "object": "tcp", "id": 0 }, "worker": "combined", "stores": ["stream", "mysql"], "reports": ["stream"], "tags": ["combined", "test"], "status": "open", "access_hosts": [""] },  
-		{ "apikey": 5560, "input": { "object": "tcp", "id": 0 }, "worker": "syslog", "stores": ["stream", "mongo"], "reports": ["stream"], "tags": ["syslog", "test"], "status": "open", "access_hosts": [""] },
-		{ "apikey": 5561, "input": { "object": "udp", "id": 0 }, "worker": "msgpack", "stores": ["stream"], "reports": ["stream"], "tags": ["msgpack", "test"], "status": "closed", "access_hosts": [""] }
-  ]
-}
+{"streams":[{"apikey":"c44e63a467a301cf","input":{"object":"http","id":0},"worker":"csv","stores":["stream"],"reports":["stream"],"tags":[""],"access_hosts":[""],"status":"open"},{"apikey":"f0a2e48a0aeef90c","input":{"object":"http","id":0},"worker":"json","stores":["mongo","mysql","redis","stream"],"reports":["stream"],"tags":[""],"access_hosts":[""],"status":"open"},{"apikey":6006,"input":{"object":"tcp","id":0},"worker":"json","stores":["mongo","stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"closed"},{"apikey":6005,"input":{"object":"tcp","id":0},"worker":"json","stores":["mongo","stream"],"reports":["stream"],"tags":[],"access_hosts":["127.0.0.1","10.0.0.22"],"status":"open"},{"apikey":6008,"input":{"object":"tcp","id":0},"worker":"json","stores":["mongo","stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"closed"}]}
