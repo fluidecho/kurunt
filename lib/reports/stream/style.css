@@ -24,7 +24,7 @@ html { height: 100%; margin: 0; background: #535151; }
   .wrapper { 
     padding: 0 2.5em 0 2.5em; 
     margin: 0 auto; 
-    width: 960px; 
+    width: 910px; 
     text-align: left;
   }
 
@@ -113,9 +113,10 @@ html { height: 100%; margin: 0; background: #535151; }
     background: #535151;
     border-top: 1px solid #c1c8c8;
     padding-bottom: 0.5em;
+		  
   }
 
-  #footer p{ text-align: left; font-size: 10pt; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
+  #footer p{ text-align: left; color: #c1c8c8; clear: both; padding-top: 3px; border-bottom: 0px solid #c1c8c8;}
   #footer a { color: #c1c8c8; text-decoration: none; }
   #footer a:hover { color: #fff; }
 
