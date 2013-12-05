@@ -15,7 +15,11 @@
 
 var Kurunt    		= require("../");																	// call the Kurunt module [require('kurunt')].
 var config    		= require(".././config.json");
-var streams    		= require(".././streams.json");
+try {
+	var streams    		= require(".././streams.json");
+} catch(e) {
+	var streams = undefined;
+}
 var topology  		= require(".././topology.json");
 var kurunt    		= new Kurunt.init(config, streams, topology);				// initiate the Kurunt aplication.
 

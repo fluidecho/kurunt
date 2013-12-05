@@ -52,13 +52,30 @@
 		 	color: #fff;
 			background: #535151;
 			text-align: center;
+			padding: 0px;
 		}
-		table .row_del_th, .row_edit_th, .row_api_th, .row_status_th {
+		
+		table .row_white {
+			border: 1px solid #abadb3;
+		 	color: #000;
+			background: #fff;
+			text-align: center;
+			padding: 0px;
+		}		
+		
+		table .row_api_th {
 			color: #fff;
 			text-align: center;        
 			width: 30px;
 		}
 
+		table .row_del_th, .row_edit_th {
+			color: #fff;
+			text-align: center;        
+			width: 15px;
+			background: #BDBDBD;
+			border: 1px solid #abadb3;
+		}
 
 		table tr:hover td {
 			background: #fdf2f2;
@@ -192,7 +209,7 @@
 						var api_link = '';
 					}
 				
-					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'"><a href="'+input_address+'">'+input_address+'</a></td><td class="'+alternate+'">' + val['status'] + '</td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="'+alternate+' row_edit_th"><a href="#" onclick="editStream(\''+ val['apikey'] +'\')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="'+alternate+' row_del_th"><a href="#" onclick="deleteStream(\''+ val['apikey'] +'\')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
+					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'"><a href="'+input_address+'">'+input_address+'</a></td><td class="'+alternate+'">' + val['status'] + '</td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="row_white"><a href="#" onclick="editStream(\''+ val['apikey'] +'\')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="row_white"><a href="#" onclick="deleteStream(\''+ val['apikey'] +'\')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
 					
 					i++;
 				});
@@ -231,7 +248,7 @@
   							<th>Stores</th>
   							<th>Tags</th>
   							<th>Input Address</th>
-  							<th class="row_status_th">Status</th>
+  							<th>Status</th>
   							<th class="row_api_th">API</th>
   							<th class="row_edit_th">-</th>
   							<th class="row_del_th">-</th>
