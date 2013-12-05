@@ -114,6 +114,7 @@
 				});
 				//console.log('this_stream.worker: ' + this_stream.worker);
 				$('#worker-text').text(this_stream.worker);
+				$('#worker').val(this_stream.worker);
 				$('#apikey').val(apikey);
 				$('.apikey').text(apikey);
 				
@@ -251,7 +252,7 @@
 					</select>
 					
  					<h4>Worker</h4>
-					<input type="hidden" id="worker" name="worker" value="json" />
+					<input type="hidden" id="worker" name="worker" value="" />
 					<p id="worker-text"></p>
 					
  					<h4>Stores</h4>
@@ -260,7 +261,7 @@
 
  					<h4>Tags</h4>
  					<input id="tags" type="text" name="tags" />
- 					<h5>(Optional: comma sperated)</h5>
+ 					<h5>(Optional: comma separated)</h5>
  				
  					<h4>Access Hosts</h4>
  					<textarea id="access_hosts" name="accesshosts" rows="5" cols="30"></textarea>
