@@ -9,5 +9,6 @@
   "input_tcp_message_buffer_limit": 10485760,
   "mq_nodelay": true,
   "bands": 100,
-  "band": 0
+  "band": 0,
+  "input_port_start" : 6000
 }
