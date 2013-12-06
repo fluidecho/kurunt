@@ -168,6 +168,19 @@
       });
 
 
+			var workers = JSON.parse(<kurunt-workers>);
+			jQuery(function($){
+			 	$.each(workers, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					var checked = ' ';
+					if ( key === this_stream.worker ) {
+						checked = ' selected';
+					}
+					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#workers");
+				});
+      });
+
+
       var stores = JSON.parse(<kurunt-stores>);
 			jQuery(function($){
 			 	$.each(stores, function(key, val) {
@@ -252,8 +265,8 @@
 					</select>
 					
  					<h4>Worker</h4>
-					<input type="hidden" id="worker" name="worker" value="" />
-					<p id="worker-text"></p>
+ 					<select id="workers" name="worker">
+					</select>					
 					
  					<h4>Stores</h4>
 					<div id="stores">
