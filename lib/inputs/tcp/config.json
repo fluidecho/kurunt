@@ -7,6 +7,5 @@
   "message_delineate": 10,
   "message_buffer_limit": 10485760,
   "debug": "benchmarking",
-  "mq_nodelay": false,
-  "open_port_start": 6000
+  "mq_nodelay": false
 }
