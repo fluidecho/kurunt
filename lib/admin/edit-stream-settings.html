@@ -64,7 +64,6 @@
 
   <div class="wrapper white" id="contents">
 
-
     <h1>Edit Stream Settings</h1>
 
   
@@ -217,9 +216,6 @@
 		    $('#access_hosts').val(access_hosts);  
 		   });
 
-
-
-    
       
       function saveStream() {
       	console.log('save stream');
@@ -243,18 +239,13 @@
 					<h4>Input Address</h4>
 					<p id="input_address"></p>			
 
-
-      	
       		<br/>
 
 				</div>
 
-
-
  				<form id="new-stream" method="post" action="/streams.html">
  					<input type="hidden" name="editStream" value="true" />
  					<input type="hidden" id="apikey" name="apikey" value="" />
- 	
  					
  					<h4>Status</h4>
  					<select id="status" name="status">
