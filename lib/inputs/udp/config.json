@@ -1,0 +1,13 @@
+{
+  "name": "udp",
+  "description": "UDP server input.",
+  "bands": 100,
+  "band": 0,
+  "messenger_codec": "json",
+  "message_delineate": 10,
+  "message_buffer_limit": 10485760,
+  "debug": "benchmarking",
+  "mq_nodelay": false,
+  "open_port_start": 7000,
+  "type": "udp4"
+}

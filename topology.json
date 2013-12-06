@@ -17,7 +17,20 @@
               "zmq_address": "tcp://127.0.0.1:3001"
             }
           ]
-        },        
+        },
+        {
+          "id": 0,
+          "falk": true,
+          "object": "input",
+          "namespace": "udp",
+          "connections": [
+            {
+              "zmq_pattern": "push",
+              "zmq_socket": "bind",
+              "zmq_address": "tcp://127.0.0.1:3002"
+            }
+          ]
+        },
         {
           "id": 0,
           "falk": true,
@@ -30,14 +43,21 @@
               "zmq_pattern": "pull",
               "zmq_socket": "connect",
               "zmq_address": "tcp://127.0.0.1:3001"
-            },           
+            },
+            {
+              "object": "input",
+              "namespace": "udp",
+              "zmq_pattern": "pull",
+              "zmq_socket": "connect",
+              "zmq_address": "tcp://127.0.0.1:3002"
+            },
             {
               "object": "store",
               "namespace": "stream",
               "zmq_pattern": "push",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3002"
-            }       
+              "zmq_address": "tcp://127.0.0.1:3004"
+            } 
           ]
         },
         {
@@ -52,16 +72,23 @@
               "zmq_pattern": "pull",
               "zmq_socket": "connect",
               "zmq_address": "tcp://127.0.0.1:3001"
-            },           
+            },
+            {
+              "object": "input",
+              "namespace": "udp",
+              "zmq_pattern": "pull",
+              "zmq_socket": "connect",
+              "zmq_address": "tcp://127.0.0.1:3002"
+            },                      
             {
               "object": "store",
               "namespace": "stream",
               "zmq_pattern": "push",
               "zmq_socket": "connect",
-              "zmq_address": "tcp://127.0.0.1:3002"
-            }       
+              "zmq_address": "tcp://127.0.0.1:3004"
+            }  
           ]
-        },        
+        },
         {
           "id": 0,
           "falk": true,
@@ -73,7 +100,7 @@
               "namespace": "*",
               "zmq_pattern": "pull",
               "zmq_socket": "bind",
-              "zmq_address": "tcp://127.0.0.1:3002"
+              "zmq_address": "tcp://127.0.0.1:3004"
             }
           ]
         }

@@ -92,7 +92,11 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 		
 		#print "data: " . $data . "\n";
 		
-		$socket->send($data . "\n");
+		if ( $T eq 'tcp' ) {
+			$socket->send($data . "\n");
+		} else {
+			$socket->send($data);		# udp does not require LF "\n" delineation.
+		}
 		
 		$i++;
 	}
