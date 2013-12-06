@@ -1,10 +1,10 @@
 {
-  "name": "udp",
-  "description": "UDP server input.",
+  "name": "http",
+  "description": "HTTP server input.",
   "bands": 100,
   "band": 0,
   "messenger_codec": "json",
   "debug": "benchmarking",
   "mq_nodelay": false,
-  "type": "udp4"
+  "input_port": 5555
 }
