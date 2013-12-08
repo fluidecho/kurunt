@@ -21,7 +21,7 @@ Can be used to capture, process and store both big and small data. Useful for re
 
 From your terminal, requires [node.js](http://nodejs.org/).
 
-```js
+```
 npm install -g kurunt
 ```
 
@@ -63,7 +63,7 @@ Kurunt is made up of three components: inputs, workers and stores.
              |   |
              v   v
           ***********
-          *  STORE  *  (stream, socket.io, mongo, mysql, redis, S3, solr, sphinx, etc)
+          *  STORE  *  (stream, socket.io, mongo, mysql, hadoop, S3, solr, sphinx, etc)
           ***********
 </pre>
 
@@ -79,7 +79,7 @@ Kurunt opens inputs to your data using: TCP, UDP or HTTP.
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
 
 #### Stores
-Store your now 'schemed' messages any way you want. In your favorite database, filesystem, or don't store your messages but 'stream' them, stream api (default), socket.io.
+Store your now 'schemed' messages any way you want. In your favorite database, filesystem, data grid, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
 
 #### Stream Report
 You can visualize your data from within the [web admin](http://localhost:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
