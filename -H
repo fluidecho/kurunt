@@ -1,6 +1,0 @@
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-Transfer-Encoding: chunked
-Connection: keep-alive
-Date: Sun, 08 Dec 2013 09:53:59 GMT
-
