@@ -407,8 +407,8 @@
         }
         if ( messages != null ) {
           if ( messages.length != 0 ) {
-            if ( messages[messages.length - 1].id != lastid ) {
-              lastid = messages[messages.length - 1].id;
+            if ( messages[messages.length - 1].id.uid != lastid ) {
+              lastid = messages[messages.length - 1].id.uid;
               for ( var m in messages ) {
                 //console.log('m: ' + m + ' i: ' + i);
                 if ( i >= QUE_MESSAGES_SLY_X ) {
@@ -470,9 +470,9 @@
           }
 
           if ( x >= QUE_MESSAGES_SLY_X ) {
-            $('#m' + i).replaceWith('<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
+            $('#m' + i).replaceWith('<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id.uid + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
           } else {
-            $frame.sly('add', '<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
+            $frame.sly('add', '<li id="m' + i + '"><h2 onclick="getMessage(\''+i+'\')">' + m.id.uid + '</h2><p onclick="getMessage(\''+i+'\')">...</p></li>');
           }
       
           msgarray[i] = m;    // add message contents into array for retieval.
