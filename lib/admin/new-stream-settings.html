@@ -31,7 +31,7 @@
 			margin-top: 0px;
 			border: solid 1px #C0B6B6;
 			width: 263px;
-			padding: 3px;
+			padding: 1px 0 1px 3px;
 			background: #E5E3E1;
 		}
 		
@@ -73,6 +73,45 @@
       var reports_address = '<kurunt-report-address>';
       //console.log('reports_address: ' + reports_address);
 
+			var worker =  window.location.href.substring(window.location.href.indexOf('?worker=') + 8);
+			var worker_title = worker;
+
+      var workers = JSON.parse(<kurunt-workers>);
+
+			jQuery(function($){       
+			 	$.each(workers, function(key, val) {
+					//console.log('key: ' + key + ' val: ' + val);
+					if ( key === worker ) {
+						//console.log('thisWorkers inputs: ' + val['inputs']);
+						worker_title = val['title'];
+						val['inputs'].sort();
+						var s = 0;
+						for ( var inpt in val['inputs'] ) {
+							//console.log('inpt: ' + val['inputs'][inpt]);
+							var checked = ' ';
+							if ( s === 0 ) {
+								checked = ' checked';
+							}							
+							$('<option value="' + val['inputs'][inpt] + '" ' + checked + '>' + val['inputs'][inpt] + '</option>').appendTo("#inputs");
+							s++;
+						}
+						
+						for ( var strs in val['stores'] ) {
+							$.each(val['stores'][strs], function(skey, sval) {
+								//console.log('skey: ' + skey + ' sval: ' + sval);
+								var checked = ' ';
+								if ( skey === 'stream' ) {
+									checked = ' checked';
+								}								
+								$('<input type="checkbox" name="stores" value="' + skey + '" ' + checked + ' /> ' + skey + '<br/>').appendTo("#stores");
+							});
+						}						
+						
+					}
+				});
+      });
+
+
       var stores = JSON.parse(<kurunt-stores>);
 			jQuery(function($){       
 			 	$.each(stores, function(key, val) {
@@ -81,28 +120,14 @@
 					if ( key === 'stream' ) {
 						checked = ' checked';
 					}
-					$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
+					//$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
 				});
-      
       	// set selected worker.
-      	var worker =  window.location.href.substring(window.location.href.indexOf('?worker=') + 8);
       	//console.log('worker: ' + worker );
       	$('#worker').val(worker);
-      	$('#worker-text').text(worker);
+      	$('#worker-text').text(worker_title);
       });
 
-
-			var inputs = JSON.parse(<kurunt-inputs>);
-			jQuery(function($){
-				$.each(inputs, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
-					var checked = ' ';
-					if ( key === 'stream' ) {
-						checked = ' selected';
-					}
-					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
-				});
-      });
       
     </script>
 
