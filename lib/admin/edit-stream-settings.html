@@ -156,6 +156,7 @@
 
 			var inputs = JSON.parse(<kurunt-inputs>);
 			jQuery(function($){
+				//inputs.sort();
 			 	$.each(inputs, function(key, val) {
 					//console.log('key: ' + key + ' val: ' + val);
 					var checked = ' ';
@@ -166,7 +167,6 @@
 				});
       });
 
-
 			var workers = JSON.parse(<kurunt-workers>);
 			jQuery(function($){
 			 	$.each(workers, function(key, val) {
@@ -175,26 +175,30 @@
 					if ( key === this_stream.worker ) {
 						checked = ' selected';
 					}
-					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#workers");
-				});
-      });
+					$('<option value="' + key + '" ' + checked + '>' + val['title'] + '</option>').appendTo("#workers");
+					
+					if ( key === this_stream.worker ) {
+						for ( var strs in val['stores'] ) {
+						
 
+						
+							$.each(val['stores'][strs], function(skey, sval) {
+								//console.log('skey: ' + skey + ' sval: ' + sval);
 
-      var stores = JSON.parse(<kurunt-stores>);
-			jQuery(function($){
-			 	$.each(stores, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
-					var checked = ' ';
-					for ( var st in this_stream.stores ) {
-						//console.log('st: ' + this_stream.stores[st]);
-						if ( key === this_stream.stores[st] ) {
-							checked = ' checked';
-						}
+								var checked = ' ';
+                for ( var st in this_stream.stores ) {
+									if ( skey === this_stream.stores[st] ) {
+										checked = ' checked';
+									}							
+								}
+														
+								$('<input type="checkbox" name="stores" value="' + skey + '" ' + checked + ' /> ' + skey + '<br/>').appendTo("#stores");
+							});
+						}	
 					}
-					$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
+					
 				});
       });
-
 
 			jQuery(function($){
 				var tags = '';
