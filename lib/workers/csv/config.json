@@ -14,39 +14,30 @@
 	"stores": [
 		{
 			"stream": {
-				"schema": [
-					{
-						"name": "tuples"
-					}
-				]
+				"schema": {
+					"tuples": { }
+				}
+			}
+		},
+		{
+			"mongo": {
+				"schema": {
+					"tuples": { }
+				}
 			}
 		},
 		{
 			"redis": {
-				"schema": [
-					{
-						"name": "tuples"
-					}
-				]
+				"schema": {
+					"tuples": { }		
+				}
 			}
-		},		
-		{
-			"mongo": {
-				"schema": [
-					{
-						"name": "tuples"
-					}
-				]
-			}
-		},		
+		},
 		{
 			"mysql": {
-				"schema": [
-					{
-						"name": "text",
-						"type": "varchar(250)"
-					}
-				]
+				"schema": {
+					"tuples": { "type": "varchar(512)" }
+				}
 			}
 		}
 	]

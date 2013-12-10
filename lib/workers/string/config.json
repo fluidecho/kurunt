@@ -25,6 +25,20 @@
 					"text": { }
 				}
 			}
-		}		
+		},
+		{
+			"redis": {
+				"schema": {
+					"text": { }		
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"text": { "type": "varchar(512)" }
+				}
+			}
+		}			
 	]
 }

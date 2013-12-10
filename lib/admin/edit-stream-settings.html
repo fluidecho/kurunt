@@ -157,13 +157,22 @@
 			var inputs = JSON.parse(<kurunt-inputs>);
 			jQuery(function($){
 				//inputs.sort();
+				// if stream was using http cant change to tcp/udp because will change apikey and vise-vera.
 			 	$.each(inputs, function(key, val) {
 					//console.log('key: ' + key + ' val: ' + val);
 					var checked = ' ';
 					if ( key === this_stream.input ) {
 						checked = ' selected';
 					}
-					$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
+					//console.log('this_stream.input: ' + this_stream.input);
+					if ( this_stream.input === 'http' && key === 'http' ) {
+						$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
+					} else if ( this_stream.input === 'tcp' &&  ( key === 'tcp' || key === 'udp' ) ) {
+						$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
+					}	else if ( this_stream.input === 'udp' && ( key === 'udp' || key === 'tcp' ) ) {
+						$('<option value="' + key + '" ' + checked + '>' + key + '</option>').appendTo("#inputs");
+					} else {
+					}
 				});
       });
 
