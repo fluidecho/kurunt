@@ -22,7 +22,21 @@
 		{
 			"mongo": {
 				"schema": {
+					"msgpack": { }
+				}
+			}
+		},
+		{
+			"redis": {
+				"schema": {
 					"msgpack": { }		
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"msgpack": { "type": "varchar(512)" }
 				}
 			}
 		}

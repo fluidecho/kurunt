@@ -37,6 +37,30 @@
 					"message": { }
 				}
 			}
-		}		
+		},
+		{
+			"redis": {
+				"schema": {
+					"userid": { },
+					"pid": { },
+					"tag": { },
+					"pre": { },					
+					"unixtime": { },
+					"message": { }
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"userid": { "type": "varchar(128)" },
+					"pid": { "type": "INT" },
+					"tag": { "type": "varchar(128)" },
+					"pre": { "type": "varchar(128)" },					
+					"unixtime": { "type": "BIGINT" },
+					"message": { "type": "varchar(512)" }
+				}
+			}
+		}				
 	]
 }

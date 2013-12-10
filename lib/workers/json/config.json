@@ -27,20 +27,18 @@
 			}
 		},
 		{
-			"mysql": {
-				"schema": {
-					"json": { 
-						"type": "varchar(512)" 
-					}
-				}
-			}
-		},
-		{
 			"redis": {
 				"schema": {
 					"json": { }		
 				}
 			}
-		}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"json": { "type": "varchar(512)" }		
+				}
+			}
+		}		
 	]
 }

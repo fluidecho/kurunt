@@ -29,6 +29,60 @@
           "query": { }
         }
       }
-    }
+    },
+    {
+      "mongo": {
+        "schema": {
+          "client_ip": { },
+          "client_port": { },
+          "pathname": { },
+          "referer": { },
+          "language": { },
+          "user_agent": { },
+          "cookie": { },
+          "geo_country": { },
+          "geo_city": { },
+          "geo_lat": { },
+          "geo_lng": { },                                       
+          "query": { }
+        }
+      }
+    },
+    {
+      "redis": {
+        "schema": {
+          "client_ip": { },
+          "client_port": { },
+          "pathname": { },
+          "referer": { },
+          "language": { },
+          "user_agent": { },
+          "cookie": { },
+          "geo_country": { },
+          "geo_city": { },
+          "geo_lat": { },
+          "geo_lng": { },                                       
+          "query": { }
+        }
+      }
+    },
+		{
+			"mysql": {
+				"schema": {
+          "client_ip": { "type": "varchar(64)" },
+          "client_port": { "type": "MEDIUMINT" },
+          "pathname": { "type": "varchar(512)" },
+          "referer": { "type": "varchar(512)" },
+          "language": { "type": "varchar(256)" },
+          "user_agent": { "type": "varchar(512)" },
+          "cookie": { "type": "varchar(512)" },
+          "geo_country": { "type": "varchar(256)" },
+          "geo_city": { "type": "varchar(512)" },
+          "geo_lat": { "type": "FLOAT" },
+          "geo_lng": { "type": "FLOAT" },                                       
+          "query": { "type": "varchar(512)" }					
+				}
+			}
+		}        
   ]
 }
