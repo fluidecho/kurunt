@@ -49,6 +49,12 @@
       var header_colours = ['#DE45B3','#FF6640','#5C56F0','#0C9688','#3B5998','#D8272D','#1352A2','#442D65','#007034','#FE9601'];
       $('#headermenu').css('background', header_colours[Math.floor(Math.random()*header_colours.length)]);
       
+     	var kurunt_directory = '<kurunt-directory>';
+     	//console.log('kurunt_directory: ' + kurunt_directory);
+     
+			jQuery(function($){       
+				$('#kurunt-dir').text(kurunt_directory);
+      });     
      
       
     </script>
@@ -56,11 +62,14 @@
 
  		<div class="pagespan container">
       <div class="wrap">
-		
 		 		<p>You need to install socket.io to view the stream report. It's easy using npm from your terminal:</p>
-		 		<code>npm install socket.io</code>
-				<p>Then restart kurunt.</p>
-			
+		 		<p>Firstly stop kurunt.</p>
+		 		<code>Ctrl + c</code><br/>
+		 		<p>Now you can install socket.io into kurunt.</p>
+		 		<code>cd <span id="kurunt-dir"></span> && npm install socket.io</code>
+				<p>Restart kurunt.</p>
+				<code>kurunt</code><br/>
+				<p>Click the <a href="<kurunt-report-address>">Report</a> link.</p>
       </div>
     </div>
     
