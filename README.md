@@ -1,6 +1,6 @@
 # Kurunt
 
-Kurunt, real-time processing of streaming data at any scale, using node.js.
+"Kurunt" real-time processing of streaming data at any scale, using node.js.
 
 Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL and time series data. Has been build to be efficient and fast, benchmarked at processing over a million tuples per second per node. Simple to use through its web admin.
 
