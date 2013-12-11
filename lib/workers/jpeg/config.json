@@ -1,5 +1,5 @@
 {
-	"name": "JPEG",
+	"name": "jpeg",
 	"title": "JPEG",	
 	"description": "JPEG images, for processing binary jpeg image data.",
 	"icon": "",
@@ -15,7 +15,7 @@
 		{
 			"stream": {
 				"schema": {
-					"jpeg": { }
+					"jpeg_image": { }
 				}
 			}
 		}		
