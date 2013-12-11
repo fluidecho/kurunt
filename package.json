@@ -3,6 +3,7 @@
   "description": "Real-time processing of streaming data at any scale.",
   "version": "0.2.1",
   "main": "index.js",
+  "preferGlobal": true,
   "bin" : { "kurunt" : "bin/cli.js" },
   "homepage": "http://kurunt.com",
   "author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)",
@@ -16,6 +17,7 @@
   "devDependencies": {
   },
   "repository": { "type": "git", "url": "git://github.com/kurunt/kurunt.git" },
+  "bugs": { "url" : "http://github.com/kurunt/kurunt/issues", "email" : "mail@kurunt.com" },
   "engines": { "node": ">=0.8.0" },
   "licenses":
     [ { "license" : "MIT" }, { "license": "Apache 2.0" } ],

@@ -1,0 +1,23 @@
+{
+	"name": "jpeg",
+	"title": "JPEG",	
+	"description": "JPEG images, for processing binary jpeg image data.",
+	"icon": "",
+	"url": "http://docs.kurunt.com/JPEG_Worker",
+	"version": 0.2,	
+	"date_mod": "10/22/2013",
+	"inputs": [ "tcp", "udp", "http" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"stream": {
+				"schema": {
+					"jpeg_image": { }
+				}
+			}
+		}		
+	]
+}

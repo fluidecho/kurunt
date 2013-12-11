@@ -496,18 +496,55 @@
     
         // onclick message id, display message contents.
         getMessage = function(i) {
-          var json = jsonHighlight(JSON.stringify(msgarray[i], undefined, 4));
-          $('#m' + i).replaceWith('<li id="m' + i + '"><div class="message"><div class="messagejson"><pre><code>' + json + '</code></pre></div></div></li>');   
+					
+        	var jpeg_image = '';		// if message worker jpeg, jpeg_image, set special.
+        	if ( msgarray[i].worker.object === 'jpeg' ) {
+						for ( var s in msgarray[i].stores ) {
+							//console.log('s: ' + s + ' value: ' + msgarray[i].stores[s]);
+							for ( var st in msgarray[i].stores[s] ) { 
+								//console.log('st: ' + st + ' value: ' + msgarray[i].stores[s][st]);
+								if ( st === 'stream' ) {
+									var dataObj = msgarray[i].stores[s]['stream'];
+									var schemaItems = Object.keys(dataObj['schema']);
+									schemaItems.forEach(function(item) {
+										//console.log('item : ' + item);
+										if ( item === 'jpeg_image' ) {
+											jpeg_image = dataObj['schema'][item]['value'];
+											//console.log('jpeg_image: ' + jpeg_image);
+										}
+									});
+								}
+							}
+						}
+					}
+
+       		var json = jsonHighlight(JSON.stringify(msgarray[i], undefined, 4), i, jpeg_image);
+        	$('#m' + i).replaceWith('<li id="m' + i + '"><div class="message"><div class="messagejson"><pre><code>' + json + '</code></pre></div></div></li>');
+        
         };
 
         }());
       });
 
       // convert js object into colour highlighted html.
-      function jsonHighlight(json) {
+      function jsonHighlight(json, x, image) {
+      	var jpeg_image_next = false;
+      	var jpeg_image_next_next = false;
         json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
           var cls = 'number';
+          
+          //console.log('match: ' + match.toString());
+          if ( jpeg_image_next_next === true ) {
+          	jpeg_image_next_next = false;
+          	return '';
+          }
+          if ( jpeg_image_next === true ) {
+          	jpeg_image_next = false;
+          	jpeg_image_next_next = true;
+          	return '<span class="key">"value":</span><br/><img id="jpeg_image_' + x + '" src="data:image/png;base64,' + image + '" alt="" />';
+          }
+          
           if (/^"/.test(match)) {
             if (/:$/.test(match)) {
               cls = 'key';
@@ -518,6 +555,9 @@
             cls = 'boolean';
           } else if (/null/.test(match)) {
             cls = 'null';
+          } 
+          if (match.toString().indexOf('jpeg_image') != -1) {
+          	jpeg_image_next = true;
           }
             return '<span class="' + cls + '">' + match + '</span>';
         });
@@ -532,6 +572,10 @@
         chart.addTimeSeries(smoothieChart, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 2 });
         chart.streamTo(document.getElementById("chart"), 500);
       }
+      
+      
+    
+      
 
     </script>
 
