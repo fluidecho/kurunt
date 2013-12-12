@@ -179,18 +179,26 @@
 			var workers = JSON.parse(<kurunt-workers>);
 			jQuery(function($){
 			 	$.each(workers, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
+					console.log('key: ' + key + ' val: ' + val);
 					var checked = ' ';
 					if ( key === this_stream.worker ) {
 						checked = ' selected';
 					}
-					$('<option value="' + key + '" ' + checked + '>' + val['title'] + '</option>').appendTo("#workers");
+					
+					// check that this worker is valid for this input.
+					var isOkayWorkerForInput = false;
+					for ( var inp in val['inputs'] ) {
+						if ( val['inputs'][inp] == this_stream.input ) {
+							isOkayWorkerForInput = true;
+						}
+					}
+					if ( isOkayWorkerForInput === true ) {
+						$('<option value="' + key + '" ' + checked + '>' + val['title'] + '</option>').appendTo("#workers");
+					}
 					
 					if ( key === this_stream.worker ) {
 						for ( var strs in val['stores'] ) {
-						
 
-						
 							$.each(val['stores'][strs], function(skey, sval) {
 								//console.log('skey: ' + skey + ' sval: ' + sval);
 
