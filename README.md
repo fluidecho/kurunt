@@ -39,7 +39,7 @@ kurunt
 Then to administer can open your browser at:
 
 ```
-http://localhost:8888
+http://127.0.0.1:8888
 ```
 
 ## How does it work?
@@ -85,7 +85,7 @@ Process the messages any way you want. Turn structured, semi-structured or unstr
 Store your now 'schemed' messages any way you want. In your favorite database, filesystem, data grid, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
 
 #### Stream Report
-You can visualize your data from within the [web admin](http://localhost:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
+You can visualize your data from within the [web admin](http://127.0.0.1:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
 The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
@@ -94,11 +94,11 @@ The simplest answer is for efficiency. There is a limit to how much 'processing'
 
 #### Benchmark
 
-You can benchmark Kurunt by opening a 'stream', using the [web admin](http://localhost:8888). And run the data simulation client.
+You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
 ```
-> perl /kurunt/lib/workers/test/client.pl -T=tcp -P=5555 -m=1 -c=1 -d='hello world'
+> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
 ```
-Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d = the string data you want to send. -help for more info.
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
 
 #### Results
 

@@ -187,7 +187,7 @@ function send(apikey, callback) {
 		});
 
 		// write data to request body
-		req.write(message_map[this_stream.worker] + '\n');
+		req.write(message_map[this_stream.worker]);
 		req.end();
 
 	}
