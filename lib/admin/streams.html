@@ -234,7 +234,7 @@
 				
 					$('<tr><td class="row_num">' + i + '</td><td class="'+alternate+'">' + val['apikey'] + '</td><td class="'+alternate+'">' + val['input']['object'] + '</td><td class="'+alternate+'">' + val['worker'] + '</td><td class="'+alternate+'">'+stores+'</td><td class="'+alternate+'">'+tags+'</td><td class="'+alternate+'"><a href="'+input_address+'">'+input_address+'</a></td><td class="'+alternate+'">' + val['status'] + '</td><td class="'+alternate+' row_api_th">'+api_link+'</td><td class="row_white"><a href="#" onclick="editStream(\''+ val['apikey'] +'\')"><img src="/images/edit_icon.gif" alt="edit" title="edit" /></a></td><td class="row_white"><a href="#" onclick="deleteStream(\''+ val['apikey'] +'\')"><img src="/images/delete_icon.gif" alt="delete" title="delete" /></a></td></tr>').appendTo("#streams_table tbody");
 					
-					if ( val['status'] === 'open' ) {
+					if ( val['status'] === 'open' && ( val['worker'] === 'combined' || val['worker'] === 'csv'  || val['worker'] === 'jpeg'  || val['worker'] === 'json'  || val['worker'] === 'string'  || val['worker'] === 'syslog' || val['worker'] === 'webpixel' ) ) {
 						$('#select_apikey').append($("<option></option>").attr("value", val['apikey']).text(val['apikey']));
 					}
 					
