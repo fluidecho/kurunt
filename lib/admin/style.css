@@ -143,4 +143,20 @@ html { height: 100%; margin: 0; background: #535151; }
 	}
 	.submit1:hover {
 		background: #085951;
-	}  
+	}
+	
+	.submit2 {
+		background: #535151;
+		color: #fff;
+		padding: 8px 15px 8px 15px;
+		border: 1px solid #333333;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		border-radius: 3px;                
+	}
+	.submit2:hover {
+		background: #333333;
+	}  	
+	
+	
