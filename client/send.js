@@ -40,6 +40,7 @@ message_map.json = '{"hello":"world"}';
 message_map.csv = 'A,B,C';
 message_map.syslog = '<13>Nov 11 14:57:16 marcopolo test[10108]: mary had a little lamb';
 message_map.combined = '127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326 "http://www.example.com/start.html" "Mozilla/4.08 [en] (Win98; I ;Nav)" "USERID=Zepheira;IMPID=01234"';
+message_map.buffer = '☃';
 
 // read jpeg image files.
 // have to use __dirname cause when called by other module throws relative path!
@@ -119,7 +120,11 @@ function send(apikey, callback) {
 			//console.log('CONNECTED TO: ' + HOST + ':' + PORT);
 			client.write(message_map[this_stream.worker] + '\n');
 			client.end();		// close connection.
-			callback(message_map[this_stream.worker]);
+			if ( this_stream.worker === 'buffer' ) {
+				callback('&#9731');
+			} else {
+				callback(message_map[this_stream.worker]);
+			}
 		});
 		
 	} else if ( this_stream.input.object === 'udp' ) {
@@ -128,7 +133,11 @@ function send(apikey, callback) {
 		var client = dgram.createSocket("udp4");
 		client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
 			client.close();
-			callback(message_map[this_stream.worker]);
+			if ( this_stream.worker === 'buffer' ) {
+				callback('&#9731');
+			} else {
+				callback(message_map[this_stream.worker]);
+			}
 		});	
 	
 	} else {
@@ -165,7 +174,11 @@ function send(apikey, callback) {
 			});
 			res.on('end', function () {
 				//console.log(str);
-				callback(message_map[this_stream.worker]);
+				if ( this_stream.worker === 'buffer' ) {
+					callback('&#9731');
+				} else {
+					callback(message_map[this_stream.worker]);
+				}
 			});
 		});
 

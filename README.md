@@ -1,8 +1,10 @@
 # Kurunt
 
-"Kurunt" real-time processing of streaming data at any scale, using node.js.
+"Kurunt" for real-time processing of streaming data at any scale, using node.js.  
 
-Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL and time series data. Has been build to be efficient and fast, benchmarked at processing over a million tuples per second per node. Simple to use through its web admin.
+Can be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL and time series data.  
+
+Simple to use 'stand-alone' through its web admin, or as a 'framework' node.js module.
 
 ### *** UNDER DEV, COMING SOON (star me if interested) ***
 
@@ -16,6 +18,7 @@ Can be used to capture, process and store both big and small data. Useful for re
 - Uses zeromq like (axon) message patterns for processing.
 - Uniquely id's messages sequentially and in time series format.
 - Build as a framework, can be used as a node.js module or run stand-alone.
+- Fast (~1,000,000 tuples/s).
 
 ## Installation
 
