@@ -14,6 +14,7 @@
 
 var util 					= require("util");
 var net 					= require("net");			// tcp.
+var dgram 				= require('dgram');		// udp.
 var http 					= require('http');		// http.
 var fs 						= require('fs');			// to read jpeg images.
 
@@ -33,6 +34,7 @@ var apikey 				= undefined;
 // a map of each message format to send to workers.
 var message_map = {};
 
+message_map.webpixel = '';		// note: '/?pic.gif?hello=world' within request path.
 message_map.string = 'hello world';
 message_map.json = '{"hello":"world"}';
 message_map.csv = 'A,B,C';
@@ -64,7 +66,7 @@ module.exports.init = function (xconfig, xstreams) {
 if( require.main === module ) {
 	//called directly.
 	process.argv.forEach(function (val, index, array) {
-		console.log('ARGS: ' + index + ': ' + val + ' arr: ' + array);
+		//console.log('ARGS: ' + index + ': ' + val + ' arr: ' + array);
 		if ( val.indexOf('-apikey=') != -1 ) {
 			apikey = val.substring(val.indexOf('-apikey=') + 8);
 		}
@@ -84,7 +86,7 @@ module.exports.send = function (apikey, callback) {
 	if ( apikey.length != 16 ) {
 		apikey = Number(apikey);		// is port number.
 	}
-	console.log('apikey: ' + apikey);
+	//console.log('apikey: ' + apikey);
 
 	for ( var stream in streams['streams'] ) {
 		//console.log('stream> apikey: ' + streams['streams'][stream]['apikey']);
@@ -100,7 +102,7 @@ module.exports.send = function (apikey, callback) {
 		var stream_input_address = this_stream.input.object + '://' + config['host'] + ':' + this_stream.apikey;
 	}
 
-	console.log('send@client> stream_input_address: ' + stream_input_address);
+	//console.log('send@client> stream_input_address: ' + stream_input_address);
 
 	//console.log('message to send: ' + message_map[this_stream.worker]);
 
@@ -108,23 +110,45 @@ module.exports.send = function (apikey, callback) {
 	var PORT = this_stream.apikey;
 
 	if ( this_stream.input.object === 'tcp' ) {
+	
 		var client = new net.Socket();
 		client.connect(PORT, HOST, function() {
-			console.log('CONNECTED TO: ' + HOST + ':' + PORT);
+			//console.log('CONNECTED TO: ' + HOST + ':' + PORT);
 			client.write(message_map[this_stream.worker] + '\n');
 			client.end();		// close connection.
 			callback(message_map[this_stream.worker]);
 		});
+		
 	} else if ( this_stream.input.object === 'udp' ) {
+		
+		var message = new Buffer(message_map[this_stream.worker]);
+		var client = dgram.createSocket("udp4");
+		client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
+			client.close();
+			callback(message_map[this_stream.worker]);
+		});	
 	
 	} else {
 		// http request.
 
+		var rpath = '';
+		var rmethod = 'POST';
+		
+		if ( this_stream.worker === 'webpixel' ) {
+			rpath = '/?pic.gif?hello=*ping*';
+			rmethod = 'GET';
+		}
+
 		var options = {
 			host: HOST,
-			path: '/' + this_stream.apikey,
+			path: '/' + this_stream.apikey + rpath,
 			port: httpconfig['input_port'],
-			method: 'POST'
+			method: rmethod,
+			headers: {
+				'user-agent': "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/513.12 (KHTML, like Gecko) Chrome/32.0.1640.33 Safari/517.1",
+				'referer': "http://localhost/kurunt-admin/",
+				'accept-language': "en-AU,en-US;q=0.8,en;q=0.6"
+			}
 		};
 
 		var req = http.request(options, function(res) {
@@ -137,20 +161,18 @@ module.exports.send = function (apikey, callback) {
 				str += chunk;
 			});
 			res.on('end', function () {
-				console.log(str);
-				
+				//console.log(str);
+				callback(message_map[this_stream.worker]);
 			});
 		});
 
 		req.on('error', function(e) {
-			console.log('problem with request: ' + e.message);
+			//console.log('problem with request: ' + e.message);
 		});
 
 		// write data to request body
 		req.write(message_map[this_stream.worker] + '\n');
 		req.end();
-
-		callback(message_map[this_stream.worker]);
 
 	}
 
