@@ -71,9 +71,11 @@ if( require.main === module ) {
 			apikey = val.substring(val.indexOf('-apikey=') + 8);
 		}
 	});
-	send(apikey, function(msent) {
-	
-	});
+	setTimeout(function () {
+		send(apikey, function(msent) {
+		});
+	}, 1000);
+
 } else {
 	// called as module.
 }
@@ -81,7 +83,8 @@ if( require.main === module ) {
 
    
 // send message to kurunt.
-module.exports.send = function (apikey, callback) {
+exports.send = send;
+function send(apikey, callback) {
 
 	if ( apikey.length != 16 ) {
 		apikey = Number(apikey);		// is port number.
