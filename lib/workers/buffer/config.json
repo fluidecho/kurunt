@@ -25,6 +25,20 @@
 					"buffer": { }
 				}
 			}
-		}			
+		},
+		{
+			"redis": {
+				"schema": {
+					"buffer": { }
+				}
+			}
+		},
+		{
+			"mysql": {
+				"schema": {
+					"buffer": { "type": "varchar(512)" }
+				}
+			}
+		}
 	]
 }
