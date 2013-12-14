@@ -1,14 +1,14 @@
 #!/usr/bin/perl -s
 #
-# Combined Test (worker) Client for Kurunt (sending via TCP or UDP).
+# String (worker) Client for Kurunt (sending via TCP or UDP).
 #
-# /kurunt/lib/workers/combined
+# /kurunt/lib/workers/test
 #
 
 use IO::Socket::INET;
 
 
-print "--- Combined Test Client for Kurunt ---\n\n";
+print "--- Test Client for Kurunt ---\n\n";
 
 # get command line settings: -m = number of messages, -c = cycles to run of messages, -P = port number.
 # -h, help options.
@@ -17,25 +17,25 @@ if ( $h ne '' || $help ne '' ) {
 	print "   -T = tcp|udp (list, optional command, transport protocol tcp or udp to Kurunt's input)\n";
 	print "   -P = 5555 (number, required command, port number to Kurunt tcp or udp input port)\n";
 	print "   -H = 127.0.0.1 (ip address, optional command, ip address to Kurunt tcp or udp input host)\n";
-	print "   -d = data (access_log line, optional command, data to send)\n";	
+	print "   -d = data (mixed, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";
 	print "   -c = 10 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=5555 -m=100 -c=10 -d='127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326 \"http://www.example.com/start.html\" \"Mozilla/4.08 [en] (Win98; I ;Nav)\" \"USERID=Zepheira;IMPID=01234\"'\n";
-	print "This example would send 100 messages every second for 10 seconds through port 5555, -H (host), -d (data).\n";
+	print "For example> perl benchmark.pl -T=tcp -P=6001 -m=100 -c=10 -d='☃'\n";
+	print "This example would send 100 messages every second for 10 seconds through port 6001, -H (host), -d (data) ☃.\n";
 	exit(0);
 }
 if ( $P eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $m eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $c eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 my $total = $m * $c;
 if ( $total == 0 ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 
 
@@ -48,9 +48,14 @@ if ( $T eq '' ) {
 	$T = 'tcp';
 }
 
+my $sequential = 1;
 # default sending messages in string format.
 if ( $d eq '' ) {
-	$d = '127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326 "http://www.example.com/start.html" "Mozilla/4.08 [en] (Win98; I ;Nav)" "USERID=Zepheira;IMPID=01234"';
+	if ( $sequential eq 1 ) {
+		$d = '☃ i: ';
+	} else {
+		$d = '☃';
+	}
 }
 
 if ( $H eq '' ) {
@@ -80,8 +85,18 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 		}
 		
 		#my $random_number = rand();
+		my $data = $d;
+		if ( $sequential eq 1 ) {
+			$data = $d . $i;  
+		}
 		
-		$socket->send($d . "\n");
+		#print "data: " . $data . "\n";
+		
+		if ( $T eq 'tcp' ) {
+			$socket->send($data . "\n");
+		} else {
+			$socket->send($data);		# udp does not require LF "\n" delineation.
+		}
 		
 		$i++;
 	}

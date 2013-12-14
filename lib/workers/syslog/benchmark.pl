@@ -20,22 +20,22 @@ if ( $h ne '' || $help ne '' ) {
 	print "   -d = data (access_log line, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";
 	print "   -c = 10 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=6001 -m=100 -c=10 -d='<13>Nov 11 14:57:16 marcoxps test[10108]: mary had a little lamb'\n";
+	print "For example> perl benchmark.pl -T=tcp -P=6001 -m=100 -c=10 -d='<13>Nov 11 14:57:16 marcoxps test[10108]: mary had a little lamb'\n";
 	print "This example would send 100 messages every second for 10 seconds through port 6001, -H (host), -d (data).\n";
 	exit(0);
 }
 if ( $P eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $m eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $c eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 my $total = $m * $c;
 if ( $total == 0 ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 
 

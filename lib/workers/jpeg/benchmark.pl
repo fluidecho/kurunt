@@ -20,22 +20,22 @@ if ( $h ne '' || $help ne '' ) {
 	print "   -H = 127.0.0.1 (ip address, optional command, ip address to Kurunt tcp or udp input host)\n";
 	print "   -m = 1 (number, required command, of messages to send)\n";
 	print "   -c = 1 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=6001 -m=1 -c=1\n";
+	print "For example> perl benchmark.pl -T=tcp -P=6001 -m=1 -c=1\n";
 	print "This example would send 1 message every second for 1 seconds through port 6001, -H (host).\n";
 	exit(0);
 }
 if ( $P eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $m eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $c eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 my $total = $m * $c;
 if ( $total == 0 ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 
 
