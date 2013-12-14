@@ -15,27 +15,27 @@ print "--- JSON Client for Kurunt ---\n\n";
 if ( $h ne '' || $help ne '' ) {
 	print "Use these commands to run script:\n";
 	print "   -T = tcp|udp (list, optional command, transport protocol tcp or udp to Kurunt's input)\n";
-	print "   -P = 5555 (number, required command, port number to Kurunt tcp or udp input port)\n";
+	print "   -P = 6001 (number, required command, port number to Kurunt tcp or udp input port)\n";
 	print "   -H = 127.0.0.1 (ip address, optional command, ip address to Kurunt tcp or udp input host)\n";
 	print "   -d = data (string, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";
 	print "   -c = 10 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=5555 -m=100 -c=10 -d='{\"hello\": \"world\"}'\n";
-	print "This example would send 100 messages every second for 10 seconds through port 5555, -H (host), -d (data) {\"hello\": \"world\"}.\n";
+	print "For example> perl client.pl -T=tcp -P=6001 -m=100 -c=10 -d='{\"hello\": \"world\"}'\n";
+	print "This example would send 100 messages every second for 10 seconds through port 6001, -H (host), -d (data) {\"hello\": \"world\"}.\n";
 	exit(0);
 }
 if ( $P eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $m eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 if ( $c eq '' ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 my $total = $m * $c;
 if ( $total == 0 ) {
-	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl client.pl -h\n";
+	die "ERROR need -T = transport protocol, -P = port number, -m = number of messages and -c = cycles, commands. For help> perl benchmark.pl -h\n";
 }
 
 
