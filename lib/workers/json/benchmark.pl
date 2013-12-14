@@ -20,7 +20,7 @@ if ( $h ne '' || $help ne '' ) {
 	print "   -d = data (string, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";
 	print "   -c = 10 (number, required command, of cycles to send messages)\n\n";
-	print "For example> perl client.pl -T=tcp -P=6001 -m=100 -c=10 -d='{\"hello\": \"world\"}'\n";
+	print "For example> perl benchmark.pl -T=tcp -P=6001 -m=100 -c=10 -d='{\"hello\": \"world\"}'\n";
 	print "This example would send 100 messages every second for 10 seconds through port 6001, -H (host), -d (data) {\"hello\": \"world\"}.\n";
 	exit(0);
 }
