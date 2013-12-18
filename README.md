@@ -197,7 +197,7 @@ Above shows how the message (your data) is processed using the default topology,
 Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
 
 #### Inputs
-Kurunt opens inputs to your data using: TCP, UDP or HTTP.
+Kurunt opens inputs 'streams' to your data using: TCP, UDP or HTTP.
 
 #### Workers
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
