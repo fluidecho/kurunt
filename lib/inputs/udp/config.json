@@ -1,10 +1,5 @@
 {
   "name": "udp",
   "description": "UDP server input.",
-  "bands": 100,
-  "band": 0,
-  "messenger_codec": "json",
-  "debug": "benchmarking",
-  "mq_nodelay": false,
   "type": "udp4"
 }

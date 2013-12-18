@@ -18,9 +18,8 @@ module.exports.work = function (message, wk, fn, callback) {
 	try {
 
 		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
-
+		
 		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
-
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
 		
 		var attributes = [];
