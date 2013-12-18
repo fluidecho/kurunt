@@ -42,54 +42,6 @@ Then to administer can open your browser at:
 http://127.0.0.1:8888
 ```
 
-## How does it work?
-
-Kurunt is made up of three components: inputs, workers and stores. 
-<pre>
-       *****************
-       *   YOUR DATA   *  (json, syslog, csv, sensors, jpeg, access_log, tail, etc)
-       *****************
-               |
-               v
-          ***********
-          *  INPUT  *  (tcp, udp, http)
-          ***********
-             |   |
-     +-------+   +-------+
-     |                   |
-     v                   v
-**********          **********
-* WORKER *          * WORKER *  (functions, parse, regex, filter, augment, geoip, etc)
-**********          **********
-     |                   |
-     +-------+   +-------+
-             |   |
-             v   v
-          ***********
-          *  STORE  *  (stream, socket.io, mongo, mysql, hadoop, S3, solr, sphinx, etc)
-          ***********
-</pre>
-
-Above shows how the message (your data) is processed using the default topology, you can however create all sorts of patterns for scalability and fault-tolerance.
-
-#### Your Data
-Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
-
-#### Inputs
-Kurunt opens inputs to your data using: TCP, UDP or HTTP.
-
-#### Workers
-Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
-
-#### Stores
-Store your now 'schemed' messages any way you want. In your favorite database, filesystem, data grid, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
-
-#### Stream Report
-You can visualize your data from within the [web admin](http://127.0.0.1:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
-
-#### Why do all of this?
-The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
-
 
 ## Module
 You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
@@ -206,6 +158,55 @@ module.exports.store = function (message, report, callback) {
   }
 };
 ```
+
+
+## How does it work?
+
+Kurunt is made up of three components: inputs, workers and stores. 
+<pre>
+       *****************
+       *   YOUR DATA   *  (json, syslog, csv, sensors, jpeg, access_log, tail, etc)
+       *****************
+               |
+               v
+          ***********
+          *  INPUT  *  (tcp, udp, http)
+          ***********
+             |   |
+     +-------+   +-------+
+     |                   |
+     v                   v
+**********          **********
+* WORKER *          * WORKER *  (functions, parse, regex, filter, augment, geoip, etc)
+**********          **********
+     |                   |
+     +-------+   +-------+
+             |   |
+             v   v
+          ***********
+          *  STORE  *  (stream, socket.io, mongo, mysql, hadoop, S3, solr, sphinx, etc)
+          ***********
+</pre>
+
+Above shows how the message (your data) is processed using the default topology, you can however create all sorts of patterns for scalability and fault-tolerance.
+
+#### Your Data
+Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
+
+#### Inputs
+Kurunt opens inputs to your data using: TCP, UDP or HTTP.
+
+#### Workers
+Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
+
+#### Stores
+Store your now 'schemed' messages any way you want. In your favorite database, filesystem, data grid, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
+
+#### Stream Report
+You can visualize your data from within the [web admin](http://127.0.0.1:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
+
+#### Why do all of this?
+The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
 
 ## Performance
