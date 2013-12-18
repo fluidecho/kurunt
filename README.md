@@ -91,7 +91,6 @@ module.exports.work = function (message, wk, fn, callback) {
 		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
 		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
-
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
 		
 		var attributes = [];
@@ -140,6 +139,7 @@ module.exports.store = function (message, report, callback) {
     // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
     // Can extract mymessage from 'mystore' schema.
+    var mymessage = undefined;
     for ( var s in message.stores ) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
