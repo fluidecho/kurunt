@@ -114,7 +114,7 @@ Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
 	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
 
-		// can now form and send my message into the stream.
+		// can now form and send my message into the stream. There are lots of ways you can [input data](http://docs.kurunt.com/Input_Data).
 		var mymessage = {};
 		mymessage.hello = 'world';
 		mymessage.num = 101;
