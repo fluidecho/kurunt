@@ -90,24 +90,9 @@ You can visualize your data from within the [web admin](http://127.0.0.1:8888) '
 #### Why do all of this?
 The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
-## Performance
-
-#### Benchmark
-
-You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
-```
-> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
-```
-Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
-
-#### Results
-
-Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
-
-Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 ## Module
-asmodule.js
+You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
 
 ```js
 var Kurunt = require('kurunt');
@@ -225,6 +210,23 @@ module.exports.store = function (message, report, callback) {
 
 };
 ```
+
+
+## Performance
+
+#### Benchmark
+
+You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
+```
+> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
+```
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
+
+#### Results
+
+Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
+
+Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 
 ## License
