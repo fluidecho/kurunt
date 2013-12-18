@@ -15,7 +15,7 @@ print "--- Test Client for Kurunt ---\n\n";
 if ( $h ne '' || $help ne '' ) {
 	print "Use these commands to run script:\n";
 	print "   -T = tcp|udp (list, optional command, transport protocol tcp or udp to Kurunt's input)\n";
-	print "   -P = 5555 (number, required command, port number to Kurunt tcp or udp input port)\n";
+	print "   -P = 6001 (number, required command, port number to Kurunt tcp or udp input port)\n";
 	print "   -H = 127.0.0.1 (ip address, optional command, ip address to Kurunt tcp or udp input host)\n";
 	print "   -d = data (mixed, optional command, data to send)\n";	
 	print "   -m = 100 (number, required command, of messages to send)\n";

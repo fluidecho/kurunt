@@ -19,8 +19,11 @@ var http 					= require('http');		// http.
 var fs 						= require('fs');			// to read jpeg images.
 
 var config 				= require('.././config.json');
-var streams 			= require('.././streams.json');
-
+try {
+	var streams 			= require('.././streams.json');
+} catch(e) {
+	var streams = {"streams":[]};
+}
 
 var httpconfig 	= require('../lib/inputs/http/./config.json');		// need for getting http input port.
 //var httpconfig = {};
