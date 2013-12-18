@@ -14,28 +14,25 @@
 
 // must export 'work' module.
 module.exports.work = function (message, wk, fn, callback) {
+	// use try catch so can skip over invalid messages.
+	try {
 
-	//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
-  // use try catch so can skip over invalid messages.
-  try {
-
-    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
 
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
-    
-    var attributes = [];
-    attributes['mymessage'] = mymessage;
+		
+		var attributes = [];
+		attributes['mymessage'] = mymessage;
 
-    return callback( [ message, attributes ] );		// must return.
-  
-  } catch(e) {
-    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
-  }
-
+		return callback( [ message, attributes ] );		// must return.
+	
+	} catch(e) {
+		//console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+		return callback( false );		// must return.
+	}
 };
-
 
 
 // set the worker config, or call a json config file via require.

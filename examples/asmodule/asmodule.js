@@ -28,13 +28,12 @@ Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
 	// form new stream.
 	var tags = ['test', 'asmodule'];
-	var access_hosts = [];
 	var use_stores = ['mystore', 'stream'];		// have set mystore as set above, as well as stream so can view in 'Stream Report'.
 
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-	kurunt.newStream('tcp', 'myworker', use_stores, tags, access_hosts, function(stream) {
+	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
 
-		// can now form and send my message into the stream.
+		// can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
 		var mymessage = {};
 		mymessage.hello = 'world';
 		mymessage.num = 101;

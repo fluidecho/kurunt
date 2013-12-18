@@ -55,9 +55,9 @@ module.exports.work = function (message, config, fn, callback) {
 
 ```
 
-## config.json
+## config
 
-See _config.json_ file to set options like message encoding and set the 'schema' for the message which can be used by the 'store'.
+See _config_ to set options like message encoding and set the 'schema' for the message which can be used by the 'store'.
 
 ```js
 {

@@ -90,33 +90,18 @@ You can visualize your data from within the [web admin](http://127.0.0.1:8888) '
 #### Why do all of this?
 The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
-## Performance
-
-#### Benchmark
-
-You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
-```
-> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
-```
-Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
-
-#### Results
-
-Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
-
-Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 ## Module
-asmodule.js
+You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
 
 ```js
-var Kurunt = require('kurunt');
+var Kurunt        = require("kurunt");
 
-var workers 			= {};
-workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
+var workers       = {};
+workers.myworker  = __dirname + '/myworker.js';		// full path to your worker function.
 
-var stores 				= {};
-stores.mystore 		= __dirname + '/mystore.js';		// full path to your store function.
+var stores        = {};
+stores.mystore    = __dirname + '/mystore.js';		// full path to your store function.
 
 
 // init: {config}, {topology}, {workers}, {stores}, (callback function).
@@ -129,7 +114,7 @@ Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
 	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
 
-		// can now form and send my message into the stream.
+		// can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
 		var mymessage = {};
 		mymessage.hello = 'world';
 		mymessage.num = 101;
@@ -148,26 +133,24 @@ myworker.js
 ```js
 // must export 'work' module.
 module.exports.work = function (message, wk, fn, callback) {
+	// use try catch so can skip over invalid messages.
+	try {
 
-	//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
-  // use try catch so can skip over invalid messages.
-  try {
-
-    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
 
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
-    
-    var attributes = [];
-    attributes['mymessage'] = mymessage;
+		
+		var attributes = [];
+		attributes['mymessage'] = mymessage;
 
-    return callback( [ message, attributes ] );		// must return.
-  
-  } catch(e) {
-    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
-  }
-
+		return callback( [ message, attributes ] );		// must return.
+	
+	} catch(e) {
+		//console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+		return callback( false );		// must return.
+	}
 };
 
 
@@ -197,34 +180,49 @@ mystore.js
 ```js
 // must export 'store' module.
 module.exports.store = function (message, report, callback) {
-
-  //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
-
   // use try catch so can skip over invalid messages.
   try {
   
-  	// Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
+    //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    
+    // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
     // Can extract mymessage from 'mystore' schema.
     for ( var s in message.stores ) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
-          mymessage = message.stores[s][st]['schema']['mymessage']['value'];		// may want to "clone" message.
+          mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
         }
       }
     }
 
-		console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));		// here it is, yea!
+    console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
 
-    return callback( true );		// must return.
+    return callback( true );    // must return.
   
   } catch(e) {
     //console.log('mystore@stores> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
+    return callback( false );   // must return.
   }
-
 };
 ```
+
+
+## Performance
+
+#### Benchmark
+
+You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
+```
+> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
+```
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
+
+#### Results
+
+Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
+
+Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 
 ## License

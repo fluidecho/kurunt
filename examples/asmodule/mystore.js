@@ -14,31 +14,29 @@
 
 // must export 'store' module.
 module.exports.store = function (message, report, callback) {
-
-  //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
-
   // use try catch so can skip over invalid messages.
   try {
   
-  	// Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
+    //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    
+    // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
     // Can extract mymessage from 'mystore' schema.
     for ( var s in message.stores ) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
-          mymessage = message.stores[s][st]['schema']['mymessage']['value'];		// may want to "clone" message.
+          mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
         }
       }
     }
 
-		console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));		// here it is, yea!
+    console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
 
-    return callback( true );		// must return.
+    return callback( true );    // must return.
   
   } catch(e) {
     //console.log('mystore@stores> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
+    return callback( false );   // must return.
   }
-
 };
 
