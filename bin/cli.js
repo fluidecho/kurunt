@@ -24,7 +24,7 @@ var topology  	= require(".././topology.json");
 
 
 
-// _.init: {config}, {topology}, {workers}, {stores}, (callback function).
+// init: {config}, {topology}, {workers}, {stores}, (callback function).
 Kurunt.init(config, topology, undefined, undefined, function(kurunt) {
 
 	//console.log('cli.js> kurunt: ' + require('util').inspect(stream, true, 99, true));    // uncomment to debug.
