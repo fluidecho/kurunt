@@ -90,9 +90,12 @@ module.exports.work = function (message, wk, fn, callback) {
 
 		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
+		// Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
+
 		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
 		
+		// Can set the attributes, as they match with: config.stores.mystore.schema.
 		var attributes = [];
 		attributes['mymessage'] = mymessage;
 
