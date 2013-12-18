@@ -107,11 +107,125 @@ Results depend a little bit on what you mean by "message processing", I mean it 
 Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 ## Module
+asmodule.js
 
 ```js
-var kurunt = require('kurunt');
-...
+var Kurunt = require('kurunt');
+
+var workers 			= {};
+workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
+
+var stores 				= {};
+stores.mystore 		= __dirname + '/mystore.js';		// full path to your store function.
+
+
+// init: {config}, {topology}, {workers}, {stores}, (callback function).
+Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
+
+	// form new stream.
+	var tags = ['test', 'asmodule'];
+	var use_stores = ['mystore', 'stream'];		// have set mystore as set above, as well as stream so can view in 'Stream Report'.
+
+	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
+	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
+
+		// can now form and send my message into the stream.
+		var mymessage = {};
+		mymessage.hello = 'world';
+		mymessage.num = 101;
+		mymessage.fab = true;
+
+		// will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
+		kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
+			console.log('asmodule.js> sent message: ' + sent);
+		});
+
+	});
+
+});
 ```
+myworker.js
+```js
+// must export 'work' module.
+module.exports.work = function (message, wk, fn, callback) {
+
+	//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+
+  // use try catch so can skip over invalid messages.
+  try {
+
+    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+
+		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
+    
+    var attributes = [];
+    attributes['mymessage'] = mymessage;
+
+    return callback( [ message, attributes ] );		// must return.
+  
+  } catch(e) {
+    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+    return callback( false );		// must return.
+  }
+
+};
+
+
+// set the worker config, or call a json config file via require.
+var config = {
+	"name": "myworker",
+	"title": "My Worker",	
+	"description": "Using Kurunt as a module framework, My Worker.",
+	"inputs": [ "tcp", "udp", "http" ],
+	"mq_nodelay": false,
+	"reports": [ "stream" ],
+	"message_codec": "json",
+	"encoding": "utf8",
+	"stores": [
+		{
+			"mystore": {
+				"schema": {
+					"mymessage": { }
+				}
+			}
+		}	
+	]
+};
+exports.config = config;		// must export the config so kurunt can read it.
+```
+mystore.js
+```js
+// must export 'store' module.
+module.exports.store = function (message, report, callback) {
+
+  //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+
+  // use try catch so can skip over invalid messages.
+  try {
+  
+  	// Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
+
+    // Can extract mymessage from 'mystore' schema.
+    for ( var s in message.stores ) {
+      for ( var st in message.stores[s] ) {
+        if ( st === 'mystore' ) {
+          mymessage = message.stores[s][st]['schema']['mymessage']['value'];		// may want to "clone" message.
+        }
+      }
+    }
+
+		console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));		// here it is, yea!
+
+    return callback( true );		// must return.
+  
+  } catch(e) {
+    //console.log('mystore@stores> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+    return callback( false );		// must return.
+  }
+
+};
+```
+
 
 ## License
 
