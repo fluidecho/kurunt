@@ -12,7 +12,7 @@
 
 
 
-var Kurunt    		= require("../");		// call the Kurunt module [require('kurunt')].
+var Kurunt    		= require("../../");		// call the Kurunt module [require('kurunt')].
 var config    		= require(".././config.json");
 var topology  		= require(".././topology.json");
 
@@ -32,7 +32,7 @@ Kurunt.init(config, topology, workers, stores, function(kurunt) {
 	var use_stores = ['mystore', 'stream'];		// have set mystore as set above, as well as stream so can view in 'Stream Report'.
 
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-	kurunt.newStream('tcp', 'myworker', use_stores, tags, access_hosts, function(stream) {
+	kurunt.newStream('udp', 'myworker', use_stores, tags, access_hosts, function(stream) {
 		//console.log('asmodule.js> stream: ' + require('util').inspect(stream, true, 99, true));    // uncomment to debug stream.
 		
 		// can now form and send my message into the stream.
