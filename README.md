@@ -101,7 +101,7 @@ var workers       = {};
 workers.myworker  = __dirname + '/myworker.js';		// full path to your worker function.
 
 var stores        = {};
-stores.mystore 		= __dirname + '/mystore.js';		// full path to your store function.
+stores.mystore    = __dirname + '/mystore.js';		// full path to your store function.
 
 
 // init: {config}, {topology}, {workers}, {stores}, (callback function).
