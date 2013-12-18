@@ -95,7 +95,9 @@ The simplest answer is for efficiency. There is a limit to how much 'processing'
 You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
 
 ```js
-var Kurunt = require('kurunt');
+var Kurunt    		= require("../../");		// call the Kurunt module [require('kurunt')].
+var config    		= require("../.././config.json");
+var topology  		= require("../.././topology.json");
 
 var workers 			= {};
 workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
@@ -105,7 +107,7 @@ stores.mystore 		= __dirname + '/mystore.js';		// full path to your store functi
 
 
 // init: {config}, {topology}, {workers}, {stores}, (callback function).
-Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
+Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
 	// form new stream.
 	var tags = ['test', 'asmodule'];
@@ -133,26 +135,24 @@ myworker.js
 ```js
 // must export 'work' module.
 module.exports.work = function (message, wk, fn, callback) {
+	// use try catch so can skip over invalid messages.
+	try {
 
-	//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
-  // use try catch so can skip over invalid messages.
-  try {
-
-    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
 
 		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
-    
-    var attributes = [];
-    attributes['mymessage'] = mymessage;
+		
+		var attributes = [];
+		attributes['mymessage'] = mymessage;
 
-    return callback( [ message, attributes ] );		// must return.
-  
-  } catch(e) {
-    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
-  }
-
+		return callback( [ message, attributes ] );		// must return.
+	
+	} catch(e) {
+		//console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+		return callback( false );		// must return.
+	}
 };
 
 
@@ -182,32 +182,30 @@ mystore.js
 ```js
 // must export 'store' module.
 module.exports.store = function (message, report, callback) {
-
-  //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
-
   // use try catch so can skip over invalid messages.
   try {
   
-  	// Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
+    //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    
+    // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
     // Can extract mymessage from 'mystore' schema.
     for ( var s in message.stores ) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
-          mymessage = message.stores[s][st]['schema']['mymessage']['value'];		// may want to "clone" message.
+          mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
         }
       }
     }
 
-		console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));		// here it is, yea!
+    console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
 
-    return callback( true );		// must return.
+    return callback( true );    // must return.
   
   } catch(e) {
     //console.log('mystore@stores> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
+    return callback( false );   // must return.
   }
-
 };
 ```
 
