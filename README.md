@@ -97,10 +97,10 @@ You can run Kurunt either stand-alone or as a module. To use as a module you wil
 ```js
 var Kurunt    		= require("kurunt");
 
-var workers 			= {};
-workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
+var workers       = {};
+workers.myworker  = __dirname + '/myworker.js';		// full path to your worker function.
 
-var stores 				= {};
+var stores        = {};
 stores.mystore 		= __dirname + '/mystore.js';		// full path to your store function.
 
 
@@ -114,7 +114,7 @@ Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
 	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
 
-		// can now form and send my message into the stream. There are lots of ways you can [input data](http://docs.kurunt.com/Input_Data).
+		// can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
 		var mymessage = {};
 		mymessage.hello = 'world';
 		mymessage.num = 101;
