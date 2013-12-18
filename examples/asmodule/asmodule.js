@@ -13,8 +13,8 @@
 
 
 var Kurunt    		= require("../../");		// call the Kurunt module [require('kurunt')].
-var config    		= require(".././config.json");
-var topology  		= require(".././topology.json");
+var config    		= require("../.././config.json");
+var topology  		= require("../.././topology.json");
 
 var workers 			= {};
 workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
@@ -32,20 +32,19 @@ Kurunt.init(config, topology, workers, stores, function(kurunt) {
 	var use_stores = ['mystore', 'stream'];		// have set mystore as set above, as well as stream so can view in 'Stream Report'.
 
 	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-	kurunt.newStream('udp', 'myworker', use_stores, tags, access_hosts, function(stream) {
-		//console.log('asmodule.js> stream: ' + require('util').inspect(stream, true, 99, true));    // uncomment to debug stream.
-		
+	kurunt.newStream('tcp', 'myworker', use_stores, tags, access_hosts, function(stream) {
+
 		// can now form and send my message into the stream.
-		var mymessage = {};		// will send this message in JSON, as that is the format myworker.js is expecting.
+		var mymessage = {};
 		mymessage.hello = 'world';
 		mymessage.num = 101;
 		mymessage.fab = true;
-		
-		// send this message into the stream.
+
+		// will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
 		kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
 			console.log('asmodule.js> sent message: ' + sent);
 		});
-		
+
 	});
 
 });
