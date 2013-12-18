@@ -23,7 +23,7 @@ var stores 				= {};
 stores.mystore 		= __dirname + '/mystore.js';		// full path to your store function.
 
 
-
+// init: {config}, {topology}, {workers}, {stores}, (callback function).
 Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
 	// form new stream.
