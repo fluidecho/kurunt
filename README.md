@@ -95,9 +95,7 @@ The simplest answer is for efficiency. There is a limit to how much 'processing'
 You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
 
 ```js
-var Kurunt    		= require("../../");		// call the Kurunt module [require('kurunt')].
-var config    		= require("../.././config.json");
-var topology  		= require("../.././topology.json");
+var Kurunt    		= require("kurunt");
 
 var workers 			= {};
 workers.myworker 	= __dirname + '/myworker.js';		// full path to your worker function.
@@ -107,7 +105,7 @@ stores.mystore 		= __dirname + '/mystore.js';		// full path to your store functi
 
 
 // init: {config}, {topology}, {workers}, {stores}, (callback function).
-Kurunt.init(config, topology, workers, stores, function(kurunt) {
+Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
 
 	// form new stream.
 	var tags = ['test', 'asmodule'];
