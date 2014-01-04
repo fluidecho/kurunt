@@ -197,7 +197,7 @@ Above shows how the message (your data) is processed using the default topology,
 Could be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.
 
 #### Inputs
-Kurunt opens inputs to your data using: TCP, UDP or HTTP.
+Kurunt opens inputs 'streams' to your data using: TCP, UDP or HTTP.
 
 #### Workers
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
@@ -209,7 +209,7 @@ Store your now 'schemed' messages any way you want. In your favorite database, f
 You can visualize your data from within the [web admin](http://127.0.0.1:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
 
 #### Why do all of this?
-The simplest answer is for efficiency. There is a limit to how much 'processing' a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
+The simplest answer is for efficiency. There is a limit to how much "message processing" a single node.js process can do. You'll eventually need more processes and to be fault-tolerant more machines.
 
 
 ## Performance
