@@ -57,27 +57,31 @@ stores.mystore    = __dirname + '/mystore.js';		// full path to your store funct
 
 
 // init: {config}, {topology}, {workers}, {stores}, (callback function).
-Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
+Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
-	// form new stream.
-	var tags = ['test', 'asmodule'];
-	var use_stores = ['mystore', 'stream'];		// have set mystore as set above, as well as stream so can view in 'Stream Report'.
+  console.log('asmodule.js> Type Ctrl+c to exit the program.');
 
-	// newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-	kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
+  // form new stream.
+  var tags = ['test', 'asmodule'];
+  var use_stores = ['mystore', 'stream'];   // have set mystore as set above, as well as stream so can view in 'Stream Report'.
 
-		// can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
-		var mymessage = {};
-		mymessage.hello = 'world';
-		mymessage.num = 101;
-		mymessage.fab = true;
+  // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
+  kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
 
-		// will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
-		kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
-			console.log('asmodule.js> sent message: ' + sent);
-		});
+    // can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
+    var mymessage = {};
+    mymessage.hello = 'world';
+    mymessage.num = 101;
+    mymessage.fab = true;
 
-	});
+    // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
+    kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
+      console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
+      //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
+      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+    });
+
+  });
 
 });
 ```
@@ -85,26 +89,26 @@ myworker.js
 ```js
 // must export 'work' module.
 module.exports.work = function (message, wk, fn, callback) {
-	// use try catch so can skip over invalid messages.
-	try {
+  // use try catch so can skip over invalid messages.
+  try {
 
-		//console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
 
-		// Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
+    // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
 
-		var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
-		//console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
+    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+    //console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
 		
-		// Can set the attributes, as they match with: config.stores.mystore.schema.
-		var attributes = [];
-		attributes['mymessage'] = mymessage;
+    // Can set the attributes, as they match with: config.stores.mystore.schema.
+    var attributes = [];
+    attributes['mymessage'] = mymessage;
 
-		return callback( [ message, attributes ] );		// must return.
+    return callback( [ message, attributes ] );		// must return.
 	
-	} catch(e) {
-		//console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-		return callback( false );		// must return.
-	}
+  } catch(e) {
+    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+    return callback( false );		// must return.
+  }
 };
 
 
@@ -137,7 +141,7 @@ module.exports.store = function (message, report, callback) {
   // use try catch so can skip over invalid messages.
   try {
   
-    //console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    console.log('mystore@stores> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
     
     // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
@@ -147,11 +151,10 @@ module.exports.store = function (message, report, callback) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
           mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
+          console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
         }
       }
     }
-
-    console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
 
     return callback( true );    // must return.
   
