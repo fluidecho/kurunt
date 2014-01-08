@@ -1,7 +1,7 @@
 {
   "host": "127.0.0.1",
   "this_node": 0,
-  "loging": "benchmarking",
+  "loging": "quiet",
   "admin_www": true,
   "admin_www_port": 8888,
   "messenger_codec": "json",
