@@ -1,5 +1,5 @@
 //
-// Kurunt, As Module
+// Kurunt, As Module 2
 //
 // Using Kurunt as a module framework, rather than stand-alone.
 // Version: 0.2
@@ -18,6 +18,7 @@ var topology      = require("../.././topology.json");
 
 var workers       = {};
 workers.myworker  = __dirname + '/myworker.js';     // full path to your worker function.
+workers.myworker2  = __dirname + '/myworker2.js';   // full path to your worker function.
 
 var stores        = {};
 stores.mystore    = __dirname + '/mystore.js';      // full path to your store function.
@@ -50,5 +51,23 @@ Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
   });
   
+  // can send another message to another stream, using myworker2.
+  kurunt.newStream('http', 'myworker2', use_stores, tags, [], function(stream) {
+
+    // can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
+    var mymessage = {};
+    mymessage.foo = 'bar';
+    mymessage.int = 9876543210;
+    mymessage.fab = true;
+
+    // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
+    kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
+      console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
+      //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
+      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+    });
+
+  });  
+
 });
 
