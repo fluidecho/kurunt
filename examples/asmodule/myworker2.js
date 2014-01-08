@@ -20,13 +20,22 @@ module.exports.work = function (message, wk, fn, callback) {
     console.log('myworker2@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
     
     // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
+
+    // (1) convert the incoming message.message from buffer to string (text).
+    var string = message.message.toString(wk['config']['encoding']);    // "hello world" or whatever sent.
     
-    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );   // example for JSON formatted data.
-    //console.log('myworker2@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
+    // (2) extract message comma seperated values into a javascript array using 'split' function.
+    var message_array = string.split(',');              // convert message to array.
+    
+    // (3) new array for trimed 'tuple' items.
+    var tuples = [];
+    for ( var t in message_array ) {
+      tuples.push( message_array[t].trim() );                     // cleanup and remove whitespaces, add each item 'tuple' and push into new array.
+    }          
     
     // Can set the attributes, as they match with: config.stores.mystore.schema.
     var attributes = [];
-    attributes['mymessage'] = mymessage;
+    attributes['tuples'] = tuples;
 
     return callback( [ message, attributes ] );   // must return.
   
@@ -51,7 +60,7 @@ var config = {
     {
       "mystore": {
         "schema": {
-          "mymessage": { }
+          "tuples": { }
         }
       }
     } 

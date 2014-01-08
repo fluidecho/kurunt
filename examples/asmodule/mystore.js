@@ -27,7 +27,7 @@ module.exports.store = function (message, report, callback) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
           mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
-          console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
+          //console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
         }
       }
     }
