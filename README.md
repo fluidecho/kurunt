@@ -49,15 +49,15 @@ You can run Kurunt either stand-alone or as a module. To use as a module you wil
 ```js
 var Kurunt        = require("kurunt");
 
-var workers       = {};
-workers.myworker  = __dirname + '/myworker.js';		// full path to your worker function.
+var workers       = [];
+workers.push(__dirname + '/myworker.js');   // full path to your worker function.
 
-var stores        = {};
-stores.mystore    = __dirname + '/mystore.js';		// full path to your store function.
+var stores        = [];
+stores.push(__dirname + '/mystore.js');   // full path to your store function.
 
 
-// init: {config}, {topology}, {workers}, {stores}, (callback function).
-Kurunt.init(config, topology, workers, stores, function(kurunt) {
+// init: {config}, {topology}, [workers], [stores], (callback function).
+Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
 
   console.log('asmodule.js> Type Ctrl+c to exit the program.');
 
@@ -96,43 +96,41 @@ module.exports.work = function (message, wk, fn, callback) {
 
     // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
 
-    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );		// example for JSON formatted data.
+    var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );   // example for JSON formatted data.
     //console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
-		
+    
     // Can set the attributes, as they match with: config.stores.mystore.schema.
     var attributes = [];
     attributes['mymessage'] = mymessage;
 
-    return callback( [ message, attributes ] );		// must return.
-	
+    return callback( [ message, attributes ] );   // must return.
+  
   } catch(e) {
     //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
-    return callback( false );		// must return.
+    return callback( false );   // must return.
   }
 };
 
-
 // set the worker config, or call a json config file via require.
 var config = {
-	"name": "myworker",
-	"title": "My Worker",	
-	"description": "Using Kurunt as a module framework, My Worker.",
-	"inputs": [ "tcp", "udp", "http" ],
-	"mq_nodelay": false,
-	"reports": [ "stream" ],
-	"message_codec": "json",
-	"encoding": "utf8",
-	"stores": [
-		{
-			"mystore": {
-				"schema": {
-					"mymessage": { }
-				}
-			}
-		}	
-	]
+  "name": "myworker",
+  "title": "My Worker", 
+  "description": "Using Kurunt as a module framework, My Worker.",
+  "inputs": [ "tcp", "udp", "http" ],
+  "mq_nodelay": false,
+  "reports": [ "stream" ],
+  "encoding": "utf8",
+  "stores": [
+    {
+      "mystore": {
+        "schema": {
+          "mymessage": { }
+        }
+      }
+    } 
+  ]
 };
-exports.config = config;		// must export the config so kurunt can read it.
+exports.config = config;    // must export the config so kurunt can read it.
 ```
 mystore.js
 ```js
@@ -163,6 +161,13 @@ module.exports.store = function (message, report, callback) {
     return callback( false );   // must return.
   }
 };
+
+// set the worker config, or call a json config file via require.
+var config = {
+  "name": "mystore",
+  "encoding": "utf8"
+};
+exports.config = config;    // must export the config so kurunt can read it.
 ```
 
 
