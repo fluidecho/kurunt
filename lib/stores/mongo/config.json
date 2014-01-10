@@ -1,8 +1,0 @@
-{
-	"name": "mongo",
-	"title": "MongoDB",	
-	"description": "MongoDB store",
-	"messenger_codec": "json",
-	"debug": "benchmarking",
-	"dbname": "kurunt"
-}

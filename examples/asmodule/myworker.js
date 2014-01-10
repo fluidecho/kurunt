@@ -40,12 +40,10 @@ module.exports.work = function (message, wk, fn, callback) {
 // set the worker config, or call a json config file via require.
 var config = {
   "name": "myworker",
-  "title": "My Worker", 
+  "title": "My Worker",
   "description": "Using Kurunt as a module framework, My Worker.",
   "inputs": [ "tcp", "udp", "http" ],
-  "mq_nodelay": false,
   "reports": [ "stream" ],
-  "message_codec": "json",
   "encoding": "utf8",
   "stores": [
     {
@@ -54,7 +52,7 @@ var config = {
           "mymessage": { }
         }
       }
-    } 
+    }
   ]
 };
 exports.config = config;    // must export the config so kurunt can read it.
