@@ -16,15 +16,15 @@ var Kurunt         = require("../../");    // call the Kurunt module [require('k
 var config         = require("../.././config.json");
 var topology       = require("../.././topology.json");
 
-var workers        = {};
-workers.myworker   = __dirname + '/myworker.js';     // full path to your worker function.
-workers.myworker2  = __dirname + '/myworker2.js';   // full path to your worker function.
+var workers       = [];
+workers.push(__dirname + '/myworker.js');    // full path to your worker function.
+workers.push(__dirname + '/myworker2.js');   // full path to your worker function.
 
-var stores         = {};
-stores.mystore     = __dirname + '/mystore.js';      // full path to your store function.
+var stores        = [];
+stores.push(__dirname + '/mystore.js');      // full path to your store function.
 
 
-// init: {config}, {topology}, {workers}, {stores}, (callback function).
+// init: {config}, {topology}, [workers], [stores], (callback function).
 Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
   console.log('asmodule.js> Type Ctrl+c to exit the program.');

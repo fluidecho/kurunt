@@ -13,7 +13,8 @@
 
 
 var Kurunt = require("../../");
-Kurunt.init(undefined, undefined, {myworker:__dirname + '/myworker.js'}, {mystore:__dirname + '/mystore.js'}, function(kurunt) {
+
+Kurunt.init(undefined, undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
   kurunt.newStream('tcp', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
     kurunt.send(stream, JSON.stringify({foo:'bar'}), function (e, sent) {
       console.log('Can view processed message at: http://127.0.0.1:9001/, Ctrl+c to exit.');   // requires socket.io.

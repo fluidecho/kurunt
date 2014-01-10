@@ -40,3 +40,11 @@ module.exports.store = function (message, report, callback) {
   }
 };
 
+
+// set the worker config, or call a json config file via require.
+var config = {
+  "name": "mystore",
+  "encoding": "utf8"
+};
+exports.config = config;    // must export the config so kurunt can read it.
+
