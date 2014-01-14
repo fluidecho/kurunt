@@ -14,10 +14,11 @@
 
 var Kurunt = require("../../");
 
+console.warn('message here');
+
 Kurunt.init(undefined, undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
-  kurunt.newStream('tcp', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
-    kurunt.send(stream, JSON.stringify({foo:'bar'}), function (e, sent) {
-      console.log('Can view processed message at: http://127.0.0.1:9001/, Ctrl+c to exit.');   // requires socket.io.
-    });
+  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
+ 		//console.log('stream> ' + require('util').format(stream));
+    console.log('Can input a message using curl, copy/paste into new terminal:\n---------------------------------------------------------------------------------------------------------------\ncurl -X POST -H "Content-Type: application/json" -d \'{"hello":"world"}\' ' + stream.address + '\n---------------------------------------------------------------------------------------------------------------\nCan view processed messages at >>> http://127.0.0.1:9001/ <<< or via API >>> ' + stream.api_address + ' <<< \nCtrl+c to exit.\n...'); 
   });
 });
