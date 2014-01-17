@@ -14,8 +14,6 @@
 
 var Kurunt = require("../../");
 
-console.warn('message here');
-
 Kurunt.init(undefined, undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
   kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
  		//console.log('stream> ' + require('util').format(stream));
