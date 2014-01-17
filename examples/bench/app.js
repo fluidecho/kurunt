@@ -1,0 +1,21 @@
+//
+// Kurunt, As Module (app example).
+//
+// Using Kurunt as a module framework, rather than stand-alone.
+// Version: 0.2
+// Author: Mark W. B. Ashcroft (mark [at] kurunt [dot] com)
+// License: MIT or Apache 2.0.
+//
+// Copyright (c) 2013-2014 Mark W. B. Ashcroft.
+// Copyright (c) 2013-2014 Kurunt.
+//
+
+
+
+var Kurunt = require("../../");
+
+Kurunt.init(undefined, undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
+  kurunt.newStream('tcp', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
+ 		console.log('stream> ' + require('util').format(stream));
+  });
+});
