@@ -56,17 +56,14 @@ var stores        = [];
 stores.push(__dirname + '/mystore.js');   // full path to your store function.
 
 
-// init: {config}, {topology}, [workers], [stores], (callback function).
-Kurunt.init(undefined, undefined, workers, stores, function(kurunt) {
+// init: [workers], [stores], (callback function).
+Kurunt.init(workers, stores, function(kurunt) {
 
   console.log('asmodule.js> Type Ctrl+c to exit the program.');
 
-  // form new stream.
-  var tags = ['test', 'asmodule'];
-  var use_stores = ['mystore', 'stream'];   // have set mystore as set above, as well as stream so can view in 'Stream Report'.
-
+  // create a new stream.
   // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-  kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
+  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], ['test', 'asmodule'], [], function(stream) {
 
     // can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
     var mymessage = {};
@@ -149,7 +146,7 @@ module.exports.store = function (message, report, callback) {
       for ( var st in message.stores[s] ) {
         if ( st === 'mystore' ) {
           mymessage = message.stores[s][st]['schema']['mymessage']['value'];    // may want to "clone" message.
-          console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
+          //console.log('mystore@stores> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // here it is, yea!
         }
       }
     }
