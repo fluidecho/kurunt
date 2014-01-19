@@ -1,7 +1,7 @@
 #!/usr/bin/perl -s
 #
 # Benchmarking Kurunt Client
-#
+#	NOTE: Under extreme load may cause breakage, use at own risk.
 #
 
 use IO::Socket::INET;

@@ -1,7 +1,7 @@
 //
-// Kurunt, As Module (app example).
+// Kurunt, Benchmark.
 //
-// Using Kurunt as a module framework, rather than stand-alone.
+// Benchmarking Kurunt's performance.
 // Version: 0.2
 // Author: Mark W. B. Ashcroft (mark [at] kurunt [dot] com)
 // License: MIT or Apache 2.0.
@@ -10,6 +10,9 @@
 // Copyright (c) 2013-2014 Kurunt.
 //
 
+
+// NOTE: Under extreme load may cause breakage, use at own risk.
+// Can set ../../config.json:logging = "benchmark".
 
 
 var Kurunt = require("../../");

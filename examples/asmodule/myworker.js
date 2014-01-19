@@ -17,7 +17,7 @@ module.exports.work = function (message, wk, fn, callback) {
   // use try catch so can skip over invalid messages.
   try {
 
-    console.log('myworker@workers> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    console.log('myworker.js> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
     
     // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
     
