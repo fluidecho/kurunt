@@ -43,7 +43,6 @@ var config = {
   "title": "My Worker",
   "description": "Using Kurunt as a module framework, My Worker.",
   "inputs": [ "tcp", "udp", "http" ],
-  "reports": [ "stream" ],
   "encoding": "utf8",
   "stores": [
     {
