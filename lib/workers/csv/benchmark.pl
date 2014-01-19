@@ -1,6 +1,7 @@
 #!/usr/bin/perl -s
 #
 # CSV (worker) Client for Kurunt (sending via TCP or UDP).
+# NOTE: Under extreme load may cause breakage, use at own risk.
 #
 # /kurunt/lib/workers/csv
 #
