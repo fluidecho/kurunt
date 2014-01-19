@@ -13,8 +13,6 @@
 
 
 var Kurunt         = require("../../");    // call the Kurunt module [require('kurunt')].
-var config         = require("../.././config.json");
-var topology       = require("../.././topology.json");
 
 var workers       = [];
 workers.push(__dirname + '/myworker.js');    // full path to your worker function.
@@ -24,8 +22,8 @@ var stores        = [];
 stores.push(__dirname + '/mystore.js');      // full path to your store function.
 
 
-// init: {config}, {topology}, [workers], [stores], (callback function).
-Kurunt.init(config, topology, workers, stores, function(kurunt) {
+// init: [workers], [stores], (callback function).
+Kurunt.init(workers, stores, function(kurunt) {
 
   console.log('asmodule.js> Type Ctrl+c to exit the program.');
 

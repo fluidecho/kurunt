@@ -12,30 +12,16 @@
 
 
 
-var Kurunt        = require("../../");    // call the Kurunt module [require('kurunt')].
-var config        = require("../.././config.json");
-var topology      = require("../.././topology.json");
-
-var workers       = [];
-workers.push(__dirname + '/myworker.js');     // full path to your worker function.
-
-var stores        = [];
-stores.push(__dirname + '/mystore.js');      // full path to your store function.
+var Kurunt = require("../../");    // call the Kurunt module [require('kurunt')].
 
 
-// init: {config}, {topology}, [workers], [stores], (callback function).
-Kurunt.init(config, topology, workers, stores, function(kurunt) {
-
-  console.log('asmodule.js> Type Ctrl+c to exit the program.');
-
-  // form new stream.
-  var tags = ['test', 'asmodule'];
-  var use_stores = ['mystore', 'stream'];   // have set mystore as set above, as well as stream so can view in 'Stream Report'.
+// init: [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.
+Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
 
   // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-  kurunt.newStream('tcp', 'myworker', use_stores, tags, [], function(stream) {
+  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
 
-    // can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
+    // Can send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
     var mymessage = {};
     mymessage.hello = 'world';
     mymessage.num = 101;
@@ -43,9 +29,8 @@ Kurunt.init(config, topology, workers, stores, function(kurunt) {
 
     // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
     kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
-      console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
-      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+      console.log('asmodule.js> Can view processed message at >>> http://127.0.0.1:9001/ <<<\nType Ctrl+c to exit the program.\n...');   // report requires socket.io.
     });
 
   });

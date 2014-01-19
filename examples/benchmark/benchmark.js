@@ -12,6 +12,7 @@
 
 
 // NOTE: Under extreme load may cause breakage, use at own risk.
+// Can set ../../config.json:logging = "benchmark".
 
 
 var Kurunt = require("../../");

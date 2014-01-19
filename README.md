@@ -47,25 +47,15 @@ http://127.0.0.1:8888
 You can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.
 
 ```js
-var Kurunt        = require("kurunt");
+var Kurunt = require("kurunt");
 
-var workers       = [];
-workers.push(__dirname + '/myworker.js');   // full path to your worker function.
+// init: [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.
+Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
 
-var stores        = [];
-stores.push(__dirname + '/mystore.js');   // full path to your store function.
-
-
-// init: [workers], [stores], (callback function).
-Kurunt.init(workers, stores, function(kurunt) {
-
-  console.log('asmodule.js> Type Ctrl+c to exit the program.');
-
-  // create a new stream.
   // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], ['test', 'asmodule'], [], function(stream) {
+  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
 
-    // can now form and send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
+    // Can send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
     var mymessage = {};
     mymessage.hello = 'world';
     mymessage.num = 101;
@@ -73,13 +63,12 @@ Kurunt.init(workers, stores, function(kurunt) {
 
     // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
     kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
-      console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
-      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+      console.log('asmodule.js> Can view processed message at >>> http://127.0.0.1:9001/ <<<\nType Ctrl+c to exit the program.\n...');   // report requires socket.io.
     });
 
   });
-
+  
 });
 ```
 myworker.js
@@ -132,7 +121,7 @@ exports.config = config;    // must export the config so kurunt can read it.
 mystore.js
 ```js
 // must export 'store' module.
-module.exports.store = function (message, report, callback) {
+module.exports.store = function (message, callback) {
   // use try catch so can skip over invalid messages.
   try {
   
@@ -208,7 +197,7 @@ Kurunt opens inputs 'streams' to your data using: TCP, UDP or HTTP.
 Process the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it's easy to build your own custom workers in just a few lines of Javascript. 
 
 #### Stores
-Store your now 'schemed' messages any way you want. In your favorite database, filesystem, data grid, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
+Store your now 'schemed' messages any way you want. In your favorite database, filesystem, search engine, or don't store your messages but 'stream' them, stream api (default), socket.io.
 
 #### Stream Report
 You can visualize your data from within the [web admin](http://127.0.0.1:8888) 'report' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. 
@@ -221,11 +210,17 @@ The simplest answer is for efficiency. There is a limit to how much "message pro
 
 #### Benchmark
 
-You can benchmark Kurunt by opening a 'stream' (eg: JSON), using the [web admin](http://127.0.0.1:8888). And run the data simulation client.
+You can benchmark Kurunt by running (can set config.json:logging = "benchmark"): 
 ```
-> perl /kurunt/lib/workers/json/benchmark.pl -T=tcp -P=6001 -m=1 -c=1
+node examples/benchmark/benchmark.js
 ```
-Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -d (optional) = the string data you want to send. -help for more info.
+To simulate messages (using perl):
+```
+perl examples/benchmark/benchmark.pl -T=tcp -P=7001 -m=10 -c=10
+```
+Can set options: -m = number of messages to send per second, -c = number of seconds to send messages, -help for more info.  
+
+You can then view the processed messages through the [stream report](http://127.0.0.1:9001/).
 
 #### Results
 
