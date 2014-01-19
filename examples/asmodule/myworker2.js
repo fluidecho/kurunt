@@ -52,8 +52,6 @@ var config = {
   "title": "My Worker 2", 
   "description": "Using Kurunt as a module framework, My Worker 2.",
   "inputs": [ "tcp", "udp", "http" ],
-  "mq_nodelay": false,
-  "message_codec": "json",
   "encoding": "utf8",
   "stores": [
     {
