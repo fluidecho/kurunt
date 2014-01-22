@@ -16,10 +16,10 @@ var Kurunt = require("../../");    // call the Kurunt module [require('kurunt')]
 
 
 // init: [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.
-Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(kurunt) {
+Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
 
   // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).
-  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
+  kurunt.newStream('http', 'myworker', ['mystore', 'stream'], [], [], function(e, stream) {
 
     // Can send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.
     var mymessage = {};
