@@ -9,10 +9,10 @@
   "author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)",
   "contributors": [ { "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" } ],
   "dependencies": {
-    "uid-number-bands": "~0.0.9",
-    "axon": "~0.6.1",
-    "mime": "~1.2.0",
-    "nimble": "~0.0.2"
+    "uid-number-bands": ">=0.0.9",
+    "axon": ">=0.6.1",
+    "mime": ">=1.2.0",
+    "nimble": ">=0.0.2"
   },
   "devDependencies": {
   },
