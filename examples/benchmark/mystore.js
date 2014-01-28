@@ -13,7 +13,7 @@
 
 
 // must export 'store' module.
-module.exports.store = function (message, callback) {
+module.exports.store = function (message, fn, callback) {
   // use try catch so can skip over invalid messages.
   try {
   
