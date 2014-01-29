@@ -27,7 +27,7 @@ module.exports.store = function (message, fn, callback) {
       for ( var st in message.stores[s] ) {
         if ( st === 'store_tweet' ) {
           tweet = message.stores[s][st]['schema']['tweet']['value'];    // may want to "clone" message.
-          //console.log('store_tweet@stores> mymessage: ' + require('util').inspect(tweet, true, 99, true));    // here it is, yea!
+          //console.log('store_tweet@stores> tweet: ' + require('util').inspect(tweet, true, 99, true));    // here it is, yea!
         }
       }
     }
