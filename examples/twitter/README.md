@@ -9,3 +9,7 @@ npm install ntwitter
 ```
 You will also need to create/have a twitter 'application' setup at: [https://dev.twitter.com](https://dev.twitter.com). Once setup, rename _keys.json to keys.json and insert the provided twitter application keys into keys.json file.  
 
+To run:
+```
+node twitter.js
+```
