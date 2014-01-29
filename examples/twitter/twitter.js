@@ -14,11 +14,11 @@
 // Need to install ntwitter node module> npm install ntwitter
 
 
-var Kurunt 		= require("../../");						// kurunt module.
-var twitter 	= require('ntwitter');					// see: https://npmjs.org/package/ntwitter, install: npm install ntwitter
+var Kurunt    = require("../../");            // kurunt module.
+var twitter   = require('ntwitter');          // see: https://npmjs.org/package/ntwitter, install: npm install ntwitter
 
 // NOTE: !!! rename file _keys.json to keys.json or use require('./_keys.json') instead.
-var keys 			= require('./keys.json');				// must have/create a twitter 'application' at: https://dev.twitter.com, then set keys within this file.
+var keys      = require('./keys.json');       // must have/create a twitter 'application' at: https://dev.twitter.com, then set keys within this file.
 
 
 var twit = new twitter({
@@ -33,23 +33,23 @@ var twit = new twitter({
 Kurunt.init([__dirname + '/process_tweet.js'], [__dirname + '/store_tweet.js'], function(e, kurunt) {
 
   kurunt.newStream('tcp', 'process_tweet', ['store_tweet', 'stream'], [], [], function(e, stream) {
-    console.log('Can view processed tweets at >>> http://127.0.0.1:9001/ <<<\nCtrl+c to exit.\n...');		// report requires socket.io.
+    console.log('Can view processed tweets at >>> http://127.0.0.1:9001/ <<<\nCtrl+c to exit.\n...');   // report requires socket.io.
 
-		twit.stream('statuses/sample', function(api) {
+    twit.stream('statuses/sample', function(api) {
 
-			api.on('data', function (tweet) {
-				kurunt.send(stream, JSON.stringify(tweet), function (e, sent) {
-					// send tweet into kurunt for processing/storage.
-				});
-			});
+      api.on('data', function (tweet) {
+        kurunt.send(stream, JSON.stringify(tweet), function (e, sent) {
+          // send tweet into kurunt for processing/storage.
+        });
+      });
 
-			api.on('end', function (response) {
-		  	console.log('twitter disconnected');
-		  	process.exit(0);	// exit.
-			});
+      api.on('end', function (response) {
+        console.log('twitter disconnected');
+        process.exit(0);  // exit.
+      });
 
-		});
-		
+    });
+    
   });
   
 });
