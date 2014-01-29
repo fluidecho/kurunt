@@ -48,7 +48,7 @@ var config = {
           "tweet": { }
         }
       }
-    }  
+    }   
   ]
 };
 exports.config = config;    // must export the config so kurunt can read it.
