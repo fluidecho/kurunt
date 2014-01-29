@@ -18,6 +18,6 @@ var Kurunt    	= require("../");		// call the Kurunt module [require('kurunt')].
 
 // init: [workers], [stores], (callback function).
 Kurunt.init(undefined, undefined, function(kurunt) {
-	//console.log('cli.js> kurunt: ' + require('util').inspect(stream, true, 99, true));    // uncomment to debug.
+	//console.log('cli.js> kurunt: ' + require('util').inspect(kurunt, true, 99, true));    // uncomment to debug.
 });
 
