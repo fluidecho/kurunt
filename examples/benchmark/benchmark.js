@@ -18,8 +18,21 @@
 var Kurunt = require("../../");
 
 Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
-  kurunt.newStream('tcp', 'myworker', ['mystore', 'stream'], [], [], function(e, stream) {
- 		//console.log('stream> ' + require('util').format(stream));
-    console.log('Can benchmark message processing using perl, copy/paste into new terminal:\n--------------------------------------------\nperl benchmark.pl -T=tcp -P='+stream.apikey+' -m=10 -c=10\n--------------------------------------------\nCan view processed messages at >>> http://127.0.0.1:9001/ <<<\nCtrl+c to exit.\n...'); 	
+  
+  if (e) {
+    console.trace('Error: ' + e);
+    process.exit(1);    // exit this program.
+  }
+  
+  kurunt.events.on('error',  function(e) {
+    console.trace('Error: ' + e);
+    kurunt.exit();      // exit all running processes as set within topology.json.
+    process.exit(1);    // exit this program.
+  });  
+  
+  kurunt.newStream('tcp', 'myworker', ['mystore', 'stream'], [], [], function(stream) {
+    //console.log('stream> ' + require('util').format(stream));
+    console.log('Can benchmark message processing using perl, copy/paste into new terminal:\n--------------------------------------------\nperl benchmark.pl -T=tcp -P='+stream.apikey+' -m=10 -c=10\n--------------------------------------------\nCan view processed messages at >>> http://127.0.0.1:9001/ <<<\nCtrl+c to exit.\n...');  
   });
+  
 });

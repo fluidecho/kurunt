@@ -32,13 +32,24 @@ var twit = new twitter({
 
 Kurunt.init([__dirname + '/process_tweet.js'], [__dirname + '/store_tweet.js'], function(e, kurunt) {
 
-  kurunt.newStream('tcp', 'process_tweet', ['store_tweet', 'stream'], [], [], function(e, stream) {
+  if (e) {
+  	console.trace('Error: ' + e);
+  	process.exit(1);		// exit this program.
+  }
+
+	kurunt.events.on('error',  function(e) {
+		console.trace('Error: ' + e);
+  	kurunt.exit();			// exit all running processes as set within topology.json.
+  	process.exit(1);		// exit this program.
+	});
+
+  kurunt.newStream('tcp', 'process_tweet', ['store_tweet', 'stream'], [], [], function(stream) {
     console.log('Can view processed tweets at >>> http://127.0.0.1:9001/ <<<\nCtrl+c to exit.\n...');   // report requires socket.io.
 
     twit.stream('statuses/sample', function(api) {
 
       api.on('data', function (tweet) {
-        kurunt.send(stream, JSON.stringify(tweet), function (e, sent) {
+        kurunt.send(stream, JSON.stringify(tweet), function (sent) {
           // send tweet into kurunt for processing/storage.
         });
       });
