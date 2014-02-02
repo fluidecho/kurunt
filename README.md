@@ -241,5 +241,5 @@ Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each me
 
 ## License
 
-Choose either: [MIT] (http://opensource.org/licenses/MIT) or [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+Choose either: [MIT](http://opensource.org/licenses/MIT) or [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
