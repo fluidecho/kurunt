@@ -23,7 +23,19 @@ stores.push(__dirname + '/mystore.js');      // full path to your store function
 
 
 // init: [workers], [stores], (callback function).
-Kurunt.init(workers, stores, function(kurunt) {
+Kurunt.init(workers, stores, function(e, kurunt) {
+
+  if (e) {
+    console.trace('Error: ' + e);
+    process.exit(1);    // exit this program.
+  }
+
+  kurunt.events.on('error',  function(e) {
+    console.trace('Error: ' + e);
+    kurunt.exit();      // exit all running processes as set within topology.json.
+    process.exit(1);    // exit this program.
+  });
+
 
   console.log('asmodule.js> Type Ctrl+c to exit the program.');
 
@@ -41,7 +53,7 @@ Kurunt.init(workers, stores, function(kurunt) {
     mymessage.fab = true;
 
     // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
-    kurunt.send(stream, JSON.stringify(mymessage), function (e, sent) {
+    kurunt.send(stream, JSON.stringify(mymessage), function (sent) {
       console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
       console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
@@ -61,7 +73,7 @@ Kurunt.init(workers, stores, function(kurunt) {
     var tuples = 'hello, world, foo, bar';    // message to send, as CSV, A.K.A: "tuples".
 
     // will send this message in CSV, as that is the format myworker2.js is expecting, could use any message format matching worker.
-    kurunt.send(stream, tuples, function (e, sent) {
+    kurunt.send(stream, tuples, function (sent) {
       console.log('asmodule.js> Sent message: ' + sent + ', tuples: ' + tuples);
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
       console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.

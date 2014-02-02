@@ -2,7 +2,6 @@
 //
 // Kurunt CLI (bin executable app)
 //
-// Scalable Message Processing Framework.
 // Version: 0.2
 // Author: Mark W. B. Ashcroft (mark [at] kurunt [dot] com)
 // License: MIT or Apache 2.0.
@@ -13,11 +12,22 @@
 
 
 
-var Kurunt    	= require("../");		// call the Kurunt module [require('kurunt')].
+var Kurunt = require("../");		// call the Kurunt module [require('kurunt')].
+var config = require('.././config.json');
 
 
 // init: [workers], [stores], (callback function).
-Kurunt.init(undefined, undefined, function(kurunt) {
-	//console.log('cli.js> kurunt: ' + require('util').inspect(kurunt, true, 99, true));    // uncomment to debug.
+Kurunt.init(undefined, undefined, function(e, kurunt) {
+  if ( e ) {
+  	console.trace('Error: ' + e);
+  	process.exit(1);		// exit this program.
+  }
+	kurunt.events.on('error',  function(e) {
+		console.trace('Error: ' + e);
+		if ( config["exit_on_error"] ) {
+  		kurunt.exit();		// exit all running processes as set within topology.json.
+  		process.exit(1);	// exit this program.
+  	}	
+	});
 });
 
