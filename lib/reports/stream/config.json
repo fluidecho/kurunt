@@ -3,5 +3,6 @@
 	"title": "Steam",	
 	"description": "Stream report",
 	"truncate_message": false,
-	"port": 9001
+	"port": 9001,
+	"discover_host": true
 }
