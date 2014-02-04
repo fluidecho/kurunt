@@ -1,4 +1,4 @@
-# AWS EC2 Benchmarking and Testing of Kurunt
+# Deploying Kurunt on AWS EC2
 
 ## Setup EC2
 
