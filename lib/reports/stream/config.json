@@ -1,8 +1,11 @@
 {
-	"name": "steam",
-	"title": "Steam",	
-	"description": "Stream report",
-	"truncate_message": false,
-	"port": 9001,
-	"discover_host": true
+  "name": "steam",
+  "title": "Steam", 
+  "description": "Stream report",
+  "truncate_message": false,
+  "port": 9001,
+  "discover_host": true,
+  "www_auth": false,
+  "www_auth_username": "user",
+  "www_auth_password": "pass"
 }

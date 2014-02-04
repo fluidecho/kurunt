@@ -4,14 +4,14 @@
 
 These instructions are for using Ubuntu 12.04 LTS.
 
-Open ports in security group, port 22 so can ssh into instance. You will also need to open ports for the following (if required).  
+Open ports in security group, port 22 so can ssh into instance. You will also need to optionally open ports for the following (if required).  
 
 ```
-8888  # Web admin (default port).
-9001  # Stram report.
-5555  # http input stream.
-6001+ # tcp/udp input stream (from web admin, as set by their apikey).
-7001+ # tcp/udp input stream (from asmodule, as set by their apikey).
+8888     # Web admin (default port).
+9001     # Stram report.
+5555     # http input stream (if inputing data from external sources).
+6001+    # tcp/udp input stream (from web admin, as set by their apikey, if inputting data from external sources).
+7001+    # tcp/udp input stream (from asmodule, as set by their apikey, if inputting data from external sources).
 
 ```
 Kurunt uses axon for its message processing, if you have setup kurunt to run across multiple machines you will need to set your topology.json, if any of these machines are outside of the AWS security group you will need to open thous ports acordingly.  
@@ -21,6 +21,15 @@ After creating instance.
 Log into instance, using the instances public dns address:
 ```
 ssh -i /Documents/kurunt/hosting/AWS/ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
+```
+
+## Run install script
+
+You can run the install script which will automatically install Kurunt and dependencies.  
+
+(WARNING: USE THIS AT OWN RISK!)
+```
+wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh -O
 ```
 
 ### Commands:
