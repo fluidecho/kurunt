@@ -20,7 +20,7 @@ After creating instance.
 
 Log into instance, using the instances public dns address:
 ```
-ssh -i /Documents/kurunt/hosting/AWS/ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
+ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 ```
 
 ## Run install script
