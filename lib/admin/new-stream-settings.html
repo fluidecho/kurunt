@@ -10,35 +10,61 @@
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <style type="text/css">
 
-		h4 {  
-		  margin-top: 1em;
-		  font-size: 14pt; 
-		  font-weight: bold;
-		  color: #333333;
-		  padding-bottom: 4px;
-		}
+    h4 {  
+      margin-top: 1em;
+      font-size: 14pt; 
+      font-weight: bold;
+      color: #333333;
+      padding-bottom: 4px;
+    }
 
-		h5 {  
-		  margin-top: 4px;
-		  font-size: 10pt; 
-		  font-weight: normal;
-		  color: #333333;
-		  padding-bottom: 4px;
-		}		
-		
-		#worker-text {
-			font-size: 9pt;
-			margin-top: 0px;
-			border: solid 1px #C0B6B6;
-			width: 263px;
-			padding: 1px 0 1px 3px;
-			background: #E5E3E1;
-		}
-		
-		select, textarea, #tags {
-			width: 270px;
-		}
-		
+    h5 {  
+      margin-top: 4px;
+      font-size: 10pt; 
+      font-weight: normal;
+      color: #333333;
+      padding-bottom: 4px;
+    }   
+    
+    #worker-text {
+      font-size: 9pt;
+      margin-top: 0px;
+      border: solid 1px #C0B6B6;
+      width: 263px;
+      padding: 1px 0 1px 3px;
+      background: #E5E3E1;
+    }
+    
+    select, textarea, #tags {
+      width: 270px;
+    }
+    
+    .install-module {
+    	background: #FFD9C4;
+    	padding: 1em;
+    	-webkit-border-radius: 7px;
+    	-khtml-border-radius: 7px;
+    	border-radius: 7px;
+    	text-align: center; 	
+    }
+    
+    .install-module span {
+    	font-size: 11pt;
+    	padding-right: 10px;
+    }
+    
+		 code {
+			width: 110%;
+    	text-align: center;
+    	background: #535151;
+    	color: #fff;
+    	padding: 10px;
+    	line-height: 300%;
+ 		  -webkit-border-radius: 5px;
+		  -khtml-border-radius: 5px;
+		  border-radius: 5px;
+ 		}    
+    
   </style>
 </head>
 
@@ -70,103 +96,134 @@
       var reports_address = '<kurunt-report-address>';
       //console.log('reports_address: ' + reports_address);
 
-			var worker =  window.location.href.substring(window.location.href.indexOf('?worker=') + 8);
-			var worker_title = worker;
+      var worker =  window.location.href.substring(window.location.href.indexOf('?worker=') + 8);
+      var worker_title = worker;
 
       var workers = JSON.parse(<kurunt-workers>);
 
-			jQuery(function($){       
-			 	$.each(workers, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
-					if ( key === worker ) {
-						//console.log('thisWorkers inputs: ' + val['inputs']);
-						worker_title = val['title'];
-						val['inputs'].sort();
-						var s = 0;
-						for ( var inpt in val['inputs'] ) {
-							//console.log('inpt: ' + val['inputs'][inpt]);
-							var checked = ' ';
-							if ( s === 0 ) {
-								checked = ' checked';
-							}							
-							$('<option value="' + val['inputs'][inpt] + '" ' + checked + '>' + val['inputs'][inpt] + '</option>').appendTo("#inputs");
-							s++;
-						}
-						
-						for ( var strs in val['stores'] ) {
-							$.each(val['stores'][strs], function(skey, sval) {
-								//console.log('skey: ' + skey + ' sval: ' + sval);
-								var checked = ' ';
-								if ( skey === 'stream' ) {
-									checked = ' checked';
-								}								
-								$('<input type="checkbox" name="stores" value="' + skey + '" ' + checked + ' /> ' + skey + '<br/>').appendTo("#stores");
-							});
-						}						
-						
-					}
-				});
+      jQuery(function($){       
+        $.each(workers, function(key, val) {
+          //console.log('key: ' + key + ' val: ' + val);
+          if ( key === worker ) {
+            //console.log('thisWorkers inputs: ' + val['inputs']);
+            worker_title = val['title'];
+            val['inputs'].sort();
+            var s = 0;
+            for ( var inpt in val['inputs'] ) {
+              //console.log('inpt: ' + val['inputs'][inpt]);
+              var checked = ' ';
+              if ( s === 0 ) {
+                checked = ' checked';
+              }             
+              $('<option value="' + val['inputs'][inpt] + '" ' + checked + '>' + val['inputs'][inpt] + '</option>').appendTo("#inputs");
+              s++;
+            }
+            
+            for ( var strs in val['stores'] ) {
+              $.each(val['stores'][strs], function(skey, sval) {
+                //console.log('skey: ' + skey + ' sval: ' + sval);
+                var checked = ' ';
+                if ( skey === 'stream' ) {
+                  checked = ' checked';
+                }               
+                $('<input type="checkbox" onclick="installClient(\''+skey+'\')" name="stores" value="' + skey + '" ' + checked + ' /> ' + skey + '<br/>').appendTo("#stores");
+              });
+            }           
+            
+          }
+        });
       });
-
 
       var stores = JSON.parse(<kurunt-stores>);
-			jQuery(function($){       
-			 	$.each(stores, function(key, val) {
-					//console.log('key: ' + key + ' val: ' + val);
-					var checked = ' ';
-					if ( key === 'stream' ) {
-						checked = ' checked';
-					}
-					//$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
-				});
-      	// set selected worker.
-      	//console.log('worker: ' + worker );
-      	$('#worker').val(worker);
-      	$('#worker-text').text(worker_title);
+      jQuery(function($){       
+        $.each(stores, function(key, val) {
+          //console.log('key: ' + key + ' val: ' + val);
+          var checked = ' ';
+          if ( key === 'stream' ) {
+            checked = ' checked';
+          }
+          //$('<input type="checkbox" name="stores" value="' + key + '" ' + checked + ' /> ' + key + '<br/>').appendTo("#stores");
+        });
+        // set selected worker.
+        //console.log('worker: ' + worker );
+        $('#worker').val(worker);
+        $('#worker-text').text(worker_title);
       });
+
+      // if this node client module not installed warn.
+      var hasMongoClientShown = false,
+      	hasRedisClientShown = false,
+      	hasMysqlClientShown = false;
+
+      function installClient(store) {
+
+        var hasMongoClient = <kurunt-has-mongo-client>;
+        if ( store === 'mongo' && !hasMongoClient && !hasMongoClientShown ) {
+          hasMongoClientShown = true;
+          $('<div class="install-module" id="install-mongo-module"><span>To use the ' + store + ' store you will need to install the client module from your terminal> </span> <code>npm install mongodb -g</code></div><br/>').appendTo("#warn-install-client-module");
+        }
+
+        var hasRedisClient = <kurunt-has-redis-client>;
+        if ( store === 'redis' && !hasRedisClient && !hasRedisClientShown ) {
+          hasRedisClientShown = true;
+          $('<div class="install-module" id="install-redis-module"><span>To use the ' + store + ' store you will need to install the client module from your terminal> </span> <code>npm install redis -g</code></div><br/>').appendTo("#warn-install-client-module");
+        }
+
+        var hasMysqlClient = <kurunt-has-mysql-client>;
+        if ( store === 'mysql' && !hasMysqlClient && !hasMysqlClientShown ) {
+          hasMysqlClientShown = true;
+          $('<div class="install-module" id="install-mysql-module"><span>To use the ' + store + ' store you will need to install the client module from your terminal> </span> <code>npm install mysql -g</code></div><br/>').appendTo("#warn-install-client-module");
+        }          
+
+      }
 
       
     </script>
 
 
- 		<div class="pagespan container">
+    <div class="pagespan container">
       <div class="wrap">
   
- 				<form id="new-stream" method="post" action="/streams.html">
- 					<input type="hidden" name="newStream" value="true" />
- 					<input type="hidden" name="status" value="open" />
- 					
- 					<h4>Input</h4>
- 					<select id="inputs" name="input">
-					</select>
-					
- 					<h4>Worker</h4>
-					<input type="hidden" id="worker" name="worker" value="json" />
-					<p id="worker-text"></p>
-					
- 					<h4>Stores</h4>
-					<div id="stores">
-					</div>
+        <form id="new-stream" method="post" action="/streams.html">
+          <input type="hidden" name="newStream" value="true" />
+          <input type="hidden" name="status" value="open" />
+          
+          <h4>Input</h4>
+          <select id="inputs" name="input">
+          </select>
+          
+          <h4>Worker</h4>
+          <input type="hidden" id="worker" name="worker" value="json" />
+          <p id="worker-text"></p>
+          
+          <h4>Stores</h4>
+          <div id="stores">
+          </div>
 
- 					<h4>Tags</h4>
- 					<input id="tags" type="text" name="tags" />
- 					<h5>(Optional: comma separated)</h5>
- 				
- 					<h4>Access Hosts</h4>
- 					<textarea name="accesshosts" rows="5" cols="30"></textarea>
- 					<h5>(Optional: one per line, leave blank to allow all)</h5>
- 				
- 				  <p>
-          	<br/>
-          	<input class="submit1" type="submit" value="New Stream"/> 
+          <h4>Tags</h4>
+          <input id="tags" type="text" name="tags" />
+          <h5>(Optional: comma separated)</h5>
+        
+          <h4>Access Hosts</h4>
+          <textarea name="accesshosts" rows="5" cols="30"></textarea>
+          <h5>(Optional: one per line, leave blank to allow all)</h5>
+        
+          <p>
+            <br/>
+            <input class="submit1" type="submit" value="New Stream"/> 
           </p>
- 				</form>
+        </form>
 
       </div>
     </div>
     
-   	<br class="clearBoth" />
-   	<br/>
+    <br class="clearBoth" />
+    
+    <div id="warn-install-client-module">
+    </div>
+    
+    <br class="clearBoth" />
+    <br/>
 
     
   </div>
