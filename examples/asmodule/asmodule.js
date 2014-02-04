@@ -37,8 +37,6 @@ Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(
     mymessage.hello = 'world';
     mymessage.num = 101;
     mymessage.fab = true;
-
-    console.log('SEND please');
     
     // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
     kurunt.send(stream, JSON.stringify(mymessage), function (sent) {
