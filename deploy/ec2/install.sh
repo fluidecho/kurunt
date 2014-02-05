@@ -24,9 +24,8 @@ sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get -y update
 sudo apt-get -y install nodejs
 
-echo "Switch to root user to install node.js modules."
+echo "Installing node.js modules including kurunt."
 
-sudo su
 npm install -g kurunt
 cd ../../../../../../../../../usr/lib/node_modules/kurunt/
 npm install socket.io

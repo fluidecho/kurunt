@@ -82,6 +82,10 @@ To get the private (local/internal ip) dns address of an instance.
 ```
 curl http://169.254.169.254/latest/meta-data/local-ipv4
 ```
+To get the public host name (eg: ec2-54-80-8-191.compute-1.amazonaws.com) of an instance.
+```
+curl http://169.254.169.254/latest/meta-data/public-hostname
+```
 
 
 ### Commands (install manually):
