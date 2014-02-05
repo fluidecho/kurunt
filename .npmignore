@@ -2,3 +2,4 @@ node_modules
 testing
 keys.json
 docs
+npm-debug.log
