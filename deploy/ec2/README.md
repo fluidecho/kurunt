@@ -10,15 +10,16 @@ Open ports in security group, port 22 so can ssh into instance. You will also ne
 8888     # Web admin (default port).
 9001     # Stram report.
 5555     # http input stream (if inputing data from external sources).
+3333     # api output.
 6001+    # tcp/udp input stream (from web admin, as set by their apikey, if inputting data from external sources).
 7001+    # tcp/udp input stream (from asmodule, as set by their apikey, if inputting data from external sources).
 
 ```
-Kurunt uses axon for its message processing, if you have setup kurunt to run across multiple machines you will need to set your topology.json, if any of these machines are outside of the AWS security group you will need to open thous ports acordingly.  
+Kurunt uses axon for its message processing, if you have setup kurunt to run across multiple machines you will need to set your topology.json, if any of these machines are outside of the AWS security group you will need to open those ports accordingly.  
 
 After creating instance.  
 
-Log into instance, using the instances public dns address:
+Log into instance, using your instances public dns address:
 ```
 ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 ```
@@ -27,12 +28,14 @@ ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 
 You can run the install script which will automatically install Kurunt and dependencies.  
 
-(WARNING: USE THIS AT OWN RISK!)
+(WARNING: USE THIS AT OWN RISK!) May need to use sudo or as sudo su.
 ```
-wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh -O
+wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
+chmod 0755 install.sh
+./install.sh
 ```
 
-### Commands:
+### Commands (install manually):
 
 For root access.
 ```
@@ -82,5 +85,4 @@ Then enter.
 ```
 1
 ```
-
 
