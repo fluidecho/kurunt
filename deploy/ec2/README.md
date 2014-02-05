@@ -35,6 +35,34 @@ chmod 0755 install.sh
 ./install.sh
 ```
 
+## Optional installations
+
+You may optionally wish to install storage solutions for kurunt stores, such as: mongodb, mysql or redis - or others.  
+
+(To install may need to use sudo or as root user.)
+
+### MongoDB
+
+See: [http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/).
+
+```
+apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | tee -a /etc/apt/sources.list.d/10gen.list
+apt-get -y update
+apt-get -y install mongodb-10gen
+```
+
+Install the mongodb client module for node.js.
+```
+npm install mongodb -g
+```
+To start/stop/restart mongo.
+```
+sudo service mongodb start
+sudo service mongodb stop
+sudo service mongodb restart
+```
+
 ### Commands (install manually):
 
 For root access.
