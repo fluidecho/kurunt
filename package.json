@@ -1,7 +1,7 @@
 {
   "name": "kurunt",
   "description": "Real-time processing of streaming data at any scale.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "index.js",
   "preferGlobal": true,
   "bin" : { "kurunt" : "bin/cli.js" },
