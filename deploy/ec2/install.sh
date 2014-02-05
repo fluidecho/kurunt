@@ -23,8 +23,17 @@ sudo apt-get -y install python-software-properties python g++ make
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get -y update
 sudo apt-get -y install nodejs
-sudo npm install -g kurunt
-sudo cd /usr/lib/node_modules/kurunt
-sudo npm install socket.io
-sudo kurunt
 
+echo "Switch to root user to install node.js modules."
+
+sudo su
+npm install -g kurunt
+cd ../../../../../../../../../usr/lib/node_modules/kurunt/
+npm install socket.io
+#npm install mongodb
+#npm install mysql
+#npm install redis
+
+echo "Finished installing Kurunt and dependencies, will now launch Kurunt."
+
+kurunt
