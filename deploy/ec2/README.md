@@ -29,7 +29,7 @@ ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 
 You can run the install script which will automatically install Kurunt and dependencies.  
 
-(WARNING: USE THIS AT OWN RISK!) May need to use sudo or as sudo su.
+(WARNING: USE THIS AT OWN RISK!)
 ```
 sudo wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
 sudo chmod 0755 install.sh
