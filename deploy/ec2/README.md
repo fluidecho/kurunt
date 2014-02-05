@@ -24,6 +24,7 @@ Log into instance, using your instances public dns address:
 ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 ```
 
+
 ## Run install script
 
 You can run the install script which will automatically install Kurunt and dependencies.  
@@ -35,7 +36,12 @@ chmod 0755 install.sh
 ./install.sh
 ```
 
-## Optional installations
+## Deploy using Juju
+
+I plan to add a Charm so Kurunt can be deployed on AWS via [Juju](https://juju.ubuntu.com/).
+
+
+## Optional dependencies installations
 
 You may optionally wish to install storage solutions for kurunt stores, such as: mongodb, mysql or redis - or others.  
 
@@ -62,6 +68,21 @@ sudo service mongodb start
 sudo service mongodb stop
 sudo service mongodb restart
 ```
+
+
+## Notes
+
+To get the address/ip of an instance, see this [document](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html).  
+
+To get the public dns address (ip) of an instance, from inside that instances terminal.
+```
+curl http://169.254.169.254/latest/meta-data/public-ipv4
+```
+To get the private (local/internal ip) dns address of an instance.
+```
+curl http://169.254.169.254/latest/meta-data/local-ipv4
+```
+
 
 ### Commands (install manually):
 
@@ -96,6 +117,7 @@ CLI will be linked as.
 ```
 /usr/bin/kurunt -> /usr/lib/node_modules/kurunt/bin/cli.js
 ```
+
 
 ## Benchmarking
 

@@ -30,7 +30,9 @@ sudo su
 npm install -g kurunt
 cd ../../../../../../../../../usr/lib/node_modules/kurunt/
 npm install socket.io
-npm install mongodb
+#npm install mongodb
+#npm install mysql
+#npm install redis
 
 echo "Finished installing Kurunt and dependencies, will now launch Kurunt."
 
