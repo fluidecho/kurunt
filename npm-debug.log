@@ -20,24 +20,24 @@
 8 verbose parsed url   href: '.' }
 9 silly lockFile 3a52ce78- .
 10 verbose lock . /home/mark/.npm/3a52ce78-.lock
-11 verbose tar pack [ '/home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz',
+11 verbose tar pack [ '/home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz',
 11 verbose tar pack   '.' ]
-12 verbose tarball /home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
+12 verbose tarball /home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
 13 verbose folder .
 14 info prepublish kurunt@0.2.3
 15 silly lockFile 1f1177db-tar tar://.
 16 verbose lock tar://. /home/mark/.npm/1f1177db-tar.lock
-17 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-18 verbose lock tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz /home/mark/.npm/74e3d258-04355-0-6110270074568689-tmp-tgz.lock
+17 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+18 verbose lock tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz /home/mark/.npm/c2c455fb-6947-0-13282144465483725-tmp-tgz.lock
 19 silly lockFile 1f1177db-tar tar://.
 20 silly lockFile 1f1177db-tar tar://.
-21 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-22 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-23 verbose tar unpack /home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-24 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-25 verbose lock tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package /home/mark/.npm/742ba9f8-04355-0-6110270074568689-package.lock
-26 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-27 verbose lock tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz /home/mark/.npm/74e3d258-04355-0-6110270074568689-tmp-tgz.lock
+21 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+22 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+23 verbose tar unpack /home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+24 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+25 verbose lock tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package /home/mark/.npm/2ad27640-6947-0-13282144465483725-package.lock
+26 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+27 verbose lock tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz /home/mark/.npm/c2c455fb-6947-0-13282144465483725-tmp-tgz.lock
 28 silly gunzTarPerm modes [ '755', '644' ]
 29 silly gunzTarPerm extractEntry package.json
 30 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
@@ -314,20 +314,20 @@
 301 silly gunzTarPerm modified mode [ 'examples/twitter/twitter.js', 436, 420 ]
 302 silly gunzTarPerm extractEntry examples/twitter/_keys.json
 303 silly gunzTarPerm modified mode [ 'examples/twitter/_keys.json', 436, 420 ]
-304 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-305 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-306 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
-307 silly lockFile 74e3d258-04355-0-6110270074568689-tmp-tgz tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/tmp.tgz
+304 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+305 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+306 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
+307 silly lockFile c2c455fb-6947-0-13282144465483725-tmp-tgz tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/tmp.tgz
 308 verbose tar pack [ '/home/mark/.npm/kurunt/0.2.3/package.tgz',
-308 verbose tar pack   '/home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package' ]
+308 verbose tar pack   '/home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package' ]
 309 verbose tarball /home/mark/.npm/kurunt/0.2.3/package.tgz
-310 verbose folder /home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-311 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-312 verbose lock tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package /home/mark/.npm/742ba9f8-04355-0-6110270074568689-package.lock
+310 verbose folder /home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+311 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+312 verbose lock tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package /home/mark/.npm/2ad27640-6947-0-13282144465483725-package.lock
 313 silly lockFile 0b08d143-ark-npm-kurunt-0-2-3-package-tgz tar:///home/mark/.npm/kurunt/0.2.3/package.tgz
 314 verbose lock tar:///home/mark/.npm/kurunt/0.2.3/package.tgz /home/mark/.npm/0b08d143-ark-npm-kurunt-0-2-3-package-tgz.lock
-315 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
-316 silly lockFile 742ba9f8-04355-0-6110270074568689-package tar:///home/mark/tmp/npm-14572-nj4IE9pu/1391641604355-0.6110270074568689/package
+315 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
+316 silly lockFile 2ad27640-6947-0-13282144465483725-package tar:///home/mark/tmp/npm-14697-BXsgEdw1/1391642286947-0.13282144465483725/package
 317 silly lockFile 0b08d143-ark-npm-kurunt-0-2-3-package-tgz tar:///home/mark/.npm/kurunt/0.2.3/package.tgz
 318 silly lockFile 0b08d143-ark-npm-kurunt-0-2-3-package-tgz tar:///home/mark/.npm/kurunt/0.2.3/package.tgz
 319 silly lockFile 948b3b61-me-mark-npm-kurunt-0-2-3-package /home/mark/.npm/kurunt/0.2.3/package
@@ -526,27 +526,27 @@
 475 silly publish   readme: '# Kurunt\r\n\r\n"Kurunt" for real-time processing of streaming data at any scale, using node.js.  \r\n\r\nCan be used to capture, process and store both big and small data. Useful for real-time: analytics, applications, ETL and time series data.  \r\n\r\nSimple to use \'stand-alone\' through its web admin, or as a \'framework\' node.js module.\r\n\r\n## Features\r\n\r\n- Streaming system, processing message events in real-time.\r\n- Implemented in 100% javascript for node.js.\r\n- Scalable across machines or on a single cpu, from BeagleBone to the cloud.\r\n- Supports any data type and format, json, ascii, binary, etc.\r\n- Fault tolerant message delivery, can be setup with no single point of failure.\r\n- Uses zeromq like (axon) message patterns for processing.\r\n- Uniquely id\'s messages sequentially and in time series format.\r\n- Build as a framework, can be used as a node.js module or run stand-alone.\r\n- Fast (~1,000,000 tuples/s).\r\n\r\n## Installation\r\n\r\nFrom your terminal, requires [node.js](http://nodejs.org/).\r\n\r\n```\r\nnpm install -g kurunt\r\n```\r\n\r\n## Use\r\n\r\nTo launch Kurunt, from your terminal:\r\n\r\n```\r\nkurunt\r\n```\r\n\r\nThen to administer can open your browser at:\r\n\r\n```\r\nhttp://127.0.0.1:8888\r\n```\r\n\r\n\r\n## Module\r\nYou can run Kurunt either stand-alone or as a module. To use as a module you will need to create a worker and a store file, as shown below. An example of these can be found in /examples/asmodule/.\r\n```\r\nnode examples/asmodule/asmodule.js\r\n```\r\nasmodule.js\r\n```js\r\nvar Kurunt = require("kurunt");\r\n\r\n// init: [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.\r\nKurunt.init([__dirname + \'/myworker.js\'], [__dirname + \'/mystore.js\'], function(e, kurunt) {\r\n\r\n  if (e) {\r\n    console.trace(\'Error: \' + e);\r\n    process.exit(1);\t\t// exit this program.\r\n  }\r\n\r\n  kurunt.events.on(\'error\',  function(e) {\r\n    console.trace(\'Error: \' + e);\r\n    kurunt.exit();\t\t\t// exit all running processes as set within topology.json.\r\n    process.exit(1);\t\t// exit this program.\r\n  });\r\n\r\n  // newStream: input, worker, [stores], [tags], [access_hosts], (callback function).\r\n  kurunt.newStream(\'http\', \'myworker\', [\'mystore\', \'stream\'], [], [], function(stream) {\r\n\r\n    // Can send my message into the stream. There are lots of ways you can input data: http://docs.kurunt.com/Input_Data.\r\n    var mymessage = {};\r\n    mymessage.hello = \'world\';\r\n    mymessage.num = 101;\r\n    mymessage.fab = true;\r\n\r\n    // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.\r\n    kurunt.send(stream, JSON.stringify(mymessage), function (sent) {\r\n      //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.\r\n      console.log(\'Can input a message using curl, copy/paste into new terminal:\\n---------------------------------------------------------------------------------------------------------------\\ncurl -X POST -H "Content-Type: application/json" -d \\\'{"hello":"world"}\\\' \' + stream.address + \'\\n---------------------------------------------------------------------------------------------------------------\\nCan view processed messages at >>> http://127.0.0.1:9001/ <<< or via API >>> \' + stream.api_address + \' <<< \\nCtrl+c to exit.\\n...\');   // report requires socket.io. \r\n    });\r\n\r\n  });\r\n  \r\n});\r\n```\r\nmyworker.js\r\n```js\r\n// must export \'work\' module.\r\nmodule.exports.work = function (message, wk, fn, callback) {\r\n  // use try catch so can skip over invalid messages.\r\n  try {\r\n\r\n    console.log(\'myworker@workers> MESSAGE: \' + require(\'util\').inspect(message, true, 99, true));    // uncomment to debug message.\r\n\r\n    // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.\r\n\r\n    var mymessage = JSON.parse( message.message.toString(wk[\'config\'][\'encoding\']) );   // example for JSON formatted data.\r\n    //console.log(\'myworker@workers> mymessage: \' + require(\'util\').inspect(mymessage, true, 99, true));    // uncomment to debug message.\r\n    \r\n    // Can set the attributes, as they match with: config.stores.mystore.schema.\r\n    var attributes = [];\r\n    attributes[\'mymessage\'] = mymessage;\r\n\r\n    return callback( [ message, attributes ] );   // must return.\r\n  \r\n  } catch(e) {\r\n    //console.log(\'myworker@workers> ERROR: \' + require(\'util\').inspect(e, true, 99, true));     // uncomment to debug errors.\r\n    return callback( false );   // must return.\r\n  }\r\n};\r\n\r\n// set the worker config, or call a json config file via require.\r\nvar config = {\r\n  "name": "myworker",\r\n  "title": "My Worker", \r\n  "description": "Using Kurunt as a module framework, My Worker.",\r\n  "inputs": [ "tcp", "udp", "http" ],\r\n  "encoding": "utf8",\r\n  "stores": [\r\n    {\r\n      "mystore": {\r\n        "schema": {\r\n          "mymessage": { }\r\n        }\r\n      }\r\n    } \r\n  ]\r\n};\r\nexports.config = config;    // must export the config so kurunt can read it.\r\n```\r\nmystore.js\r\n```js\r\n// must export \'store\' module.\r\nmodule.exports.store = function (message, callback) {\r\n  // use try catch so can skip over invalid messages.\r\n  try {\r\n  \r\n    console.log(\'mystore@stores> MESSAGE: \' + require(\'util\').inspect(message, true, 99, true));    // uncomment to debug message.\r\n    \r\n    // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.\r\n\r\n    // Can extract mymessage from \'mystore\' schema.\r\n    var mymessage = undefined;\r\n    for ( var s in message.stores ) {\r\n      for ( var st in message.stores[s] ) {\r\n        if ( st === \'mystore\' ) {\r\n          mymessage = message.stores[s][st][\'schema\'][\'mymessage\'][\'value\'];    // may want to "clone" message.\r\n          //console.log(\'mystore@stores> mymessage: \' + require(\'util\').inspect(mymessage, true, 99, true));    // here it is, yea!\r\n        }\r\n      }\r\n    }\r\n\r\n    return callback( true );    // must return.\r\n  \r\n  } catch(e) {\r\n    //console.log(\'mystore@stores> ERROR: \' + require(\'util\').inspect(e, true, 99, true));     // uncomment to debug errors.\r\n    return callback( false );   // must return.\r\n  }\r\n};\r\n\r\n// set the worker config, or call a json config file via require.\r\nvar config = {\r\n  "name": "mystore",\r\n  "encoding": "utf8"\r\n};\r\nexports.config = config;    // must export the config so kurunt can read it.\r\n```\r\n\r\n\r\n## How does it work?\r\n\r\nKurunt is made up of three components: inputs, workers and stores. \r\n<pre>\r\n       *****************\r\n       *   YOUR DATA   *  (json, syslog, csv, sensors, jpeg, access_log, tail, etc)\r\n       *****************\r\n               |\r\n               v\r\n          ***********\r\n          *  INPUT  *  (tcp, udp, http)\r\n          ***********\r\n             |   |\r\n     +-------+   +-------+\r\n     |                   |\r\n     v                   v\r\n**********          **********\r\n* WORKER *          * WORKER *  (functions, parse, regex, filter, augment, geoip, etc)\r\n**********          **********\r\n     |                   |\r\n     +-------+   +-------+\r\n             |   |\r\n             v   v\r\n          ***********\r\n          *  STORE  *  (stream, socket.io, mongo, mysql, hadoop, S3, solr, sphinx, etc)\r\n          ***********\r\n</pre>\r\n\r\nAbove shows how the message (your data) is processed using the default topology, you can however create all sorts of patterns for scalability and fault-tolerance. These components run on separate processes, either on a single node or across multiple nodes or a combination, as set in: topology.json.\r\n\r\n#### Your Data\r\nCould be nearly anything, like: json, syslog, access_log, web, jpeg, csv, msgpack, tail a file, arduino sensors, clickstream, twitter firehose, etc.\r\n\r\n#### Inputs\r\nKurunt opens inputs \'streams\' to your data using: TCP, UDP or HTTP.\r\n\r\n#### Workers\r\nProcess the messages any way you want. Turn structured, semi-structured or unstructured data into something that you can use. Use functions, parse, regex, filter, augment, geoip, etc. Use an existing worker, or it\'s easy to build your own custom workers in just a few lines of Javascript. \r\n\r\n#### Stores\r\nStore your now \'schemed\' messages any way you want. In your favorite database, filesystem, search engine, or don\'t store your messages but \'stream\' them, stream api (default), socket.io.\r\n\r\n#### Stream Report\r\nYou can visualize your data from within the [web admin](http://127.0.0.1:8888) \'report\' (requires socket.io to be installed > npm install socket.io). See the messages live as they come in, pause/play messages for analysing. \r\n\r\n#### Why do all of this?\r\nThe simplest answer is for efficiency. There is a limit to how much "message processing" a single node.js process can do. You\'ll eventually need more processes and to be fault-tolerant more machines.\r\n\r\n\r\n## Performance\r\n\r\n#### Benchmark\r\n\r\nYou can benchmark Kurunt by running (can set config.json:logging = "benchmark"): \r\n```\r\nnode examples/benchmark/benchmark.js\r\n```\r\nTo simulate messages (using perl):\r\n```\r\nperl examples/benchmark/benchmark.pl -T=tcp -P=7001 -m=10 -c=10\r\n```\r\nCan set options: -m = number of messages to send per second, -c = number of seconds to send messages, -help for more info.  \r\n\r\nYou can then view the processed messages through the [stream report](http://127.0.0.1:9001/).\r\n\r\n#### Results\r\n\r\nResults depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.\r\n\r\nTuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.\r\n\r\n\r\n## License\r\n\r\nChoose either: [MIT](http://opensource.org/licenses/MIT) or [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).\r\n\r\n',
 475 silly publish   readmeFilename: 'README.md',
 475 silly publish   _id: 'kurunt@0.2.3',
-475 silly publish   dist: { shasum: '86bd78d134da20465edc31c3810ffe945e078de8' },
+475 silly publish   dist: { shasum: 'd4f3af6e4a3def5787e943d9268d762dc4856413' },
 475 silly publish   _from: '.' }
 476 verbose url raw kurunt
 477 verbose url resolving [ 'https://registry.npmjs.org/', './kurunt' ]
 478 verbose url resolved https://registry.npmjs.org/kurunt
-479 info trying registry request attempt 1 at 10:06:46
+479 info trying registry request attempt 1 at 10:18:09
 480 http PUT https://registry.npmjs.org/kurunt
 481 http 409 https://registry.npmjs.org/kurunt
 482 verbose url raw kurunt
 483 verbose url resolving [ 'https://registry.npmjs.org/', './kurunt' ]
 484 verbose url resolved https://registry.npmjs.org/kurunt
-485 info trying registry request attempt 1 at 10:06:55
+485 info trying registry request attempt 1 at 10:18:18
 486 http GET https://registry.npmjs.org/kurunt
 487 http 200 https://registry.npmjs.org/kurunt
 488 verbose url raw kurunt
 489 verbose url resolving [ 'https://registry.npmjs.org/', './kurunt' ]
 490 verbose url resolved https://registry.npmjs.org/kurunt
-491 info trying registry request attempt 1 at 10:06:57
+491 info trying registry request attempt 1 at 10:18:19
 492 http PUT https://registry.npmjs.org/kurunt
 493 http 403 https://registry.npmjs.org/kurunt
-494 info trying registry request attempt 1 at 10:07:08
+494 info trying registry request attempt 1 at 10:18:29
 495 http PUT https://registry.npmjs.org/kurunt
 496 http 403 https://registry.npmjs.org/kurunt
 497 error Error: forbidden name invalid: undefined: kurunt
