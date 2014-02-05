@@ -32,7 +32,7 @@ You can run the install script which will automatically install Kurunt and depen
 (WARNING: USE THIS AT OWN RISK!)
 ```
 sudo wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
-sudo chmod 0755 install.sh
+sudo chmod u+x install.sh
 sudo ./install.sh
 ```
 
