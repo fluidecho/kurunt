@@ -31,9 +31,9 @@ You can run the install script which will automatically install Kurunt and depen
 
 (WARNING: USE THIS AT OWN RISK!) May need to use sudo or as sudo su.
 ```
-wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
-chmod 0755 install.sh
-./install.sh
+sudo wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
+sudo chmod 0755 install.sh
+sudo ./install.sh
 ```
 
 ## Deploy using Juju
