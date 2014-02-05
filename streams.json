@@ -1,1 +1,1 @@
-{"streams":[{"apikey":"a2ef5ec5ea77e6bb","input":{"object":"http","id":0},"worker":"json","stores":["stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"open"}]}
+{"streams":[{"apikey":"d9c79667934a1d27","input":{"object":"http","id":0},"worker":"buffer","stores":["stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"open"},{"apikey":6001,"input":{"object":"tcp","id":0},"worker":"syslog","stores":["stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"closed"}]}
