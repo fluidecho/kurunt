@@ -29,11 +29,11 @@ ssh -i ec2.pem ubuntu@ec2-54-234-30-169.compute-1.amazonaws.com
 
 You can run the install script which will automatically install Kurunt and dependencies.  
 
-(WARNING: USE THIS AT OWN RISK!) May need to use sudo or as sudo su.
+(WARNING: USE THIS AT OWN RISK!)
 ```
-wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
-chmod 0755 install.sh
-./install.sh
+sudo wget -q https://raw2.github.com/kurunt/kurunt/master/deploy/ec2/install.sh
+sudo chmod u+x install.sh
+sudo ./install.sh
 ```
 
 ## Deploy using Juju
@@ -81,6 +81,10 @@ curl http://169.254.169.254/latest/meta-data/public-ipv4
 To get the private (local/internal ip) dns address of an instance.
 ```
 curl http://169.254.169.254/latest/meta-data/local-ipv4
+```
+To get the public host name (eg: ec2-54-80-8-191.compute-1.amazonaws.com) of an instance.
+```
+curl http://169.254.169.254/latest/meta-data/public-hostname
 ```
 
 

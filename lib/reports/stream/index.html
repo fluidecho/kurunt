@@ -271,7 +271,7 @@
     <div class="wrapper">
       <div id="logo"><img src="logo.png" alt="" /></div>
       <div id="navs">
-        <a id="admin-address" href="#">Streams</a>
+        <a id="admin-address" href="http://<kurunt-admin-address>/streams.html">Streams</a>
         <a id="report-address" href="#">Report</a> 
       </div>
     </div>
@@ -296,6 +296,7 @@
 
 
 			// gets X-kurunt-admin-address header.
+			/*
 			function loadXMLDoc(url) {
 			if (window.XMLHttpRequest) {		// code for IE7+, Firefox, Chrome, Opera, Safari
 				xmlhttp=new XMLHttpRequest();
@@ -312,7 +313,7 @@
 				xmlhttp.send();
 			}
 			loadXMLDoc('X-kurunt.info'); 		// requests info file which returns values in http header.
-
+			*/
 
 			// set reports url from self.
 			$("#report-address").attr("href", window.location.pathname);
@@ -321,7 +322,7 @@
       var smoothieChart = new TimeSeries();
       var msgps = 0;
 
-      var socket = io.connect('http://<kurunt-discover-host>');  // use localhost or will set ip/host for remote access.
+      var socket = io.connect('http://<kurunt-host-address>');  // use localhost or will set ip/host for remote access.
   
       socket.on('connect', function (data) {
         // gstStreams and popluate the pulldown select menu.
