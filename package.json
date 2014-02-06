@@ -24,7 +24,7 @@
     "messages",
     "message processing",
     "zmq",
-    "zeromq",    
+    "zeromq",
     "axon",
     "analytics",
     "realtime",
@@ -33,5 +33,5 @@
     "scalable",
     "big data",
     "etl"
-  ]    
+  ]
 }
