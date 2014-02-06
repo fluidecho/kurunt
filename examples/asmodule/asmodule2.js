@@ -56,7 +56,7 @@ Kurunt.init(workers, stores, function(e, kurunt) {
     kurunt.send(stream, JSON.stringify(mymessage), function (sent) {
       console.log('asmodule.js> Sent message: ' + sent + ', mymessage: ' + JSON.stringify(mymessage));
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
-      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+      console.log('asmodule.js> Can view processed message at: http://' + stream.host + ':9001/.');   // requires socket.io.
     });
 
   });
@@ -76,7 +76,7 @@ Kurunt.init(workers, stores, function(e, kurunt) {
     kurunt.send(stream, tuples, function (sent) {
       console.log('asmodule.js> Sent message: ' + sent + ', tuples: ' + tuples);
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
-      console.log('asmodule.js> Can view processed message at: http://127.0.0.1:9001/.');   // requires socket.io.
+      console.log('asmodule.js> Can view processed message at: http://' + stream.host + ':9001/.');   // requires socket.io.
     });
 
   });  

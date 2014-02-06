@@ -41,7 +41,7 @@ Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(
     // will send this message in JSON, as that is the format myworker.js is expecting, could use any message format matching worker.
     kurunt.send(stream, JSON.stringify(mymessage), function (sent) {
       //kurunt.exit();    // can exit all kurunt processes (as set within topology) when has had time to complete message processing.
-      console.log('Can input a message using curl, copy/paste into new terminal:\n---------------------------------------------------------------------------------------------------------------\ncurl -X POST -H "Content-Type: application/json" -d \'{"hello":"world"}\' ' + stream.address + '\n---------------------------------------------------------------------------------------------------------------\nCan view processed messages at >>> http://127.0.0.1:9001/ <<< or via API >>> ' + stream.api_address + ' <<< \nCtrl+c to exit.\n...');   // report requires socket.io. 
+      console.log('Can input a message using curl, copy/paste into new terminal:\n---------------------------------------------------------------------------------------------------------------\ncurl -X POST -H "Content-Type: application/json" -d \'{"hello":"world"}\' ' + stream.address + '\n---------------------------------------------------------------------------------------------------------------\nCan view processed messages at >>> http://' + stream.host + ':9001/ <<< or via API >>> ' + stream.api_address + ' <<< \nCtrl+c to exit.\n...');   // report requires socket.io. 
     });
 
   });
