@@ -58,7 +58,7 @@ apt-get -y update
 apt-get -y install mongodb-10gen
 ```
 
-Install the mongodb client module for node.js.
+Install the mongodb client module for node.js, either locally within the kurunt directory or globally '-g'.
 ```
 npm install mongodb -g
 ```
@@ -88,7 +88,7 @@ curl http://169.254.169.254/latest/meta-data/public-hostname
 ```
 
 
-### Commands (install manually):
+### Install manually
 
 For root access.
 ```
