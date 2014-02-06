@@ -34,6 +34,6 @@ sudo npm install socket.io
 #npm install redis
 
 echo "Successfully finished installing Kurunt and dependencies, will now launch Kurunt."
-echo "..."
+echo "> sudo kurunt"
 
 sudo kurunt
