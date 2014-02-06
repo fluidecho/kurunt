@@ -36,6 +36,15 @@ sudo chmod u+x install.sh
 sudo ./install.sh
 ```
 
+### Launch Kurunt
+
+When you run the install.sh script if, successfull will automatically launch kurunt. Use sudo when launching kurunt in stand-alone mode so can write to the streams.json file, otherwise may encounter 'EACCESS' error. If running kurunt as a module, you don't have to use sudo.
+
+```
+sudo kurunt
+```
+
+
 ## Deploy using Juju
 
 I plan to add a Charm so Kurunt can be deployed on AWS via [Juju](https://juju.ubuntu.com/).
