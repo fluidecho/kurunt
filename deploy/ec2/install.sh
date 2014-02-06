@@ -26,13 +26,14 @@ sudo apt-get -y install nodejs
 
 echo "Installing node.js modules including kurunt."
 
-npm install -g kurunt
+sudo npm install -g kurunt
 cd ../../../../../../../../../usr/lib/node_modules/kurunt/
-npm install socket.io
+sudo npm install socket.io
 #npm install mongodb
 #npm install mysql
 #npm install redis
 
-echo "Finished installing Kurunt and dependencies, will now launch Kurunt."
+echo "Successfully finished installing Kurunt and dependencies, will now launch Kurunt."
+echo "..."
 
-kurunt
+sudo kurunt
