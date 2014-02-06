@@ -12,22 +12,22 @@
 
 
 
-var Kurunt = require("../");		// call the Kurunt module [require('kurunt')].
+var Kurunt = require("../");    // call the Kurunt module [require('kurunt')].
 var config = require('.././config.json');
 
 
 // init: [workers], [stores], (callback function).
 Kurunt.init(undefined, undefined, function(e, kurunt) {
   if ( e ) {
-  	console.trace('Error: ' + e);
-  	process.exit(1);		// exit this program.
+    console.trace('Error: ' + e);
+    process.exit(1);    // exit this program.
   }
-	kurunt.events.on('error',  function(e) {
-		console.trace('Error: ' + e);
-		if ( config["exit_on_error"] ) {
-  		kurunt.exit();		// exit all running processes as set within topology.json.
-  		process.exit(1);	// exit this program.
-  	}	
-	});
+  kurunt.events.on('error',  function(e) {
+    console.trace('Error: ' + e);
+    if ( config["exit_on_error"] ) {
+      kurunt.exit();    // exit all running processes as set within topology.json.
+      process.exit(1);  // exit this program.
+    } 
+  });
 });
 
