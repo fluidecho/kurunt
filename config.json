@@ -9,7 +9,6 @@
   "admin_www_auth_username": "user",
   "admin_www_auth_password": "pass",
   "input_port_start" : 6000,
-  "messenger_codec": "json",
   "mq_nodelay": false,
   "bands": 100,
   "band": 0

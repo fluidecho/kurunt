@@ -15,13 +15,7 @@
       height: 110px;
     }
 
-    /* Messages Totals */ 
-    .rounded-corners {
-      -webkit-border-radius: 20px;
-      -khtml-border-radius: 20px;
-      border-radius: 20px;
-    }
-
+    /* Messages Totals */
     #messages_totals {
       margin-top: 2.2em;
       clear: both;
@@ -33,7 +27,7 @@
       height: 80px;
       float: left;
       text-align: center;
-      background: #333333;
+      background: #00A74E;
       color: #fff;
     }
 
@@ -46,7 +40,8 @@
       padding-top: 7px;
       font-size: 12pt; 
       font-weight: normal;
-      color: #A0A0A0;
+      /* color: #A0A0A0; */
+      color: #fff;
       text-transform: uppercase;
     }
 
@@ -56,7 +51,7 @@
       height: 80px;
       float: right;
       text-align: center;
-      background: #333333;
+      background: #00A74E;
       color: #fff;
     }
 
@@ -70,7 +65,8 @@
       padding-top: 7px;
       font-size: 12pt; 
       font-weight: normal;
-      color: #A0A0A0;
+      /* color: #A0A0A0; */
+      color: #fff;
       text-transform: uppercase;
     }
 
@@ -254,7 +250,7 @@
     }
 
     #select_data select {
-        min-width: 260px;
+        min-width: 274px;
     }
     
   </style>
@@ -555,8 +551,8 @@
     </script>
 
     <div id="messages_totals">
-      <div id="messages_total" class="rounded-corners"><span id="messages_total_int"></span><h3>Messages</h3></div>
-      <div id="messages_ps" class="rounded-corners"><span id="messages_ps_int"></span><h3>Messages Per Second</h3></div>
+      <div id="messages_total"><span id="messages_total_int"></span><h3>Events</h3></div>
+      <div id="messages_ps"><span id="messages_ps_int"></span><h3>Events Per Second</h3></div>
     </div>
 
     <canvas id="chart" width="910" height="110"></canvas>

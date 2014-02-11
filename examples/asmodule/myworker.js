@@ -22,7 +22,7 @@ module.exports.work = function (message, wk, fn, callback) {
     // Can process the message anyway you want, use: functions, parse, regex, filter, augment, geoip, etc.
     
     var mymessage = JSON.parse( message.message.toString(wk['config']['encoding']) );   // example for JSON formatted data.
-    //console.log('myworker@workers> mymessage: ' + require('util').inspect(mymessage, true, 99, true));    // uncomment to debug message.
+    fn.logging.log('myworker@workers> mymessage: ', mymessage);
     
     // Can set the attributes, as they match with: config.stores.mystore.schema.
     var attributes = [];
@@ -31,7 +31,7 @@ module.exports.work = function (message, wk, fn, callback) {
     return callback( [ message, attributes ] );   // must return.
   
   } catch(e) {
-    //console.log('myworker@workers> ERROR: ' + require('util').inspect(e, true, 99, true));     // uncomment to debug errors.
+    fn.logging.log('myworker@workers> ERROR: ', e);
     return callback( false );   // must return.
   }
 };
