@@ -3,14 +3,13 @@
   "description": "Real-time processing of streaming data at any scale.",
   "version": "0.2.3",
   "main": "index.js",
-  "preferGlobal": true,
   "bin" : { "kurunt" : "bin/cli.js" },
   "homepage": "http://kurunt.com",
   "author": "Mark W. B. Ashcroft <mark@kurunt.com> (http://kurunt.com)",
   "contributors": [ { "name": "Mark W. B. Ashcroft", "email": "mark@kurunt.com" } ],
   "dependencies": {
     "uid-number-bands": ">=0.0.9",
-    "axon": ">=0.6.1",
+    "axon": "<=1.0.0",
     "mime": ">=1.2.0",
     "nimble": ">=0.0.2"
   },
