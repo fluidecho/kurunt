@@ -17,7 +17,7 @@ module.exports.store = function (message, fn, callback) {
   // use try catch so can skip over invalid messages.
   try {
   
-    console.log('mystore.js> MESSAGE: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
+    console.log('mystore.js> EVENT: ' + require('util').inspect(message, true, 99, true));    // uncomment to debug message.
     
     // Here can do whatever you want to: store, socket.io, fs, db, index, etc, this message.
 
