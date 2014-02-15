@@ -1,1 +1,1 @@
-{"streams":[{"apikey":6001,"input":{"object":"tcp","id":0},"worker":"syslog","stores":["stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"open"},{"apikey":6002,"input":{"object":"udp","id":0},"worker":"combined","stores":["stream"],"reports":["stream"],"tags":[],"access_hosts":[],"status":"open"}]}
+{"streams":[]}

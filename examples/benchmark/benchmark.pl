@@ -90,6 +90,11 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 			$socket->send($data);		# udp does not require LF "\n" delineation.
 		}
 		
+		my $id;
+		$socket->recv($id, 20);
+	
+		print "id: " . $id;		# will be returned with LF
+		
 		$i++;
 	}
 
