@@ -234,9 +234,9 @@ You can then view the processed messages through the [stream report](http://127.
 
 #### Results
 
-Results depend a little bit on what you mean by "message processing", I mean it to be a single message from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) messages per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
+Results depend a little bit on what you mean by "event processing", I mean it to be a single event from ingestion (input) to worker (test) to store (stream) - around 20,000 (upto 50,000) event per second on a single machine to fully process with a sub 1 second latency. It can ingest (input) data much faster in the 100,000s messages per second. The topology you set will determine performance.
 
-Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each message, I get in-excess of 10,000 (peeking at 16,000) messages per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
+Tuple testing: Sending 100 tuples (comma separated values: A,B,C,...) in each event, I get in-excess of 10,000 (peeking at 20,000) event per second * 100 tuples extracted = 1,000,000 tuples per second, processed.
 
 
 ## License

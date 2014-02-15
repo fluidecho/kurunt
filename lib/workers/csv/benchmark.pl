@@ -7,7 +7,7 @@
 #
 
 use IO::Socket::INET;
-
+use Time::HiRes qw(usleep nanosleep);
 
 print "--- Test Client for Kurunt ---\n\n";
 
@@ -55,7 +55,7 @@ if ( $d eq '' ) {
 }
 
 # speed test for many tuples (100 tuples):
-#$d = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V';
+$d = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V';
 
 if ( $H eq '' ) {
 	$H = '127.0.0.1';
@@ -89,7 +89,9 @@ for ( $cycle = 1; $cycle <= $c; $cycle++ ) {
 	}
 
 	print "Finished sending messages for cycle " . $cycle . "\n";
-	sleep (1);							# pause for one second before sending next cycle of messages.
+	#sleep (1);				# pause for one second before sending next cycle of messages.
+	usleep(100);			# 1 millisecond == 1000 microseconds
+	
 }
 
 print "Finished sending all cycles and messages! Good-bye.\n";

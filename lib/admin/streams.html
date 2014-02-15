@@ -164,19 +164,19 @@
 			
 			jQuery(function($){
 			
-				var sent_message = '<kurunt-sent-message>';
-				if ( sent_message.indexOf('kurunt-sent-message') === -1 ) {
-					if ( sent_message.length === 62960 ) {
+				var sent_event = '<kurunt-sent-message>';
+				if ( sent_event.indexOf('kurunt-sent-message') === -1 ) {
+					if ( sent_event.length === 62960 ) {
 						// was image.jpeg.
-						$('#sent_message').html('Sent: ' + '<img src="data:image/png;base64,' + sent_message + '" alt="" /> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view message in <a href="<kurunt-report-address>">report</a>.</i>');
-					} else if ( sent_message === '' ) {
-						$('#sent_message').html('Sent: <b>hello *ping*</b> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view message in <a href="<kurunt-report-address>">report</a>.</i>');
+						$('#sent_event').html('Sent: ' + '<img src="data:image/png;base64,' + sent_event + '" alt="" /> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view event in <a href="<kurunt-report-address>">report</a>.</i>');
+					} else if ( sent_event === '' ) {
+						$('#sent_event').html('Sent: <b>hello *ping*</b> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view event in <a href="<kurunt-report-address>">report</a>.</i>');
 					} else {
-						$('#sent_message').html('Sent: <b>' + sent_message + '</b> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view message in <a href="<kurunt-report-address>">report</a>.</i>');
+						$('#sent_event').html('Sent: <b>' + sent_event + '</b> to apikey: <b><kurunt-sent-message-apikey></b>, <i>view event in <a href="<kurunt-report-address>">report</a>.</i>');
 					}	
 				}
-				if ( sent_message === 'failed' ) {
-					$('#sent_message').html('Sent: <b>' + sent_message + '</b> to apikey: <b><kurunt-sent-message-apikey></b>.</i>');
+				if ( sent_event === 'failed' ) {
+					$('#sent_event').html('Sent: <b>' + sent_event + '</b> to apikey: <b><kurunt-sent-message-apikey></b>.</i>');
 				}	
 			     
 			 	$.each(streams['streams'], function(key, val) {
@@ -299,15 +299,15 @@
       	<div id="send_data">
       		<h2>Sending data to the stream</h2>
 
-					<p>Send a test message into your stream. There are many ways to send data into your stream, <a target="_blank" href="http://docs.kurunt.com/Input_Data">to find out more</a>.</p>
+					<p>Send a test event into your stream. There are many ways to send data into your stream, <a target="_blank" href="http://docs.kurunt.com/Input_Data">to find out more</a>.</p>
 					<form id="senddata" method="post" name="senddata" action="/streams.html">
 						<input type="hidden" name="sendData" value="true" />
 		        <p><span>apikey:</span>
 		        	<select id="select_apikey" name="apikey">
 							</select>
-		        	<input class="submit2" type="submit" value="Send Message"/> 
+		        	<input class="submit2" type="submit" value="Send Event"/> 
 		        </p>
-		        <p id="sent_message"></p>
+		        <p id="sent_event"></p>
 		        				
 					</form>
 					
