@@ -3,7 +3,7 @@
 	"title": "Stream",	
 	"description": "Stream store",
 	"messenger_codec": "json",
-  "stream_api": true,
+  "stream_api": false,
   "stream_api_port": 3333,
   "stream_api_pass": "pass",
   "stream_api_all_pass": "pass"
