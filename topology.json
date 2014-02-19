@@ -35,7 +35,7 @@
           "id": 0,
           "falk": true,
           "object": "input",
-          "namespace": "tls",
+          "namespace": "udp",
           "connections": [
             {
               "zmq_pattern": "push",
