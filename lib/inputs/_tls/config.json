@@ -1,0 +1,6 @@
+{
+  "name": "tls",
+  "description": "TLS server input.",
+  "message_buffer_limit": 10485760,
+  "message_delineate": 10
+}
