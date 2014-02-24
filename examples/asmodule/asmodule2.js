@@ -22,8 +22,8 @@ var stores        = [];
 stores.push(__dirname + '/mystore.js');      // full path to your store function.
 
 
-// init: [workers], [stores], (callback function).
-Kurunt.init(workers, stores, function(e, kurunt) {
+// init: topology, [workers], [stores], (callback function).
+Kurunt.init(undefined, workers, stores, function(e, kurunt) {
 
   if (e) {
     console.trace('Error: ' + e);

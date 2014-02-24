@@ -15,8 +15,8 @@
 var Kurunt = require("../../");    // call the Kurunt module [require('kurunt')].
 
 
-// init: [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.
-Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
+// init: topology, [workers], [stores], (callback function). [workers] and [stores] requires full path to your function file.
+Kurunt.init(undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
 
   if (e) {
     console.trace('Error: ' + e);

@@ -17,7 +17,7 @@
 
 var Kurunt = require("../../");
 
-Kurunt.init([__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
+Kurunt.init(undefined, [__dirname + '/myworker.js'], [__dirname + '/mystore.js'], function(e, kurunt) {
   
   if (e) {
     console.trace('Error: ' + e);

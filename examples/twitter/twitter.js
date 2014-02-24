@@ -30,7 +30,7 @@ var twit = new twitter({
 
 
 
-Kurunt.init([__dirname + '/process_tweet.js'], [__dirname + '/store_tweet.js'], function(e, kurunt) {
+Kurunt.init(undefined, [__dirname + '/process_tweet.js'], [__dirname + '/store_tweet.js'], function(e, kurunt) {
 
   if (e) {
   	console.trace('Error: ' + e);

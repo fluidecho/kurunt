@@ -16,8 +16,8 @@ var Kurunt = require("../");    // call the Kurunt module [require('kurunt')].
 var config = require('.././config.json');
 
 
-// init: [workers], [stores], (callback function).
-Kurunt.init(undefined, undefined, function(e, kurunt) {
+// init: topology, [workers], [stores], (callback function).
+Kurunt.init(undefined, undefined, undefined, function(e, kurunt) {
   if ( e ) {
     console.trace('Error: ' + e);
     process.exit(1);    // exit this program.
